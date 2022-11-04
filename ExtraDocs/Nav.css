@@ -1,0 +1,81 @@
+/*barra de navegación 2.0*/
+.header{
+    background-color: #84b295;
+    height: 80px;
+    border-bottom: 5px solid #428347;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    /*justify-content: right;*/
+}
+
+.logo{
+    width: 170px;
+    object-fit: cover;
+    transition: background-color 500ms;
+    /*color:#fffaf0;*/
+    filter: invert(100%) sepia(28%) saturate(1220%) hue-rotate(345deg) brightness(170%) contrast(113%);
+}
+
+.nav-link{
+    color: #f0f8ff;
+}
+
+nav ul li:hover{
+    background-color: #428347;
+}
+
+#register{
+    background-color: #428347;
+}
+#register:hover{
+    background-color: #2a6b30;
+}
+
+.moveBars{
+    transform: rotate(180deg);
+    transition: all 500ms ease;
+}
+
+.resetBars{
+    transform: rotate(0deg);
+    transition: all 500ms ease;
+}
+
+.nav-menu{
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu-item{
+    font-size: 20px;
+    padding: 10px 20px;
+    line-height: 55px;
+    width: max-content;
+    color: floralwhite;
+    cursor: pointer;
+}
+
+.nav-toggle{
+    color:floralwhite;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 10px 20px;
+    line-height: 60px;
+    display: none;
+    cursor: pointer;
+}
+
+.btns{
+    display: flex;
+}

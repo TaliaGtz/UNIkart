@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu&display=swap');
+/*Alt + Z*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-image: url(https://wallpaperboat.com/wp-content/uploads/2020/09/23/55471/solid-white-23.jpg);
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.86), rgba(0,0,0,0.86)), url(../ExtraDocs/background.jpg);
+}
+
+.container{
+    width: 90%;
+    margin: 0px auto;
+}
+
+.header{
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: rgba(1, 0, 0, 0.466);
+    color: white;
+    padding: 10px 30px 30px;
+    border-radius: 4px;
+}
+
+.header img{
+    margin-top: 30px;
+    width: 210px;
+    display:flex;
+    color:rgba(25, 26, 41, 0.932);
+    font-size: 55px;
+}
+
+.inicioTxt{
+    margin-top: 30px;
+    width: 210px;
+    display:flex;
+    color:rgba(243, 243, 243, 0.932);
+    font-size: 65px;
+    padding: 20px;
+}
+
+.LogoMP img{
+    width: 195px;
+    height: 195px;
+    filter: invert(100%) sepia(28%) saturate(1220%) hue-rotate(345deg) brightness(170%) contrast(113%);
+}
+
+nav{
+    background-color: rgba(17, 91, 202, 0.788);;
+    height: 50px;
+    border-bottom: 5px solid rgba(49, 35, 175, 0.795);
+}
+
+nav ul li{
+    float: left;
+    list-style: none;
+    margin: 10px;
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.clear{
+    clear: both;
+}
+
+.forms{
+    margin: 50px;
+    margin-top: 20px;
+}
+
+.field{
+    padding: 15px;
+}
+
+.commentBox{ 
+    color: snow;
+    font-size: 17px; 
+    line-height: 1.5em;
+}
+
+[contenteditable] {
+    outline: 0px solid transparent;
+}
+
+#publicacion{
+    float: left;
+    width: calc(80% - 80px);
+    min-height: 50px;
+    background: rgba(214, 75, 51, 0.781);
+    padding: 20px;
+    border-radius: 7px;
+}
+
+#publicacion p{
+    font-size: 20px; 
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(placeholder)
+}
+
+.contacto, .FAQ{
+    float: left;
+    padding: 100px;
+    color: #84b295;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.FAQ{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.aswr{
+    font-size: 20px;
+    font-weight: lighter;
+}

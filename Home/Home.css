@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu&display=swap');
+/*Alt + Z*/
+
+/*Globals*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    color:#2c1507;
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(rgba(255, 250, 240, 0.83), rgba(255,250,240,0.83)), url(../ExtraDocs/background.jpg);
+    background-color: floralwhite;
+    display: flex;
+    min-height: 100vh;
+}
+
+/*barra de navegación 2.0*/
+.header{
+    background-color: #84b295;
+    height: 80px;
+    border-bottom: 5px solid #428347;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    /*justify-content: right;*/
+}
+
+.logo{
+    width: 170px;
+    object-fit: cover;
+    transition: background-color 500ms;
+    /*color:#fffaf0;*/
+    filter: invert(100%) sepia(28%) saturate(1220%) hue-rotate(345deg) brightness(170%) contrast(113%);
+}
+
+.nav-link{
+    color: #f0f8ff;
+}
+
+nav ul li:hover{
+    background-color: #428347;
+}
+
+#register{
+    background-color: #428347;
+}
+#register:hover{
+    background-color: #2a6b30;
+}
+
+.moveBars{
+    transform: rotate(180deg);
+    transition: all 500ms ease;
+}
+
+.resetBars{
+    transform: rotate(0deg);
+    transition: all 500ms ease;
+}
+
+.nav-menu{
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu-item{
+    font-size: 20px;
+    padding: 10px 20px;
+    line-height: 55px;
+    width: max-content;
+    color: floralwhite;
+    cursor: pointer;
+}
+
+.nav-toggle{
+    color:floralwhite;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 10px 20px;
+    line-height: 60px;
+    display: none;
+    cursor: pointer;
+}
+
+.btns{
+    display: flex;
+}
+
+/*Responsive*/
+@media screen and (max-width: 1920px){
+    #navList{
+        display: flex;
+    }
+}
+@media screen and (max-width: 1384px){   /*843 y 960*/
+    #navList{
+        display: none;
+    }
+    /*.grid{
+        background-color: aqua;
+    }*/
+    .header{
+        color: floralwhite;
+    }
+    .nav-toggle{
+        display: block;
+        height: 80px;
+        padding: 10px 20px;
+        cursor: pointer;
+        position: relative;
+    }   
+    .nav-toggle:hover{
+        background-color: #428347;
+    } 
+    .nav-menu{
+        flex-direction: column;
+        background-color: #428347;
+        top: 80px;
+        width: 50%;
+        overflow-y: auto;
+        transition: left 0.3s;
+        /*margin-top: 80px;*/
+        position: absolute;
+        right: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.527);
+    }
+    .nav-menu-item{
+        font-size: 20px;
+        padding: 10px 20px;
+        line-height: 55px;
+        width: 100%;
+        color: floralwhite;
+        cursor: pointer;
+    }
+    nav ul li:hover{
+        background-color: #84b295;
+    }
+}
+
+@media screen and (max-width: 850px){
+    .textContent{
+        font-size: 13px;
+    }
+    .socialMedia{
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 686px){
+    .grid{
+        /*background-color: hotpink;*/
+        height: 75vh;
+    }
+    .nav{
+        margin-bottom: 10%;
+    }
+    .grid_title{
+        font-size: 3rem;
+    }
+    .grid_texts{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 625px){
+    .textContent{
+        font-size: 11.5px;
+    }
+    .socialMedia{
+        font-size: 11.5px;
+    }
+}
+
+@media screen and (max-width: 610px){
+    .grid{
+        /*background-color: slateblue;*/
+        width: 100%;
+        height: 65vh;
+    }
+    .grid_title{
+        font-size: 2rem;
+    }
+    .grid_texts{
+        font-size: 0.5rem;
+    }
+    .footer{
+        grid-row: 14/-1;
+        grid-column: 1/-1;
+        background-color: black;
+        width: 100%;
+    }
+}
+
+/*@media screen and (max-width: 599px){
+
+}*/
+
+@media screen and (max-width: 497px){
+    #register{
+        background-color: #2a6b30;
+    }
+    #register:hover{
+        background-color: #84b295;
+    }
+}
+
+@media screen and (max-width: 390px){
+    .footer{
+        grid-row: 13/-1;
+    }
+    #publicacion{
+        width: 100%;
+        background-color: firebrick;
+    }
+}
+
+/*Body*/
+.box{
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: 3;
+}
+
+input.src{
+    padding: 9px 10px 9px 40px;
+    outline: none;
+    font-size: 18px;
+    border-radius: 7px;
+    border: 3px solid tomato;
+    background: #fff url("../ExtraDocs/lupaLight.png") no-repeat 3px center;
+    width: 100%;
+    transition: all .5s;
+}
+
+#boxSearch{
+    position: fixed;
+    top: 145px;
+    width: 90%;
+    background: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    z-index: 2;
+    display: none;
+    border-radius: 7px;
+}
+#boxSearch li a{
+    display: block;
+    width: 90%;
+    color: #2c1507;
+    padding: 12px 20px;
+}
+#boxSearch li:hover{
+    background: rgba(255, 99, 71, 0.572);
+}
+#boxSearch li a i{
+    margin-right: 15px;
+    color: #2c1507;
+}
+
+#coverCtnSearch{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.plus{
+    font-size: 40px;
+    color: #2c1507;
+    padding-top: 180px;
+    position: fixed;
+    right: 0;
+}
+
+/*Categorias*/
+.categorias{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.categorias .card{
+    width: 170px;
+    height: 170px;
+    border-radius: 100px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.527);
+    /*overflow: hidden;*/
+    margin: 40px;
+    text-align: center;
+    transition: all 0.25s ease;
+    color: #2c1507;
+    background-color: #f8ebd4;
+}
+
+.categorias .card:hover{
+    transform: translate(-10px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.527);
+}
+
+.categorias h3{
+    padding: 25px;
+}
+
+/*Más vendidos/recomendados/populares*/
+.prodSimi{
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: center;*/
+}
+
+.prodSimi h3{
+    margin-top: 50px;
+}
+
+.prodSimi .card{
+    width: 230px;
+    height: 240px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.527);
+    /*overflow: hidden;*/
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s ease;
+    color: #2c1507;
+    background-color: white;
+}
+
+.prodSimi .card:hover{
+    transform: translate(-15px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.527);
+}
+
+/*Responsive*/
+@media screen and (max-width: 765px){
+    .categorias .card{
+        width: 120px;
+        height: 120px;
+        margin: 20px;
+    }
+    .categorias img{
+        width: 100px;
+        height: 100px;
+    }
+    .card h3{
+        padding: 25px 10px;
+    }
+}

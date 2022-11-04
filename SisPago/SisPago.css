@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu&display=swap');
+/*Alt + Z*/
+
+/*Globals*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    color:#2c1507;
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.86), rgba(0,0,0,0.86)), url(../ExtraDocs/background.jpg);
+    /*filter: invert(100%) sepia(28%) saturate(1220%) hue-rotate(345deg) brightness(170%) contrast(113%);*/
+    background-color: floralwhite;
+    display: flex;
+    min-height: 100vh;
+}
+
+/*barra de navegación 2.0*/
+.header{
+    background-color: #84b295;
+    height: 80px;
+    border-bottom: 5px solid #428347;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    /*justify-content: right;*/
+}
+
+.logo{
+    width: 170px;
+    object-fit: cover;
+    transition: background-color 500ms;
+    /*color:#fffaf0;*/
+    filter: invert(100%) sepia(28%) saturate(1220%) hue-rotate(345deg) brightness(170%) contrast(113%);
+}
+
+.nav-link{
+    color: #f0f8ff;
+}
+
+nav ul li:hover{
+    background-color: #428347;
+}
+
+#register{
+    background-color: #428347;
+}
+#register:hover{
+    background-color: #2a6b30;
+}
+
+.moveBars{
+    transform: rotate(180deg);
+    transition: all 500ms ease;
+}
+
+.resetBars{
+    transform: rotate(0deg);
+    transition: all 500ms ease;
+}
+
+.nav-menu{
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu-item{
+    font-size: 20px;
+    padding: 10px 20px;
+    line-height: 55px;
+    width: max-content;
+    color: floralwhite;
+    cursor: pointer;
+}
+
+.nav-toggle{
+    color:floralwhite;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 10px 20px;
+    line-height: 60px;
+    display: none;
+    cursor: pointer;
+}
+
+.btns{
+    display: flex;
+}
+
+/*Responsive*/
+@media screen and (max-width: 1920px){
+    #navList{
+        display: flex;
+    }
+}
+@media screen and (max-width: 1384px){   /*843 y 960*/
+    #navList{
+        display: none;
+    }
+    /*.grid{
+        background-color: aqua;
+    }*/
+    .header{
+        color: floralwhite;
+    }
+    .nav-toggle{
+        display: block;
+        height: 80px;
+        padding: 10px 20px;
+        cursor: pointer;
+        position: relative;
+    }   
+    .nav-toggle:hover{
+        background-color: #428347;
+    } 
+    .nav-menu{
+        flex-direction: column;
+        background-color: #428347;
+        top: 80px;
+        width: 50%;
+        overflow-y: auto;
+        transition: left 0.3s;
+        /*margin-top: 80px;*/
+        position: absolute;
+        right: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.527);
+    }
+    .nav-menu-item{
+        font-size: 20px;
+        padding: 10px 20px;
+        line-height: 55px;
+        width: 100%;
+        color: floralwhite;
+        cursor: pointer;
+    }
+    nav ul li:hover{
+        background-color: #84b295;
+    }
+}
+
+@media screen and (max-width: 850px){
+    .textContent{
+        font-size: 13px;
+    }
+    .socialMedia{
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 686px){
+    .grid{
+        /*background-color: hotpink;*/
+        height: 75vh;
+    }
+    .nav{
+        margin-bottom: 10%;
+    }
+    .grid_title{
+        font-size: 3rem;
+    }
+    .grid_texts{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 625px){
+    .textContent{
+        font-size: 11.5px;
+    }
+    .socialMedia{
+        font-size: 11.5px;
+    }
+}
+
+@media screen and (max-width: 610px){
+    .grid{
+        /*background-color: slateblue;*/
+        width: 100%;
+        height: 65vh;
+    }
+    .grid_title{
+        font-size: 2rem;
+    }
+    .grid_texts{
+        font-size: 0.5rem;
+    }
+    .footer{
+        grid-row: 14/-1;
+        grid-column: 1/-1;
+        background-color: black;
+        width: 100%;
+    }
+}
+
+/*@media screen and (max-width: 599px){
+
+}*/
+
+@media screen and (max-width: 497px){
+    #register{
+        background-color: #2a6b30;
+    }
+    #register:hover{
+        background-color: #84b295;
+    }
+}
+
+@media screen and (max-width: 390px){
+    .footer{
+        grid-row: 13/-1;
+    }
+    #publicacion{
+        width: 100%;
+        background-color: firebrick;
+    }
+}
+
+.presentacion{
+    height: 650px;
+    width: 70%;
+    display: flex;
+    margin: auto;
+    border-radius: 7px;
+    box-shadow: 0 14px 32px 0 rgba(0, 0, 0, 0.527);
+    background-color: #f0f8ff;
+    margin-top: 500px;
+    transform: translate(0, -50%);
+}
+.presentacion p{
+    padding: 2px;
+}
+.img{
+    width: 45%;
+    overflow: hidden;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.presentacion #buyImg{
+    height: 100%;
+    vertical-align: middle;
+}
+.info{
+    text-align: left;
+    margin: 20px;
+    width: 55%;
+    color: #2c1507;
+}
+.info p{
+    font-size: 20px;
+}
+
+.total{
+    float: right;
+    transform: translate(0, -28px);
+}
+
+.eleccion{
+    display: flex;
+    font-size: 20px;
+    color: #2c1507;
+    justify-content: space-between;
+}
+.eleccion input{
+    margin-left: 5px;
+}
+
+.tarjeta input, .month, .year{
+    background-color: #f0f8ff;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #2c1507;
+    margin-bottom: 5px;
+    font-size: 20px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.nota{
+    display: flex;
+    border-bottom: 1px solid #2c1507;
+    justify-content: space-between;
+}
+.titles{
+    width: 100%;
+}
+.costos{
+    width: 30%;
+    text-align: right;
+}
+#prop{
+    text-align: right;
+    background-color: #f0f8ff;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #2c1507;
+    margin-bottom: 5px;
+    font-size: 20px;
+    width: 65%;
+}
+
+.lab, .date{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#ccv{
+    margin-right: 40%;
+}
+.year{
+    margin-right: 10%;
+}
+#CCV{
+    margin-right: 30%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+.precio{
+    background-color: #84b295;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    padding: 7px;
+    font-size: 20px;
+    border-color: transparent;
+    color: aliceblue;
+}

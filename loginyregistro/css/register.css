@@ -1,0 +1,283 @@
+/* IMAGEN DE FONDO */
+body
+{
+    margin: 0;
+    padding: 0;
+    background: url(../img/loginfondo.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: sans-serif;
+    height: 100vh;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
+}
+/* CAJA DE REGISTRO NEGRO A PANTALLA PC COMPLETA */
+.register-box
+{   
+    /*margin-top: 100px;*/
+    top: 8%;
+    width: 320px;
+    height: 850px;
+    background: #84b295;
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: absolute;
+    box-sizing: border-box;
+    padding: 70px 30px;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.324);
+}
+
+/* CAMBIOS DE PANTALLA ALTURA */
+@media screen and (max-height: 846px)
+{
+    .register-box
+    {   
+        margin-top: 150px;
+        width: 320px;
+        height: 920px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+@media screen and (max-height: 750px)
+{
+    .register-box
+    {   
+        margin-top: 250px;
+        width: 320px;
+        height: 920px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+@media screen and (max-height: 620px)
+{
+    .register-box
+    {   
+        margin-top: 300px;
+        width: 320px;
+        height: 920px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+@media screen and (max-height: 450px)
+{
+    .register-box
+    {   
+        margin-top: 400px;
+        width: 320px;
+        height: 920px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+@media screen and (max-width: 450px)
+{
+    .register-box
+    {   
+        margin-top: 400px;
+        width: 320px;
+        height: 850px;
+        background: #84b295;
+        color: #fff;
+        top: 90px;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+@media screen and (max-height: 280px)
+{
+    .register-box
+    {   
+        margin-top: 470px;
+        width: 320px;
+        height: 920px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+
+/* CAMBIOS DE PANTALLA ANCHO */
+@media screen and (max-width: 840px)
+{
+    body{
+        margin: 0;
+        padding: 0;
+        background: url(../img/loginfondofull.png) no-repeat center top;
+        background: linear-gradient(rgba(248, 235, 212, 0.15), rgba(248, 235, 212, 0.15)), url(../img/loginfondofull.png) no-repeat center top;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: sans-serif;
+        height: 100vh;
+    }
+}
+@media screen and (max-width: 345px)
+{
+    .register-box
+    {   
+        margin-left: 50px;
+        width: 320px;
+        height: 920px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+@media screen and (max-width: 230px)
+{
+    .register-box
+    {   
+        margin-left: 120px;
+        width: 320px;
+        height: 920px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+}
+
+/* LOGO */
+.register-box .avatar
+{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    border-radius: 50px;
+    border: #84b295 2px solid;
+}
+
+/* NOMBRES DE LOS REGISTROS */
+.register-box h1
+{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: block;
+}
+
+/* LINEAS DE REGISTRO */
+.register-box label
+{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+
+/* BOTON */
+.register-box input
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* DETALLES DEL BOTON */
+.register-box button
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fff;
+    color: #000;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* DETALLES DE LAS LINEAS DE REGISTRO */
+.register-box input[type="text"],
+.register-box input[type="number"],
+.register-box input[type="email"],
+.register-box input[type="image"],
+.register-box input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* DETALLES DEL BOTON */
+.register-box input[type="button"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fff;
+    color: #000;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+/* LETRAS DE ABAJO DEL BOTON */
+.register-box a
+{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: grey;
+}
+
+/* SE HACE BLANCO DONDE PONES 
+OPCIONES DE ABAJO DEL BOTON */
+.register-box a:hover
+{
+    color: #fff;
+}

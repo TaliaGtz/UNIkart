@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu&display=swap');
+/*Alt + Z*/
+
+/*Globals*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    color:#2c1507;
+    font-family: 'Ubuntu', sans-serif;
+    /*background: linear-gradient(rgba(255, 250, 240, 0.83), rgba(255,250,240,0.83)), url(../ExtraDocs/background.jpg);*/
+    background-color: floralwhite;
+    display: flex;
+    min-height: 100vh;
+}
+
+.areas{
+    /*margin: 20px;*/
+    margin-top: 80px;
+    width: 100%;
+}
+
+h2{
+    padding: 20px;
+    font-size: 30px;
+}
+
+.bar{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Categorias*/
+.categorias{
+    display: flex;
+    flex-wrap: wrap;
+    /*­justify-content: center;
+    margin: auto;
+    margin-top: 100px;*/
+    width: 100%;
+}
+
+.categorias .card{
+    width: 100%;
+    height: 120px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.527);
+    overflow: hidden;
+    margin: 25px 40px;
+    text-align: left;
+    transition: all 0.25s ease;
+    color: #2c1507;
+    background-color: #f8ebd4;
+}
+
+.card img{
+    float: left;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+
+.text{
+    transition: .3 ease all;
+}
+/*.categorias .card::after{
+    content: "";
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    transform: translate(0, -273px);
+    left: calc(80% + 50px);
+    transition: .7s ease-in-out all;
+    border-left: 170px solid transparent;
+    border-bottom: 170px solid rgb(254, 120, 102);
+}
+
+.categorias .card:hover::after{
+    left: 50%;
+}*/
+
+.categorias h3{
+    padding: 25px;
+    padding-top: 45px;
+    font-size: 25px;
+}
+
+#view{
+    font-size: 40px;
+    float: right;
+    position: relative;
+    top: -52px;
+    cursor: pointer;
+    color: #2c1507;
+    transform: translate(-30px, -5px);
+}
+#view:hover{
+    color: #67432e;
+}

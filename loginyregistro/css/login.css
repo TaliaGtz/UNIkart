@@ -1,0 +1,212 @@
+/* IMAGEN DE FONDO */
+body
+{
+    margin: 0;
+    padding: 0;
+    background: url(../img/loginfondo.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: sans-serif;
+    height: 100vh;
+}
+
+/* CAJA DE REGISTRO NEGRO A PANTALLA PC COMPLETA */
+.login-box
+{
+    width: 320px;
+    height: 420px;
+    background: #84b295;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.324);
+}   
+
+/* CAMBIOS DE PANTALLA ALTURA */
+@media screen and (max-height: 900px)
+{
+    .login-box
+    {
+        width: 320px;
+        height: 420px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }   
+}
+@media screen and (max-height: 545px)
+{
+    .login-box
+    {
+        margin-top: 50px;
+        width: 320px;
+        height: 420px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }   
+}
+@media screen and (max-height: 430px)
+{
+    .login-box
+    {
+        margin-top: 180px;
+        width: 320px;
+        height: 420px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }   
+}
+@media screen and (max-height: 170px)
+{
+    .login-box
+    {
+        margin-top: 230px;
+        width: 320px;
+        height: 420px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }   
+}
+
+/* CAMBIOS DE PANTALLA ANCHO */
+@media screen and (max-width: 345px)
+{
+    .login-box
+    {
+        margin-left: 50px;
+        width: 320px;
+        height: 420px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }   
+}
+@media screen and (max-width: 230px)
+{
+    .login-box
+    {
+        margin-left: 120px;
+        width: 320px;
+        height: 410px;
+        background: #84b295;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }   
+}
+
+/* LOGO */
+.login-box .avatar
+{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    border-radius: 50px;
+    border: #84b295 2px solid;
+}
+
+/* NOMBRES DE LOS REGISTROS */
+.login-box h1
+{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: block;
+}
+
+/* LINEAS DE REGISTRO */
+.login-box label
+{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+
+/* BOTON */
+.login-box input, button
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* DETALLES DE LAS LINEAS DE REGISTRO */
+.login-box input[type="text"],
+.login-box input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* DETALLES DEL BOTON */
+.login-box button
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fff;
+    color: #000;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* LETRAS DE ABAJO DEL BOTON */
+.login-box a
+{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: grey;
+}
+
+/* SE HACE BLANCO DONDE PONES 
+OPCIONES DE ABAJO DEL BOTON */
+.login-box a:hover
+{
+    color: #fff;
+}
+

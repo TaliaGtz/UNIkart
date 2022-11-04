@@ -1,0 +1,204 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UNIkart - Home</title>
+        <link rel="stylesheet" href="Home.css">
+        <link rel="stylesheet" href="../AddModal/Plus.css">
+        <link rel="stylesheet" href="../AddModal/Cart.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="../ExtraDocs/Ukart.png">
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <ul id="navList" class="nav-menu" >
+                    <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
+                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
+                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
+                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
+                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
+                </ul>  
+                <div class="btns">
+                    <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="box">
+            <input type="text" id="inputSearch" name="search" class="src" placeholder="¿Qué quieres comer hoy?" autocomplete="off">
+        </div>
+        <ul id="boxSearch"> <!--Filtro por facultades y por comidas-->
+            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Chilaquiles</a></li>
+            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Hamburguesa</a></li>
+            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Pizza</a></li>
+            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Sushi</a></li>
+            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Pasta</a></li>
+            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Hot-dog</a></li>
+            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Tacos</a></li>
+            <li><a href="../UserPerfil/UserPerfil.html"><i class="fas fa-search"></i>Usuario</a></li>
+        </ul>
+        <div id="coverCtnSearch"></div>
+        
+        <a href="#" id="Plus" class="plus"><i class="fa-solid fa-circle-plus"></i></a>
+        
+        <div>
+        <!--Categorias-->
+        <div class="categorias">
+            <div id="caty" class="categorias cat">
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>FCFM</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>FIME</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>Civil</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>Biológicas</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>Químicas</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>FACPYA</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>Filosofía</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>FACDYC</h3>
+                    </div>
+                </a>
+                <a href="../Category/category.html"><div class="card">
+                    <div>
+                        <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
+                    </div>
+                    <h3>Estación Universidad</h3>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+
+        <!--Más vendidos/recomendados/populares-->
+        <div class="prodSimi">
+            <h3>Productos más vendidos</h3>
+            <div class="prodSimi">
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="prodSimi">
+            <h3>Productos recomendados</h3>
+            <div class="prodSimi">
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="prodSimi">
+            <h3>Productos populares</h3>
+            <div class="prodSimi">
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+                <div class="card">
+                    <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
+                    <h4>Producto</h4>
+                    <br>
+                    <a href="../Producto/Producto.html">Leer más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="Home.js"></script>
+    </body>
+    </html>

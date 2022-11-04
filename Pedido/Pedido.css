@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu&display=swap');
+/*Alt + Z*/
+
+/*Globals*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    color:#2c1507;
+    font-family: 'Ubuntu', sans-serif;
+    /*background: linear-gradient(rgba(255, 250, 240, 0.83), rgba(255,250,240,0.83)), url(../ExtraDocs/background.jpg);*/
+    background-color: floralwhite;
+    display: flex;
+    min-height: 100vh;
+}
+
+.areas{
+    /*margin: 20px;*/
+    margin-top: 80px;
+    width: 100%;
+}
+
+h2{
+    padding: 20px;
+    font-size: 30px;
+}
+
+.bar{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Informe*/
+.informe{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.informe h3{
+    font-size: 20px;
+}
+
+.informe i, p, h4{
+    padding: 5px;
+    padding-left: 0;
+}
+
+#chat{
+    color: tomato;
+}

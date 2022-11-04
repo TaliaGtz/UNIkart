@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu&display=swap');
+/*Alt + Z*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav-menu{
+    padding-left: 0px;
+}
+
+.nav-menu a:hover{
+    background-color: #84b295;
+    transition: background-color 0ms;
+}
+
+body{
+    color:#2c1507;
+    font-family: 'Ubuntu', sans-serif;
+    background: floralwhite;
+    display: flex;
+    min-height: 115vh;
+}
+
+section{
+    transform: translate(0px, 100px);
+    width: 100%;
+    /*background-color: #2c1507;*/
+    margin: 0px 20px;
+    color: #2c1507;
+}
+
+.NAV{
+    display: flex;
+    justify-content: left;
+}
+
+#navTab{
+    background-color: floralwhite;
+    color: #2c1507;
+    border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+#navTab[aria-selected="true"]{
+    border-bottom: 1px solid transparent;
+    background-color: white;
+    outline: 0px;
+}
+
+#navTab:hover{
+    background-color: rgba(255, 255, 255, 0.563);
+}
+
+.tab-content{
+    background-color: white;
+    border: 1px solid rgb(223, 223, 223);
+    border-top: 1px solid transparent;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.formulario label, input{
+    margin: 5px;
+}
+
+.formulario input{
+    padding-left: 5px;
+    outline: 0px;
+}
+
+#aceptar{
+    height: 30px;
+    width: 75px;
+    padding-bottom: 3px;
+    margin-top: 20px;
+    border: 0px solid transparent;
+    border-radius: 15px;
+    background-color: lavender;
+}

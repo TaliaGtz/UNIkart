@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UNIkart - Pagado</title>
+        <link rel="stylesheet" href="pagado.css">
+        <link rel="stylesheet" href="../AddModal/Cart.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="../ExtraDocs/Ukart.png">
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <ul id="navList" class="nav-menu" >
+                    <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
+                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
+                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
+                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
+                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
+                </ul>  
+                <div class="btns">
+                    <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="presentacion">
+            <div class="img"><img id="buyImg" src="../ExtraDocs/bolsa.png"></div>
+            <div class="info">
+                <div class="texto">
+                    <h1>UNIkart</h1>
+                    <h2>Orden de compra</h2>
+                    <br>
+                    <div class="nota">
+                        <h2 class="title">¡Gracias por tu confianza!</h2>
+                        <br>
+                        <p>Te invitamos a darle seguimiento a tu pedido desde el chat con tu repartidor.</p>
+                        <br>
+                        <p>Una vez entregado tu pedido, favor de proporcionar a tu repartidor el siguiente código:</p>
+                        <br>
+                        <h1 class="title">(CODE)</h1>
+                        <br>
+                        <p class="title">(También puedes consultarlo en tu consulta del pedido)</p>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+                <div>
+                    <a href="../Home/Home.html"><button id="pay" class="precio">Volver a Home</button></a>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="pagado.js"></script>
+    </body>
+    </html>
