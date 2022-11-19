@@ -15,34 +15,14 @@
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <ul id="navList" class="nav-menu" >
-                <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            </ul>  
-            <div class="btns">
-                <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
 
     <div class="areas">
         <div class="bar">
         <h2>Historial de pedidos</h2>
         </div>
         <div class="categorias">
-            <a href="../Pedido/Pedido.html" class="card"><div>
+            <a href="../Pedido/Pedido.php" class="card"><div>
                 <div>
                     <img class="text" src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
                     <h3 class="text">Pedido 1</h3>
@@ -50,7 +30,7 @@
                 </div>
                 </div>
             </a>
-            <a href="../Pedido/Pedido.html" class="card"><div>
+            <a href="../Pedido/Pedido.php" class="card"><div>
                 <div class="text">
                     <img src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
                     <h3>Pedido 2</h3>
@@ -58,7 +38,7 @@
                 </div>
                 </div>
             </a>
-            <a href="../Pedido/Pedido.html" class="card"><div>
+            <a href="../Pedido/Pedido.php" class="card"><div>
                 <div class="text">
                     <img src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
                     <h3>Pedido 3</h3>
@@ -66,7 +46,7 @@
                 </div>
                 </div>
             </a>
-            <a href="../Pedido/Pedido.html" class="card"><div>
+            <a href="../Pedido/Pedido.php" class="card"><div>
                 <div class="text">
                     <img src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
                     <h3>Pedido 4</h3>

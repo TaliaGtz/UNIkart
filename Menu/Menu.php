@@ -16,27 +16,7 @@
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <ul id="navList" class="nav-menu" >
-                <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            </ul>  
-            <div class="btns">
-                <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
 
     <div class="body">
         <div class="title">
@@ -49,51 +29,51 @@
         </div>
         <div id="menu" class="menu">
             <div class="card">
-                <a href="../Producto/Producto.html">
+                <a href="../Producto/Producto.php">
                     <div>
                         <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
                         <h3>Chilaquiles</h3>
-                        <a href="../WishList/WishList.html"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                        <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
                         <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
                     </div>
                 </a>
             </div>
             <div class="card">
-                <a href="../Producto/Producto.html">
+                <a href="../Producto/Producto.php">
                     <div>
                         <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
                         <h3>Producto</h3>
-                        <a href="../WishList/WishList.html"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                        <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
                         <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
                     </div>
                 </a>
             </div>
             <div class="card">
-                <a href="../Producto/Producto.html">
+                <a href="../Producto/Producto.php">
                     <div>
                         <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
                         <h3>Producto</h3>
-                        <a href="../WishList/WishList.html"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                        <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
                         <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
                     </div>
                 </a>
             </div>
             <div class="card">
-                <a href="../Producto/Producto.html">
+                <a href="../Producto/Producto.php">
                     <div>
                         <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
                         <h3>Producto</h3>
-                        <a href="../WishList/WishList.html"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                        <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
                         <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
                     </div>
                 </a>
             </div>
             <div class="card">
-                <a href="../Producto/Producto.html">
+                <a href="../Producto/Producto.php">
                     <div>
                         <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
                         <h3>Producto</h3>
-                        <a href="../WishList/WishList.html"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                        <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
                         <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
                     </div>
                 </a>

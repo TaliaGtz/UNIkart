@@ -93,7 +93,7 @@ function Modal(titulo, contenido, idioma) {
     var boton = "";
     ModalData.innerHTML = '<div id="modal-back"></div><div class="newModal"><div id="modal-new"><h3>'
     + titulo +'</h3><form id="mc">'
-    + contenido +'</form><div><a href="../SisPago/SisPago.html"><button id="buy">Ir a pagar</button></a></div><div id="modButtons"><a id="mclose" href="#">'
+    + contenido +'</form><div><a href="../SisPago/SisPago.php"><button id="buy">Ir a pagar</button></a></div><div id="modButtons"><a id="mclose" href="#">'
     + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
     + boton + '</div></div></div>';
     document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';
@@ -150,7 +150,7 @@ function agregar_cat(){
     html.appendChild(panel);
 
     var a = document.createElement('a');
-    a.setAttribute('href', '../Producto/Producto.html');
+    a.setAttribute('href', '../Producto/Producto.php');
     panel.appendChild(a);
 
     var div2 = document.createElement('div');
@@ -167,7 +167,7 @@ function agregar_cat(){
     div2.appendChild(h3);
 
     var a2 = document.createElement('a');
-    a2.setAttribute('href', '../WishList/WishList.html');
+    a2.setAttribute('href', '../WishList/WishList.php');
     a2.innerHTML = '<i id="add" class="fa-solid fa-heart-circle-plus"></i>';
     div2.appendChild(a2);
 

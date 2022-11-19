@@ -4,39 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIkart - ListaN</title>
-    <link rel="stylesheet" href="ListN.css">
+    <title>UNIkart - WishList</title>
+    <link rel="stylesheet" href="WishList.css">
     <link rel="stylesheet" href="../AddModal/Cart.css">
+    <link rel="stylesheet" href="../Alert/alert.css">
+    <link rel="stylesheet" href="../AddModal/AddList.css">
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <ul id="navList" class="nav-menu" >
-                <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            </ul>  
-            <div class="btns">
-                <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
 
     <section class="grid">
         <div class="square">
-            <h1>Lista de deseos - Lista n</h1>
+            <h1>Lista de deseos</h1>
             <ul class="menuABC" >
                 <button type="button" id="publicar" class="ABC"><li><span>Agregar</span></li></button>
                 <button type="button" class="ABC"><li><span>Modificar</span></li></button>
@@ -72,6 +54,6 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="ListN.js"></script>
+    <script src="WishList.js"></script>
 </body>
 </html>

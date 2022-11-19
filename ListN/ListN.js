@@ -80,7 +80,7 @@ $("#publicar").click(function(){
 
     var view = document.createElement('a');
     view.setAttribute('id', 'arrow');
-    view.setAttribute('href', '../Producto/Producto.html');
+    view.setAttribute('href', '../Producto/Producto.php');
     divisor.appendChild(view);
 
     var arrow = document.createElement('i');

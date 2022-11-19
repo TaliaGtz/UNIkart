@@ -14,40 +14,20 @@
         <link rel="icon" href="../ExtraDocs/Ukart.png">
     </head>
     <body>
-        <header class="header">
-            <nav class="nav">
-                <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-                <div class="empty"></div>
-                <div class="empty"></div>
-                <div class="empty"></div>
-                <div class="empty"></div>
-                <div class="empty"></div>
-                <ul id="navList" class="nav-menu" >
-                    <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-                </ul>  
-                <div class="btns">
-                    <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                    <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-                </div>
-            </nav>
-        </header>
+        <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
 
         <div class="box">
             <input type="text" id="inputSearch" name="search" class="src" placeholder="¿Qué quieres comer hoy?" autocomplete="off">
         </div>
         <ul id="boxSearch"> <!--Filtro por facultades y por comidas-->
-            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Chilaquiles</a></li>
-            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Hamburguesa</a></li>
-            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Pizza</a></li>
-            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Sushi</a></li>
-            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Pasta</a></li>
-            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Hot-dog</a></li>
-            <li><a href="../Producto/Producto.html"><i class="fas fa-search"></i>Tacos</a></li>
-            <li><a href="../UserPerfil/UserPerfil.html"><i class="fas fa-search"></i>Usuario</a></li>
+            <li><a href="../Producto/Producto.php"><i class="fas fa-search"></i>Chilaquiles</a></li>
+            <li><a href="../Producto/Producto.php"><i class="fas fa-search"></i>Hamburguesa</a></li>
+            <li><a href="../Producto/Producto.php"><i class="fas fa-search"></i>Pizza</a></li>
+            <li><a href="../Producto/Producto.php"><i class="fas fa-search"></i>Sushi</a></li>
+            <li><a href="../Producto/Producto.php"><i class="fas fa-search"></i>Pasta</a></li>
+            <li><a href="../Producto/Producto.php"><i class="fas fa-search"></i>Hot-dog</a></li>
+            <li><a href="../Producto/Producto.php"><i class="fas fa-search"></i>Tacos</a></li>
+            <li><a href="../UserPerfil/UserPerfil.php"><i class="fas fa-search"></i>Usuario</a></li>
         </ul>
         <div id="coverCtnSearch"></div>
         
@@ -57,28 +37,28 @@
         <!--Categorias-->
         <div class="categorias">
             <div id="caty" class="categorias cat">
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
                     <h3>FCFM</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
                     <h3>FIME</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
                     <h3>Civil</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
@@ -92,28 +72,28 @@
                     <h3>Químicas</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
                     <h3>FACPYA</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
                     <h3>Filosofía</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
                     <h3>FACDYC</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>
@@ -132,19 +112,19 @@
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
             </div>
         </div>
@@ -156,19 +136,19 @@
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
             </div>
         </div>
@@ -180,19 +160,19 @@
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
             </div>
         </div>

@@ -19,27 +19,7 @@
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <ul id="navList" class="nav-menu" >
-                <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            </ul>  
-            <div class="btns">
-                <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
 
     <section class="grid">
         <div class="square">
@@ -86,11 +66,11 @@
             <div class="description">
                 <p id="productName">Chilaquiles</p>
                 <p>Valoración</p>
-                <p>Precio/<a id="cotiz" href="../WishList/WishList.html">Cotización</a></p>
+                <p>Precio/<a id="cotiz" href="../WishList/WishList.php">Cotización</a></p>
                 <p>Categoría</p>
                 <d>Disponibilidad</d>
                 <p>(Descripción)Los famosos chilaquiles en la salsa que mejor se acople a tu gusto.</p>
-                <a href="../WishList/WishList.html"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
                 <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
                 <!--<i id="add" class="fa-solid fa-circle-plus"></i>-->
             </div>
@@ -159,21 +139,21 @@
                     <h4>Producto</h4>
                     <p>Precio/Cotización</p>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/Soup.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <p>Precio/Cotización</p>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
                 <div class="card">
                     <img src="../ExtraDocs/Soup.png" width="150px" height="150px">
                     <h4>Producto</h4>
                     <p>Precio/Cotización</p>
                     <br>
-                    <a href="../Producto/Producto.html">Leer más</a>
+                    <a href="../Producto/Producto.php">Leer más</a>
                 </div>
             </div>
         </div>

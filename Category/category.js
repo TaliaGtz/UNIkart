@@ -93,7 +93,7 @@ function Modal(titulo, contenido, idioma) {
     var boton = "";
     ModalData.innerHTML = '<div id="modal-back"></div><div class="newModal"><div id="modal-new"><h3>'
     + titulo +'</h3><form id="mc">'
-    + contenido +'</form><div><a href="../SisPago/SisPago.html"><button id="buy">Ir a pagar</button></a></div><div id="modButtons"><a id="mclose" href="#">'
+    + contenido +'</form><div><a href="../SisPago/SisPago.php"><button id="buy">Ir a pagar</button></a></div><div id="modButtons"><a id="mclose" href="#">'
     + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
     + boton + '</div></div></div>';
     document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';
@@ -141,7 +141,7 @@ function agregar_cat(){
     var html = document.querySelector("#area");
 
     var panel = document.createElement('a');
-    panel.setAttribute('href', '../Menu/Menu.html');
+    panel.setAttribute('href', '../Menu/Menu.php');
     panel.setAttribute('class', 'card');
     html.appendChild(panel);
 

@@ -96,7 +96,7 @@ function agregar(){
 
     var view = document.createElement('a');
     view.setAttribute('id', 'arrow');
-    view.setAttribute('href', '../ListN/ListN.html');
+    view.setAttribute('href', '../ListN/ListN.php');
     divisor.appendChild(view);
 
     var arrow = document.createElement('i');
@@ -154,7 +154,7 @@ $("#cart").click(function(){
         '<p class="quantityNum">1</p>'+
         '<i class="fa-solid fa-square-plus quantity"></i>'+
     '</div>'+
-    '</form><div><a href="../SisPago/SisPago.html"><button id="buy">Ir a pagar</button></a></div><div id="modButtons"><a id="mclose" href="#">',   
+    '</form><div><a href="../SisPago/SisPago.php"><button id="buy">Ir a pagar</button></a></div><div id="modButtons"><a id="mclose" href="#">',   
     'Cerrar');
 });
 

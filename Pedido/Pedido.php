@@ -15,27 +15,7 @@
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <ul id="navList" class="nav-menu" >
-                <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            </ul>  
-            <div class="btns">
-                <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
 
     <div class="areas">
         <div class="bar">
@@ -44,8 +24,8 @@
         <div class="informe">
             <h3>Detalles del pedido</h3><br>
             <i class="fa-solid fa-location-dot"></i>Lugar de entrega<br>
-            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Chat/chat.html" id="chat">(Ir al chat)</a><br>
-            <i class="fa-solid fa-handshake"></i>Nombre del vendedor <a href="../Chat/chat.html" id="chat">(Ir al chat)*</a><br>
+            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Chat/chat.php" id="chat">(Ir al chat)</a><br>
+            <i class="fa-solid fa-handshake"></i>Nombre del vendedor <a href="../Chat/chat.php" id="chat">(Ir al chat)*</a><br>
             <i class="fa-solid fa-barcode"></i>(CODE)<br>
             <br><hr><br>
             <p>Fecha y hora de compra</p>

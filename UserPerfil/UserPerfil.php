@@ -13,27 +13,8 @@
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <ul id="navList" class="nav-menu" >
-                <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                    <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                    <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                    <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                    <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            </ul>  
-            <div class="btns">
-                <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    
+    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
 
     <section class="grid">
         <div class="square">
@@ -51,7 +32,7 @@
                 <br>
                 <li id="username">Username</li>
                 <li id="select">Rol: <input type="radio" name="role" id="comp" checked> Comprador <input type="radio" name="role" id="vend"> Vendedor <input type="radio" name="role" id="admin"> Administrador</li>
-                <li class="vendedor">(Vendedor) Negocio, <a href="../Menu/Menu.html">Menú</a></li>
+                <li class="vendedor">(Vendedor) Negocio, <a href="../Menu/Menu.php">Menú</a></li>
                 <li>Cuenta: privada
                 <!-- Rounded switch -->
                 <label for="toggle" class="switch">
@@ -61,7 +42,7 @@
                 <li class="no-private">Correo</li>
                 <li class="vendedor">Celular</li>
                 <br>
-                <a class="a" href="../Roles/Roles.html">¿Quieres una cuenta de vendedor/repartidor?</a>
+                <a class="a" href="../Roles/Roles.php">¿Quieres una cuenta de vendedor/repartidor?</a>
             </ul>
         </div>
 

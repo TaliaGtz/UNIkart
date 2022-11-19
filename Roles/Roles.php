@@ -21,27 +21,7 @@
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="../Home/Home.html"><img src="../ExtraDocs/UK.png" height="70" width="70" class="logo"></a>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <ul id="navList" class="nav-menu" >
-                <a href="../Home/Home.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-                <a href="../UserPerfil/UserPerfil.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
-                <a href="../WishList/WishList.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
-                <a href="../ConsultaPedidos/PedC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
-                <a href="../ConsultaVentas/VenC.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            </ul>  
-            <div class="btns">
-                <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
     
     <section>
         <nav class="NAV">
@@ -106,7 +86,7 @@
 
                 </form>
                 <label>Al ser vendedor tu perfil se hará público, todos podrán acceder a tu menú desde tu perfil y se podrán visualizar tus productos autorizados por el administrador, junto con sus existencias.</label><br>
-                <a href="../UserPerfil/UserPerfil.html"><button id="aceptar" type="submit">Aceptar</button></a>
+                <a href="../UserPerfil/UserPerfil.php"><button id="aceptar" type="submit">Aceptar</button></a>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <h3>¿Qué necesito para ser repartidor?</h3>
@@ -124,7 +104,7 @@
                         <label id="ccv">CCV: </label><input id="CCV" type="number" placeholder="XXX"  style="width: 10%;">
                     </div>
                 </form>
-                <a href="../UserPerfil/UserPerfil.html"><button id="aceptar" type="submit">Aceptar</button></a>
+                <a href="../UserPerfil/UserPerfil.php"><button id="aceptar" type="submit">Aceptar</button></a>
             </div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <h3>¿Qué necesito para ser administrador?</h3>
@@ -145,7 +125,7 @@
                 </form>
                 <label>Al ser administrador tu perfil se hará público, tu trabajo será ayudar a dar de alta áreas, negocios, categorías, productos, entre otras cosas.</label><br>
                 <label>Te contactaremos en breve para seguir con el procedimiento</label><br>
-                <a href="../UserPerfil/UserPerfil.html"><button id="aceptar" type="submit">Aceptar</button></a>
+                <a href="../UserPerfil/UserPerfil.php"><button id="aceptar" type="submit">Aceptar</button></a>
             </div>
         </div>    
     </section>
