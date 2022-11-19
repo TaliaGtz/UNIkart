@@ -6,7 +6,7 @@
     $ID         = "";
     $nombres    = $_POST["nombres"];
     $apellidos  = $_POST["apellidos"];
-    $rol        = $_POST["rol"];
+    $rol        = "comprador";
     $fechaNac   = $_POST["fechaNac"];
     $correo     = $_POST["correo"];
     $user       = $_POST["username"];
@@ -15,31 +15,31 @@
     //encriptación
     $passwordHash = base64_encode($password);  //, PASSWORD_BCRYPT BCRYPT es el algoritmo de encriptación, devuelve una cadena de 60 caracteres
     //$passwordHash = substr($passwordHash, 0, 60);
-    $fotoPerfil = "../Extras/eClass.png";   //Foto por defecto
+    $fotoPerfil = "../ExtraDocs/User.png";   //Foto por defecto
 
     //Evaluamos si el user ingresado ya existe
-    $consultaId =   "SELECT User 
-                    FROM persona
-                    WHERE User='$user'";
+    $consultaId =   "SELECT Username
+                    FROM registro
+                    WHERE Username='$user'";
     $consultaId = mysqli_query($conexion, $consultaId);
     $consultaId = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
 
     if(!$consultaId){   //Si no existe el usuario
-        $sql = "INSERT INTO persona VALUES(
+        $sql = "INSERT INTO registro VALUES(
+            '$ID        ',
             '$nombres   ',
             '$apellidos ',
+            '$rol       ',
             '$fechaNac  ',
             '$correo    ',
+            '$fotoPerfil',
             '$user      ',
-            '$passwordHash  ',
-            '$rol       ',
-            '$ID        ',
-            '$fotoPerfil'
+            '$passwordHash  '
         )";
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('Tu cuenta ha sido creada')";
             echo "Tu cuenta ha sido creada";
-            header("Location: http://localhost:8080/e-class2/LogIn/LogIn.html");
+            header("Location: http://localhost:8080/unikart2/Landing Page/Landing.html");
             //echo "<br><a href='../LogIn/LogIn.html'>Iniciar Sesión</a>";
         }else{
             /*echo '<script type="text/javascript">

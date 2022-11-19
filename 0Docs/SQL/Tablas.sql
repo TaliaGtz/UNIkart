@@ -6,23 +6,20 @@ CREATE TABLE IF NOT EXISTS Registro(
 	ID_Registro smallint unsigned 	NOT NULL auto_increment,
     Nombres 	varchar(25)			NOT NULL,
     Apellidos 	varchar(25)			NOT NULL,
+	Rol 		varchar(25)			NOT NULL,
     FechaNac	datetime			NOT NULL,
     Email		varchar(50)			NOT NULL,
     FotoPerfil	varchar(300)		NOT NULL,
     Username	varchar(25)			NOT NULL,
     Contrasenia	varchar(25)			NOT NULL,
-    ID_Tarjeta 	smallint unsigned 	NOT NULL,
     
     CONSTRAINT PK_ID_Registro
 		PRIMARY KEY (ID_Registro)
 );
-alter table Registro
-	add constraint FK_ID_Registro
-		foreign key (ID_Tarjeta)
-		references Tarjeta (ID_Tarjeta);
 ALTER TABLE Registro ADD INDEX idx_nomRegistro (Nombres);
 ALTER TABLE Registro MODIFY COLUMN Nombres 		varchar(25) comment 'Nombres del usuario';
 ALTER TABLE Registro MODIFY COLUMN Apellidos 	varchar(25) comment 'Apellidos del usuario';
+ALTER TABLE Registro MODIFY COLUMN Rol		 	varchar(25) comment 'Rol del usuario';
 ALTER TABLE Registro MODIFY COLUMN FechaNac 	datetime 	comment 'Fecha de nacimiento del usuario';
 ALTER TABLE Registro MODIFY COLUMN Email 		varchar(50) comment 'Correo electrónico del usuario';
 ALTER TABLE Registro MODIFY COLUMN FotoPerfil 	varchar(300)comment 'ruta de la foto de perfil del usuario';

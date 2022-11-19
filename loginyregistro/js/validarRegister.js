@@ -4,7 +4,7 @@ const names = document.getElementById('names');
 const lastnames = document.getElementById('lastnames');
 const birthday = document.getElementById('birthday');
 const email = document.getElementById('email');
-const celular = document.getElementById('celular');
+//const celular = document.getElementById('celular');
 //const profileimage = document.getElementById('profileimage');
 const username = document.getElementById('username');
 const password = document.getElementById('password');
@@ -16,7 +16,7 @@ function validar()
         const lastnamesV = lastnames.value.trim();
         const birthdayV = birthday.value.trim();
         const emailV = email.value.trim();
-        const celularV = celular.value.trim();
+        //const celularV = celular.value.trim();
         //const profileimageV = profileimage.value.trim();
         const usernameV = username.value.trim();
         const passwordV = password.value.trim();
@@ -112,7 +112,7 @@ function validar()
             });
             return false;
         }
-
+/*
         if(celularV === '')
         {
             swal({
@@ -131,7 +131,7 @@ function validar()
                 button: "Aceptar",
             });
             return false;
-        }
+        }*/
 
         /*if(profileimageV === '')
         {

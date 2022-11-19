@@ -66,7 +66,7 @@
             <div class="description">
                 <p id="productName">Chilaquiles</p>
                 <p>Valoración</p>
-                <p>Precio/<a id="cotiz" href="../WishList/WishList.php">Cotización</a></p>
+                <p>Precio/<a id="cotiz" href="../Chat/chat.php">Cotización</a></p>
                 <p>Categoría</p>
                 <d>Disponibilidad</d>
                 <p>(Descripción)Los famosos chilaquiles en la salsa que mejor se acople a tu gusto.</p>
