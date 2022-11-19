@@ -12,7 +12,7 @@
             <a href="../WishList/WishList.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
             <a href="../ConsultaPedidos/PedC.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
             <a href="../ConsultaVentas/VenC.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de ventas</li></a>
-            <a href="../Landing Page/Landing.html" class="nav-menu-link nav-link"><li class="nav-menu-item">Cerrar Sesión</li></a>
+            <a href="../PhpDocs/CerrarSesion.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Cerrar Sesión</li></a>
         </ul>  
         <div class="btns">
             <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
