@@ -4,7 +4,7 @@
     $login = $_SESSION['login'];
 
     if(!$login){
-        header("Location: http://localhost:8080/unikart2/Landing Page/Landing.html");
+        header("Location: http://localhost:8080/unikart2/Landing%20Page/Landing.html");
     }else{
         $user = $_SESSION['user'];
     }

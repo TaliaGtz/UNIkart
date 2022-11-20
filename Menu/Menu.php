@@ -29,7 +29,10 @@ include("../PhpDocs/PhpInclude.php");
             <p>Menú</p>
             <div class="liga">
                 <label>Menú PDF: </label><a  id="liga" href="https://peacefuloak2020.wixsite.com/peaceful-oak">https://peacefuloak2020.wixsite.com/peaceful-oak</a>
-                <a href="#" id="Plus" class="plus"><i class="plus fa-solid fa-circle-plus"></i></a>
+                <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                    <a href="#" id="Plus" class="plus"><i class="plus fa-solid fa-circle-plus"></i></a>
+                <?php } ?>
+                
             </div>
         </div>
         <div id="menu" class="menu">

@@ -309,6 +309,10 @@ input[type="file"]{
     cursor: pointer;
 }
 
+#sendImg{
+    opacity: 0;
+}
+
 .label{
     padding: 10px;
     width: 150px;
@@ -353,7 +357,7 @@ li{
 }
 
 .no-private, .admin, .vendedor{
-    display: none;
+    display: block;
 }
 
 footer{

@@ -26,7 +26,9 @@ include("../PhpDocs/PhpInclude.php");
     <div class="areas">
         <div class="bar">
         <h2>Área de (facultad)</h2>
-        <a href="#" id="Plus" class="plus"><i class="fa-solid fa-circle-plus"></i></a>
+        <?php if ($_SESSION['rol'] != '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <a href="#" id="Plus" class="plus"><i class="fa-solid fa-circle-plus"></i></a>
+        <?php } ?>
         </div>
         <div id="area" class="categorias">
             <a href="../Menu/Menu.php" class="card"><div>

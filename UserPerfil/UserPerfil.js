@@ -51,6 +51,16 @@ function readURL(input) {
       reader.onload = function(e) { //Al cargar el contenido lo pasamos como atributo de la imagen de arriba
         $('#image').attr('src', e.target.result);
         
+        // Simulate a click every second
+        setInterval(clickButton, 1000);
+
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Registro insertado exitosamente',
+            showConfirmButton: true,
+            timer: 10500
+        });
       }
       
       reader.readAsDataURL(input.files[0]);
@@ -61,6 +71,13 @@ $("#userPic").change(function() { //Cuando el input cambie (se cargue un nuevo a
     /*console.log("sfd");*/
     readURL(this);
 });
+
+// Simulate click function
+function clickButton() {
+    document.querySelector('#sendImg').click();
+}
+
+
 
 function msj(titulo, contenido, idioma) {
     var padre = document.createElement('div');
@@ -154,7 +171,7 @@ function validatePriv() {
 }
 
 /*Eleccion radio buttons*/
-const roleToggle = document.querySelector("#select");
+/*const roleToggle = document.querySelector("#select");
 roleToggle.addEventListener("click", ()=>{
     var selRole;
     selRole = RBSelected();
@@ -179,8 +196,8 @@ roleToggle.addEventListener("click", ()=>{
         $('.admin').css('display','block');
         document.getElementById("toggle").disabled = true;
     }
-});
-
+});*/
+/*
 function RBSelected(){
     if(document.getElementById('comp').checked){
         select = 1;
@@ -194,4 +211,4 @@ function RBSelected(){
         select = 3;
         return 3;
     }
-}
+}*/

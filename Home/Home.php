@@ -36,8 +36,10 @@ include("../PhpDocs/PhpInclude.php");
         </ul>
         <div id="coverCtnSearch"></div>
         
-        <a href="#" id="Plus" class="plus"><i class="fa-solid fa-circle-plus"></i></a>
-        
+        <?php if ($_SESSION['rol'] != '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <a href="#" id="Plus" class="plus"><i class="fa-solid fa-circle-plus"></i></a>
+        <?php } ?>
+
         <div>
         <!--Categorias-->
         <div class="categorias">
@@ -70,7 +72,7 @@ include("../PhpDocs/PhpInclude.php");
                     <h3>Biológicas</h3>
                     </div>
                 </a>
-                <a href="../Category/category.html"><div class="card">
+                <a href="../Category/category.php"><div class="card">
                     <div>
                         <img src="../ExtraDocs/Productos+Black.png" width="150px" height="150px">
                     </div>

@@ -30,7 +30,7 @@
     $consulta = mysqli_query($conexion, $consulta);
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
 
-    echo "<br>en sql:<br>" . base64_decode($consulta['Contrasenia']) . "<br>";
+    echo "<br>username:<br>" . $user . "<br><br>en sql:<br>" . base64_decode($consulta['Contrasenia']) . "<br>";
 
     //http://localhost:8080/unikart2/PhpDocs/checkPwd.php
     

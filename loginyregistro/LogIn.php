@@ -25,7 +25,7 @@
             $_SESSION['apellidos']  =$consulta['Apellidos'];
             $_SESSION['rol']        =$consulta['Rol']; 
             $_SESSION['fechaNac']   =$consulta['FechaNac'];
-            $_SESSION['correo']     =$consulta['Correo'];
+            $_SESSION['correo']     =$consulta['Email'];
             $_SESSION['fotoPerfil'] =$consulta['FotoPerfil'];
             $_SESSION['user']       =$consulta['Username'];
             $_SESSION['password']   =$consulta['Contrasenia'];

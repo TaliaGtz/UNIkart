@@ -16,6 +16,8 @@ include("../PhpDocs/PhpInclude.php");
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     
@@ -26,37 +28,102 @@ include("../PhpDocs/PhpInclude.php");
             <div class="userImg">
                 <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file">
             </div>    
-            <form runat="server" action="" class="image">
-                <div>
-                    <label class="label" for="archivo">Cambiar imagen</label>
-                    <input type="file" id="userPic" name="archivo"/>  <!--disabled-->
-                </div>
+            <?php
+                if(isset($_REQUEST['guardar'])){
+                    if(isset($_FILES['archivo']['name'])){
+                        $tipoArchivo = $_FILES['archivo']['type'];
+                        $nombreArchivo = $_FILES['archivo']['name'];
+                        $sizeArchivo = $_FILES['archivo']['size'];
+                        $imagenSubida = fopen($_FILES['archivo']['tmp_name'], 'r');
+                        $binImagen = fread($imagenSubida, $sizeArchivo);
+                        $binImagen = mysqli_escape_string($conexion, $binImagen);
+
+                        $user = "$_SESSION[user]";
+                        
+                        $sql = "UPDATE registro
+                                SET FotoPerfil='$binImagen'
+                                WHERE Username = '$user'";
+
+                        $query = "INSERT INTO media (nombre, imagen, tipo)
+                                VALUES('".$nombreArchivo."', '".$binImagen."', '".$tipoArchivo."')";
+
+                        
+                        if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
+                            //echo "alert('Tu foto ha sido guardada')";
+                            //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
+                        }else{
+                            echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+                        }
+                        if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
+                            //echo "alert('Tu foto ha sido guardada')";
+                            //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
+                        }else{
+                            echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+                        }
+                    }
+                }
+            ?>
+            <form runat="server" method="POST" class="image" enctype="multipart/form-data">
+                <label class="label" for="archivo">Cambiar imagen</label>
+                <input type="file" id="userPic" name="archivo"/>  <!--disabled-->
+                <button type="submit" name="guardar" id="sendImg">Enviar</button>
             </form>
              
             <ul class="userInfo">
                 <br>
-                <li id="username">Username</li>
-                <li id="select">Rol: <input type="radio" name="role" id="comp" checked> Comprador <input type="radio" name="role" id="vend"> Vendedor <input type="radio" name="role" id="admin"> Administrador</li>
-                <li class="vendedor">(Vendedor) Negocio, <a href="../Menu/Menu.php">Menú</a></li>
-                <li>Cuenta: privada
-                <!-- Rounded switch -->
-                <label for="toggle" class="switch">
-                    <input type="checkbox" id="toggle" onclick="validatePriv()">
-                    <span for="toggle" class="slider round"></span>
-                </label> pública</li>
-                <li class="no-private">Correo</li>
-                <li class="vendedor">Celular</li>
-                <br>
-                <a class="a" href="../Roles/Roles.php">¿Quieres una cuenta de vendedor/repartidor?</a>
+                <li id="username"><?php echo "$_SESSION[user]" ?></li>
+                
+                <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                    <label>Comprador</label>
+                    <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
+                    
+                    <li>Cuenta: privada
+                    <!-- Rounded switch -->
+                    <label for="toggle" class="switch">
+                        <input type="checkbox" id="toggle" onclick="validatePriv()">
+                        <span for="toggle" class="slider round"></span>
+                    </label> pública</li>
+                <?php } ?>
+
+                <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                    <label>Vendedor</label>
+                    <li class="vendedor">(Vendedor) Negocio, <a href="../Menu/Menu.php">Menú</a></li>
+                    <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
+                <?php } ?>
+
+                <?php if ($_SESSION['rol'] == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                    <label>Administrador</label>
+                    <li><?php echo "$_SESSION[correo]" ?></li>
+                <?php } ?>
+
+                <?php if ($_SESSION['rol'] != '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                    <br>
+                    <a class="a" href="../Roles/Roles.php">¿Quieres una cuenta de vendedor/repartidor?</a>
+                <?php } ?>
             </ul>
         </div>
 
-        <div class="contenido">
-            <p class="private">Esta cuenta es privada</p><br>
-            <p class="no-private">Wishlists</p><br>
-            <p class="vendedor">(Vendedor) Productos autorizados por el admin (con existencias)</p><br>
-            <p class="admin">(Admin) Productos autorizados por mí</p><br>
-        </div>
+        <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <div class="contenido">
+                <p class="private">Esta cuenta es privada</p><br>
+                <p class="no-private">Wishlists</p><br>
+            </div>
+        <?php } ?>
+        
+
+        <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <div class="contenido">
+                <p class="no-private">Wishlists</p><br>
+                <p class="vendedor">Productos autorizados por el admin (con existencias)</p><br>
+            </div>
+        <?php } ?>
+        
+        <?php if ($_SESSION['rol'] == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <div class="contenido">
+                <p class="no-private">Wishlists</p><br>
+                <p class="admin">Productos autorizados por mí</p><br>
+            </div>
+        <?php } ?>
 
         <!-- sección de footer -->
 
@@ -80,5 +147,6 @@ include("../PhpDocs/PhpInclude.php");
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="UserPerfil.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

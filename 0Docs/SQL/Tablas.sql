@@ -9,20 +9,24 @@ CREATE TABLE IF NOT EXISTS Registro(
 	Rol 		varchar(25)			NOT NULL,
     FechaNac	datetime			NOT NULL,
     Email		varchar(50)			NOT NULL,
-    FotoPerfil	varchar(300)		NOT NULL,
     Username	varchar(25)			NOT NULL,
     Contrasenia	varchar(25)			NOT NULL,
+	ID_media	int(5)				NOT NULL,
     
     CONSTRAINT PK_ID_Registro
 		PRIMARY KEY (ID_Registro)
 );
+alter table Registro
+ADD ID_media smallint unsigned 	NOT NULL,
+	add constraint FK_ID_Registro_media
+		foreign key (ID_media)
+		references media (ID_media),
 ALTER TABLE Registro ADD INDEX idx_nomRegistro (Nombres);
 ALTER TABLE Registro MODIFY COLUMN Nombres 		varchar(25) comment 'Nombres del usuario';
 ALTER TABLE Registro MODIFY COLUMN Apellidos 	varchar(25) comment 'Apellidos del usuario';
 ALTER TABLE Registro MODIFY COLUMN Rol		 	varchar(25) comment 'Rol del usuario';
 ALTER TABLE Registro MODIFY COLUMN FechaNac 	datetime 	comment 'Fecha de nacimiento del usuario';
 ALTER TABLE Registro MODIFY COLUMN Email 		varchar(50) comment 'Correo electrónico del usuario';
-ALTER TABLE Registro MODIFY COLUMN FotoPerfil 	varchar(300)comment 'ruta de la foto de perfil del usuario';
 ALTER TABLE Registro MODIFY COLUMN Username 	varchar(25) comment 'Nombre de usuario del usuario';
 ALTER TABLE Registro MODIFY COLUMN Contrasenia 	varchar(25) comment 'Contraseña del usuario';
 
