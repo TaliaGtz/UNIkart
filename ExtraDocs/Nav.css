@@ -79,3 +79,11 @@ nav ul li:hover{
 .btns{
     display: flex;
 }
+
+nav .nav-menu .nav-menu-link{
+    padding: 0px;
+}
+
+.cart{
+    padding: 0px;
+}

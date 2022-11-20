@@ -11,6 +11,9 @@ include("../PhpDocs/PhpInclude.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNIkart - Perfil</title>
     <link rel="stylesheet" href="UserPerfil.css">
+    <link rel="stylesheet" href="../ExtraDocs/Nav.css">
+    <link rel="stylesheet" href="../ExtraDocs/responsive.css">
+    <link rel="stylesheet" href="../AddModal/Plus.css">
     <link rel="stylesheet" href="../AddModal/Cart.css">
     <link rel="stylesheet" href="../ExtraDocs/switch.css">
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
@@ -19,6 +22,9 @@ include("../PhpDocs/PhpInclude.php");
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!--<meta http-equiv="Refresh" content="1" />-->
+
 </head>
 <body>
     
@@ -26,12 +32,7 @@ include("../PhpDocs/PhpInclude.php");
 
     <section class="grid">
         <div class="square">
-            <div class="userImg">
-                <?php require "../PhpDocs/leerImg.php"; ?>
-                <!-- <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file"> -->
-                <img src="data:<?php echo $query['tipo'] ?>;base64,<?php echo base64_encode($query['imagen']); ?>" height="100" width="100" id="image" class="file">
-            </div>    
-            <?php
+        <?php
                 if(isset($_REQUEST['guardar'])){
                     if(isset($_FILES['archivo']['name'])){
                         $tipoArchivo = $_FILES['archivo']['type'];
@@ -59,6 +60,12 @@ include("../PhpDocs/PhpInclude.php");
                     }
                 }
             ?>
+            <div id="userImg" class="userImg">
+                <?php  include("../UserPerfil/FotoUser.php");  ?>
+                <!-- <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file"> -->
+                <img src="data:<?php echo $query['tipo'] ?>;base64,<?php echo base64_encode($query['imagen']); ?>" id="image" class="file">
+            </div>    
+            
             <form runat="server" method="POST" class="image" enctype="multipart/form-data">
                 <label class="label" for="archivo">Cambiar imagen</label>
                 <input type="file" id="userPic" name="archivo"/>  <!--disabled-->
@@ -98,14 +105,13 @@ include("../PhpDocs/PhpInclude.php");
                 <?php } ?>
             </ul>
         </div>
-
+                    
         <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
                 <p class="private">Esta cuenta es privada</p><br>
                 <p class="no-private">Wishlists</p><br>
             </div>
         <?php } ?>
-        
 
         <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
@@ -121,6 +127,7 @@ include("../PhpDocs/PhpInclude.php");
             </div>
         <?php } ?>
 
+        
         <!-- sección de footer -->
 
         <div class="other">
