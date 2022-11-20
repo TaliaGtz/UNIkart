@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS Registro(
 		PRIMARY KEY (ID_Registro)
 );
 alter table Registro
-ADD ID_media smallint unsigned 	NOT NULL,
 	add constraint FK_ID_Registro_media
 		foreign key (ID_media)
 		references media (ID_media),

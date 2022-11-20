@@ -29,6 +29,7 @@
             $_SESSION['fotoPerfil'] =$consulta['FotoPerfil'];
             $_SESSION['user']       =$consulta['Username'];
             $_SESSION['password']   =$consulta['Contrasenia'];
+            $_SESSION['ID_media']   =$consulta['ID_media'];
              
             header("Location: http://localhost:8080/unikart2/Home/Home.php");
         }else{

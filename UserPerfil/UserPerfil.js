@@ -46,9 +46,9 @@ var texto;
 function readURL(input) {
     input2 = input;
     if (input.files && input.files[0]) { //Revisamos que el input tenga contenido
-      reader = new FileReader(); //Leemos el contenido
+        reader = new FileReader(); //Leemos el contenido
       
-      reader.onload = function(e) { //Al cargar el contenido lo pasamos como atributo de la imagen de arriba
+        reader.onload = function(e) { //Al cargar el contenido lo pasamos como atributo de la imagen de arriba
         $('#image').attr('src', e.target.result);
         
         // Simulate a click every second
@@ -58,13 +58,14 @@ function readURL(input) {
             position: 'center',
             icon: 'success',
             title: 'Registro insertado exitosamente',
-            showConfirmButton: true,
+            showConfirmButton: false,
             timer: 10500
         });
       }
       
       reader.readAsDataURL(input.files[0]);
     }
+    //location.reload();
 }
   
 $("#userPic").change(function() { //Cuando el input cambie (se cargue un nuevo archivo) se va a ejecutar de nuevo el cambio de imagen y se verá reflejado.

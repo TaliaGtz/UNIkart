@@ -16,6 +16,7 @@ include("../PhpDocs/PhpInclude.php");
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -26,7 +27,9 @@ include("../PhpDocs/PhpInclude.php");
     <section class="grid">
         <div class="square">
             <div class="userImg">
-                <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file">
+                <?php require "../PhpDocs/leerImg.php"; ?>
+                <!-- <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file"> -->
+                <img src="data:<?php echo $query['tipo'] ?>;base64,<?php echo base64_encode($query['imagen']); ?>" height="100" width="100" id="image" class="file">
             </div>    
             <?php
                 if(isset($_REQUEST['guardar'])){
@@ -38,28 +41,21 @@ include("../PhpDocs/PhpInclude.php");
                         $binImagen = fread($imagenSubida, $sizeArchivo);
                         $binImagen = mysqli_escape_string($conexion, $binImagen);
 
-                        $user = "$_SESSION[user]";
-                        
-                        $sql = "UPDATE registro
-                                SET FotoPerfil='$binImagen'
-                                WHERE Username = '$user'";
+                        $ID_media = "$_SESSION[ID_media]";
 
-                        $query = "INSERT INTO media (nombre, imagen, tipo)
-                                VALUES('".$nombreArchivo."', '".$binImagen."', '".$tipoArchivo."')";
+                        $query = "UPDATE media
+                                SET nombre = '$nombreArchivo', 
+                                    imagen = '$binImagen', 
+                                    tipo   = '$tipoArchivo'
+                                WHERE ID_media = '$ID_media'";
 
-                        
-                        if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
-                            //echo "alert('Tu foto ha sido guardada')";
-                            //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
-                        }else{
-                            echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
-                        }
                         if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
                             //echo "alert('Tu foto ha sido guardada')";
                             //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
                         }else{
                             echo "Error: " . $query . "<br>" . mysqli_error($conexion);
                         }
+                        //header('Location: http://localhost:8080/unikart2/UserPerfil/UserPerfil.php');
                     }
                 }
             ?>
