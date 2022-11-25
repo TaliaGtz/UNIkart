@@ -39,38 +39,10 @@ include("../PhpDocs/PhpInclude.php");
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <h3>¿Qué necesito para ser vendedor?</h3>
-                <label>Para ser vendedor debes llenar el siguiente formulario (Las podrás cambiar después):</label><br><br>
-                <form action="" class="formulario">
+                <label>Para ser vendedor debes dar de alta tu negocio en las categrías en las que quieras estar y llenar el siguiente formulario (Las podrás cambiar después):</label><br><br>
+                <form action="POST" class="formulario">
                     <label><b>Datos referentes a tu negocio:</b></label><br>
-                    <label>Área en la que deseas estar:</label>
-                    <select name="select">
-                        <option value="value1" selected>Value 1</option>
-                        <option value="value2">Value 2</option>
-                        <option value="value3">Value 3</option>
-                    </select><br>
-
-                    <label>Nombre de tu negocio:</label><input type="text" style="width: 50%;"><br>
-
-                    <label>Menú en PDF:</label><br>
-
-                    <label>Categorías de tus productos (Selecciona todas las que concuerden): </label>
-                    <table class="default">
-                        <tr>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                            <td><input type="checkbox" name="category">Categoría</td>
-                        </tr>
-                    </table>
-
-                    <label>¿No encuentras categorías que definan bien tus productos? Escríbelas a continuación:</label><input type="text" style="width: 50%;"><br>
-
+                    
                     <label>¿Tendrás repartidores?</label>
                     <input type="radio" name="repart" value="si">Sí
                     <input type="radio" name="repart" value="no">No me interesa<br>

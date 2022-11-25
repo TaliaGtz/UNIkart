@@ -62,9 +62,11 @@ include("../PhpDocs/PhpInclude.php");
     <div>
     <!--Categorias-->
     <div class="categorias">
-        <div id="caty" class="categorias cat">
+        <form method="POST" action="../Category/category.php">
+            <div id="caty" class="categorias cat">
             
-        </div>
+            </div>
+        </form>
     </div>
  
 

@@ -109,9 +109,10 @@ function Modal(titulo, contenido, idioma) {
 
 /*PlusSomething*/
 $("#Plus").click(function(){
-    Plus('Agregar área', 
-    '<p>Nombre del área: </p>'+
-    '<input id="areaName" type="text">',   
+    Plus('Agregar negocio', 
+    '<p>(Llena tus datos, un administrador aceptará tu negocio más tarde)</p><br>'+
+    '<p>Nombre del negocio: </p>'+
+    '<input id="areaName" name="negName" type="text">',   
     'Cerrar');
 });
 
@@ -123,8 +124,8 @@ function Plus(titulo, contenido, idioma) {
     var ModalData = document.getElementById("modal");
     var boton = "";
     ModalData.innerHTML = '<div id="modal-back"></div><div class="newModal"><div id="modal-new"><h3>'
-    + titulo +'</h3><form id="mc">'
-    + contenido +'</form><div><button id="buy" onclick="agregar_cat()">Agregar</button></div><div id="modButtons"><a id="mclose" href="#">'
+    + titulo +'</h3><form id="mc" method="POST" action="../Category/AddNeg.php">'
+    + contenido +'<div><br><br><button type="submit" id="buy">Agregar</button></div></form><div id="modButtons"><a id="mclose" href="#">'
     + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
     + boton + '</div></div></div>';
     document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';
