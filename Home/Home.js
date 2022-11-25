@@ -111,7 +111,7 @@ function Modal(titulo, contenido, idioma) {
 $("#Plus").click(function(){
     Plus('Agregar categoría', 
     '<p>Nombre de la categoría: </p>'+
-    '<input id="catName" type="text">',   
+    '<input id="catName" type="text" name="catName">',   
     'Cerrar');
 });
 
@@ -123,8 +123,8 @@ function Plus(titulo, contenido, idioma) {
     var ModalData = document.getElementById("modal");
     var boton = "";
     ModalData.innerHTML = '<div id="modal-back"></div><div class="newModal"><div id="modal-new"><h3>'
-    + titulo +'</h3><form id="mc">'
-    + contenido +'</form><div><button id="buy" onclick="agregar_cat()">Agregar</button></div><div id="modButtons"><a id="mclose" href="#">'
+    + titulo +'</h3><form id="mc" method="POST" action="../Home/AddCat.php">'
+    + contenido +'<div><br><br><button type="submit" id="buy">Agregar</button></form></div><div id="modButtons"><a id="mclose" href="#">'
     + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
     + boton + '</div></div></div>';
     document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';
@@ -134,34 +134,6 @@ function Plus(titulo, contenido, idioma) {
     document.getElementById('modal-back').onclick = function(){ 
         borrarModal('modal'); 
     }
-}
-
-function agregar_cat(){
-    var name = document.getElementById("catName").value;
-    var html = document.querySelector("#caty");
-
-    var panel = document.createElement('a');
-    panel.setAttribute('href', '../Category/category.php');
-    html.appendChild(panel);
-
-    var div = document.createElement('div');
-    div.setAttribute('class', 'card');
-    panel.appendChild(div);
-
-    var div2 = document.createElement('div');
-    div.appendChild(div2);
-
-    var img = document.createElement('img');
-    img.setAttribute('src', '../ExtraDocs/Productos+Black.png');
-    img.setAttribute('width', '150px');
-    img.setAttribute('height', '150px');
-    div2.appendChild(img);
-
-    var h3 = document.createElement('h3');
-    h3.innerText = name;
-    div.appendChild(h3);
-
-    borrarModal('modal');
 }
 
 ////////////////////////////////////////////////////////////////
