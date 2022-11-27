@@ -9,7 +9,7 @@ include("../PhpDocs/PhpInclude.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIkart - CategoríaN</title>
+    <title>UNIkart - <?php echo $_SESSION['Category']; ?></title>
     <link rel="stylesheet" href="category.css">
     <link rel="stylesheet" href="../AddModal/Plus.css">
     <link rel="stylesheet" href="../AddModal/Cart.css">
@@ -60,34 +60,7 @@ include("../PhpDocs/PhpInclude.php");
         <?php } ?>
         </div>
         <div id="area" class="categorias">
-            <a href="../Menu/Menu.php" class="card"><div>
-                <div>
-                    <img class="text" src="../ExtraDocs/OrangeBlack.png" width="150px" height="150px">
-                    <h3 class="text">Cafetería de físico</h3>
-                </div>
-                </div>
-            </a>
-            <a href="../Menu/Menu.php" class="card"><div>
-                <div class="text">
-                    <img src="../ExtraDocs/OrangeBlack.png" width="150px" height="150px">
-                    <h3>Carrito de tostitos</h3>
-                </div>
-                </div>
-            </a>
-            <a href="../Menu/Menu.php" class="card"><div>
-                <div class="text">
-                    <img src="../ExtraDocs/OrangeBlack.png" width="150px" height="150px">
-                    <h3>Hot-dogs</h3>
-                </div>
-                </div>
-            </a>
-            <a href="../Menu/Menu.php" class="card"><div>
-                <div class="text">
-                    <img src="../ExtraDocs/OrangeBlack.png" width="150px" height="150px">
-                    <h3>Carrito de boneless</h3>
-                </div>
-                </div>
-            </a>
+
         </div>
     </div>
 

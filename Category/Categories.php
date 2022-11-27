@@ -1,9 +1,17 @@
 <?php
     
-    include("../PhpDocs/Conexion.php");
+    include("../PhpDocs/PhpInclude.php");
 
-    $consulta = "SELECT Nombre FROM negocios";
-    $ejecutar = $conexion->query($consulta);
+    //Queremos el ID de la categoría accedida
+    $IDCat      = $_SESSION['IDCategory'];
+        
+    $consultaCatNeg  =  "SELECT C.ID_Categoria, CN.ID_negocio, N.Nombre
+                        FROM categorias C
+                        INNER JOIN categoriaxnegocio CN ON C.ID_Categoria = CN.ID_categoria
+                        INNER JOIN negocios N ON CN.ID_negocio = N.ID_Negocio
+                        WHERE C.ID_Categoria = '$IDCat'";
+    $ejecutar = $conexion->query($consultaCatNeg);
+
     while($fila = $ejecutar->fetch_array()):
         
 ?>

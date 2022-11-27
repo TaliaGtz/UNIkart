@@ -29,8 +29,8 @@
     $consultaRand =   "SELECT ID_media
                         FROM registro
                         WHERE ID_media='$ID_media'";
-    $consultaRand = mysqli_query($conexion, $consultaId);
-    $consultaRand = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
+    $consultaRand = mysqli_query($conexion, $consultaRand);
+    $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
 
     if($consultaRand){
         $IDMedia = rand(10000, 99999);
@@ -39,8 +39,8 @@
         $consultaRand =   "SELECT ID_media
                         FROM registro
                         WHERE ID_media='$ID_media'";
-        $consultaRand = mysqli_query($conexion, $consultaId);
-        $consultaRand = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
+        $consultaRand = mysqli_query($conexion, $consultaRand);
+        $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
         while($consultaRand){
             $IDMedia = rand(10000, 99999);
         }
