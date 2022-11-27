@@ -33,77 +33,79 @@ include("../PhpDocs/PhpInclude.php");
     <section class="grid">
         <div class="square">
         <?php
-                if(isset($_REQUEST['guardar'])){
-                    if(isset($_FILES['archivo']['name'])){
-                        $tipoArchivo = $_FILES['archivo']['type'];
-                        $nombreArchivo = $_FILES['archivo']['name'];
-                        $sizeArchivo = $_FILES['archivo']['size'];
-                        $imagenSubida = fopen($_FILES['archivo']['tmp_name'], 'r');
-                        $binImagen = fread($imagenSubida, $sizeArchivo);
-                        $binImagen = mysqli_escape_string($conexion, $binImagen);
+            include("../PhpDocs/imgCode.php");
 
-                        $ID_media = "$_SESSION[ID_media]";
+            if(isset($_REQUEST['guardar'])){
+                if(isset($_FILES['archivo']['name'])){
+                    $tipoArchivo = $_FILES['archivo']['type'];
+                    $nombreArchivo = $_FILES['archivo']['name'];
+                    $sizeArchivo = $_FILES['archivo']['size'];
+                    $imagenSubida = fopen($_FILES['archivo']['tmp_name'], 'r');
+                    $binImagen = fread($imagenSubida, $sizeArchivo);
+                    $binImagen = mysqli_escape_string($conexion, $binImagen);
 
-                        $query = "UPDATE media
-                                SET nombre = '$nombreArchivo', 
-                                    imagen = '$binImagen', 
-                                    tipo   = '$tipoArchivo'
-                                WHERE ID_media = '$ID_media'";
+                    $ID_media = "$_SESSION[ID_media]";
 
-                        if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
-                            //echo "alert('Tu foto ha sido guardada')";
-                            //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
-                        }else{
-                            echo "Error: " . $query . "<br>" . mysqli_error($conexion);
-                        }
-                        //header('Location: http://localhost:8080/unikart2/UserPerfil/UserPerfil.php');
+                    $query = "UPDATE media
+                            SET nombre = '$now', 
+                                imagen = '$binImagen', 
+                                tipo   = '$tipoArchivo'
+                            WHERE ID_media = '$ID_media'";
+
+                    if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
+                        //echo "alert('Tu foto ha sido guardada')";
+                        //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
+                    }else{
+                        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
                     }
+                    //header('Location: http://localhost:8080/unikart2/UserPerfil/UserPerfil.php');
                 }
-            ?>
-            <div id="userImg" class="userImg">
-                <?php  include("../UserPerfil/FotoUser.php");  ?>
-                <!-- <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file"> -->
-                <img src="data:<?php echo $query['tipo'] ?>;base64,<?php echo base64_encode($query['imagen']); ?>" id="image" class="file">
-            </div>    
+            }
+        ?>
+        <div id="userImg" class="userImg">
+            <?php  include("../UserPerfil/FotoUser.php");  ?>
+            <!-- <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file"> -->
+            <img src="data:<?php echo $query['tipo'] ?>;base64,<?php echo base64_encode($query['imagen']); ?>" id="image" class="file">
+        </div>    
             
-            <form runat="server" method="POST" class="image" enctype="multipart/form-data">
-                <label class="label" for="archivo">Cambiar imagen</label>
-                <input type="file" id="userPic" name="archivo"/>  <!--disabled-->
-                <button type="submit" name="guardar" id="sendImg">Enviar</button>
-            </form>
+        <form runat="server" method="POST" class="image" enctype="multipart/form-data">
+            <label class="label" for="archivo">Cambiar imagen</label>
+            <input type="file" id="userPic" name="archivo"/>  <!--disabled-->
+            <button type="submit" name="guardar" id="sendImg">Enviar</button>
+        </form>
              
-            <ul class="userInfo">
-                <br>
-                <li id="username"><?php echo "$_SESSION[user]" ?></li>
+        <ul class="userInfo">
+            <br>
+            <li id="username"><?php echo "$_SESSION[user]" ?></li>
+            
+            <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                <label>Comprador</label>
+                <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
                 
-                <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
-                    <label>Comprador</label>
-                    <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
-                    
-                    <li>Cuenta: privada
-                    <!-- Rounded switch -->
-                    <label for="toggle" class="switch">
-                        <input type="checkbox" id="toggle" onclick="validatePriv()">
-                        <span for="toggle" class="slider round"></span>
-                    </label> pública</li>
-                <?php } ?>
+                <li>Cuenta: privada
+                <!-- Rounded switch -->
+                <label for="toggle" class="switch">
+                    <input type="checkbox" id="toggle" onclick="validatePriv()">
+                    <span for="toggle" class="slider round"></span>
+                </label> pública</li>
+            <?php } ?>
 
-                <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
-                    <label>Vendedor</label>
-                    <li class="vendedor">(Vendedor) Negocio, <a href="../Menu/Menu.php">Menú</a></li>
-                    <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
-                <?php } ?>
+            <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                <label>Vendedor</label>
+                <li class="vendedor">(Vendedor) Negocio, <a href="../Menu/Menu.php">Menú</a></li>
+                <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
+            <?php } ?>
 
-                <?php if ($_SESSION['rol'] == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
-                    <label>Administrador</label>
-                    <li><?php echo "$_SESSION[correo]" ?></li>
-                <?php } ?>
+            <?php if ($_SESSION['rol'] == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                <label>Administrador</label>
+                <li><?php echo "$_SESSION[correo]" ?></li>
+            <?php } ?>
 
-                <?php if ($_SESSION['rol'] != '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
-                    <br>
-                    <a class="a" href="../Roles/Roles.php">¿Quieres una cuenta de vendedor/repartidor?</a>
-                <?php } ?>
-            </ul>
+            <?php if ($_SESSION['rol'] != '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                <br>
+                <a class="a" href="../Roles/Roles.php">¿Quieres una cuenta de vendedor/repartidor?</a>
+            <?php } ?>
+        </ul>
         </div>
                     
         <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
