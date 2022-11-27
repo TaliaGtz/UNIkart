@@ -25,6 +25,25 @@ include("../PhpDocs/PhpInclude.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script type="text/javascript">
+        function ajax(){
+            var req2 = new XMLHttpRequest();
+            req2.onreadystatechange = function(){
+                if(req2.readyState == 4 && req2.status ==  200){
+                    document.getElementById("NAV").innerHTML = req2.responseText;
+                }
+                if(req2.readyState == 3){
+                    
+                }
+            }
+            
+            req2.open('GET', '../Menu/Category.php', true);
+            req2.send();
+        }
+
+        //setInterval(function(){ajax();}, 1000);    //refresca la página automáticamente
+    </script>
 </head>
 <body>
     <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
@@ -43,16 +62,12 @@ include("../PhpDocs/PhpInclude.php");
         </div>
 
 
-
-
-
-
         <div id="menu" class="menu">
-            <nav class="NAV">
+            <nav class="NAV" id="NAV">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="navTab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" autofocus>Categoría</button>
                 <button class="nav-link" id="navTab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Categoría</button>
-                <button class="nav-link" id="navTab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Categoría</button>
+                <button class="nav-link" id="navTab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Agregar</button>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
