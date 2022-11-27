@@ -19,6 +19,12 @@ body{
     min-height: 100vh;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /*barra de navegación 2.0*/
 .header{
     background-color: #84b295;
@@ -256,11 +262,12 @@ nav ul li:hover{
 
 #contenidoImg{
     grid-row: 2/12;
-    grid-column: 1/14;
+    grid-column: 1/15;
     overflow: hidden;
     padding: 20px;
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 #editImg{

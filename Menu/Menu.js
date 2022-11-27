@@ -110,9 +110,16 @@ function Modal(titulo, contenido, idioma) {
 /*PlusSomething*/
 $("#Plus").click(function(){
     Plus('Agregar producto', 
+    '<p>(Podrás editar la ventana de tu producto pero éste aún deberá de ser aprobado por el administrador)</p><br>'+
     '<p>Nombre del producto: </p>'+
     '<input id="prodName" type="text"><br><br>'+
-    '<p>Podrás editar la ventana de tu producto pero éste aún deberá de ser aprobado por el administrador</p>',   
+    '<p>Precio: </p>'+
+    '<input type="radio" name="precio" class="precio"><input type="number" class="precio" placeholder="00.00">'+
+    '<label><input type="radio" name="precio" class="precio">A cotizar</label><br><br>'+
+    '<label>Categoría(s):</label><br><br>'+
+    '<input type="checkbox" class="CB" name="checkbox"><label for="demoCheckbox"> Check me!</label>'+
+    '<br><br><label>Disponibilidad: </label><input type="number" class="precio" placeholder="0"><br><br>'+
+    '<label>Descripción:</label><br><textarea id="txtid" name="txtname" rows="4" cols="50" maxlength="200"></textarea>',   
     'Cerrar');
 });
 
