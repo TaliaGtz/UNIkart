@@ -78,7 +78,7 @@ include("../PhpDocs/PhpInclude.php");
                     <br><br>
                 </div>
                 <div>
-                    <a href="../Pagado/pagado.html"><button id="pay" class="precio">Pagar</button></a>
+                    <a href="../Pagado/pagado.php"><button id="pay" class="precio">Pagar</button></a>
                 </div>
             </div>
         </div>

@@ -47,6 +47,7 @@ include("../PhpDocs/PhpInclude.php");
             <h3>Transacciones</h3><br>
             <p>(Espacio de Paypal)</p>
         </div>
+        <?php include("../PhpDocs/Mapas.php"); ?>
         
     </div>
 
