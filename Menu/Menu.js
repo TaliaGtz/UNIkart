@@ -132,7 +132,7 @@ function Plus(titulo, contenido, idioma) {
     var boton = "";
     ModalData.innerHTML = '<div id="modal-back"></div><div class="newModal"><div id="modal-new"><h3>'
     + titulo +'</h3><form id="mc">'
-    + contenido +'</form><div><button id="buy" onclick="agregar_cat()">Agregar</button></div><div id="modButtons"><a id="mclose" href="#">'
+    + contenido +'<div><button id="buy" type="submit" method="POST" action="../Home/AddCat.php">Agregar</button></div></form><div id="modButtons"><a id="mclose" href="#">'
     + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
     + boton + '</div></div></div>';
     document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';
