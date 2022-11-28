@@ -38,7 +38,7 @@ include("../PhpDocs/PhpInclude.php");
     </script>
 </head>
 <body>
-    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
+    <?php require "../PhpDocs/Nav.php"; ?>
 
     <div class="box">
         <input type="text" id="inputSearch" name="search" class="src" placeholder="¿Qué quieres comer hoy?" autocomplete="off">
