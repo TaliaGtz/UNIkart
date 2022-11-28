@@ -40,7 +40,7 @@ include("../PhpDocs/PhpInclude.php");
     </script>
 </head>
 <body>
-    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
+    <?php require "../PhpDocs/Nav.php"; ?>
     <?php 
         $idBtn = $_GET['IDBtn'];
         $consulta = "SELECT Categoria 
