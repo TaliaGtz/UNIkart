@@ -22,7 +22,7 @@ include("../PhpDocs/PhpInclude.php");
 
 </head>
 <body>
-    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
+    <?php require "../PhpDocs/Nav.php"; ?>
 
     <div class="body">
         <div class="title">

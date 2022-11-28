@@ -20,7 +20,7 @@ include("../PhpDocs/PhpInclude.php");
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 </head>
 <body>
-    <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
+    <?php require "../PhpDocs/Nav.php"; ?>
 
     <div class="areas">
         <div class="bar">
