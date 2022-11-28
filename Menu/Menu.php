@@ -20,30 +20,6 @@ include("../PhpDocs/PhpInclude.php");
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <script type="text/javascript">
-        function ajax(){
-            var req2 = new XMLHttpRequest();
-            req2.onreadystatechange = function(){
-                if(req2.readyState == 4 && req2.status ==  200){
-                    document.getElementById("NAV").innerHTML = req2.responseText;
-                }
-                if(req2.readyState == 3){
-                    
-                }
-            }
-            
-            req2.open('GET', '../Menu/Category.php', true);
-            req2.send();
-        }
-
-        //setInterval(function(){ajax();}, 1000);    //refresca la página automáticamente
-    </script>
 </head>
 <body>
     <?php require "C:/xampp/htdocs/unikart2/PhpDocs/Nav.php"; ?>
@@ -63,37 +39,16 @@ include("../PhpDocs/PhpInclude.php");
 
 
         <div id="menu" class="menu">
-            <nav class="NAV" id="NAV">
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <button class="nav-link active" id="navTab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" autofocus>Categoría</button>
-                <button class="nav-link" id="navTab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Categoría</button>
-                <button class="nav-link" id="navTab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Agregar</button>
+            <div class="card">
+                <a href="../Producto/Producto.php">
+                <div>
+                    <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
+                    <h3>Chilaquiles</h3>
+                    <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                    <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
                 </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    
-                    <div class="card">
-                        <a href="../Producto/Producto.php">
-                        <div>
-                            <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
-                            <h3>Chilaquiles</h3>
-                            <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
-                            <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
-                        </div>
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <h3>¿Qué necesito para ser repartidor?</h3>
-                    
-                </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <h3>¿Qué necesito para ser administrador?</h3>
-                    
-                </div>
-            </div>    
+                </a>
+            </div>  
         </div>
     </div>
     

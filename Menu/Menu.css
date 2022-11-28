@@ -121,7 +121,7 @@ h2{
     top: 35px;
     cursor: pointer;
     color: #2c1507;
-    transform: translate(-200%, -207%);
+    transform: translate(-200%, -187%);
     float: right;
 }
 #add:hover{
@@ -133,7 +133,7 @@ h2{
     top: 35px;
     cursor: pointer;
     color: #2c1507;
-    transform: translate(30%, -200%);
+    transform: translate(30%, -180%);
 }
 #addCart:hover{
     color: #67432e;
