@@ -61,7 +61,6 @@ h2{
 .mapa{
     position: absolute;
     display: flex;
-    background-color: aqua;
     right: 20px;
     top: 100px;
     width: 500px;
