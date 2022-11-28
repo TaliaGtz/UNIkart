@@ -21,17 +21,20 @@
 
     session_start();    //Inicia una nueva sesión o reanuda la existente
 
-    $user = $_GET["username"];
+    if(isset($_GET["username"])){
+        $user = $_GET["username"];
+    
+        //Evaluamos si el user ingresado ya existe
+        $consulta =   "SELECT * 
+                        FROM registro
+                        WHERE Username='$user'";
+        $consulta = mysqli_query($conexion, $consulta);
+        $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
 
-    //Evaluamos si el user ingresado ya existe
-    $consulta =   "SELECT * 
-                    FROM registro
-                    WHERE Username='$user'";
-    $consulta = mysqli_query($conexion, $consulta);
-    $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-
-    echo "<br>username:<br>" . $user . "<br><br>en sql:<br>" . base64_decode($consulta['Contrasenia']) . "<br>";
-
+        echo "<br>username:<br>" . $user . "<br><br>en sql:<br>" . base64_decode($consulta['Contrasenia']) . "<br>";
+    
+    }
+    
     //http://localhost:8080/unikart2/PhpDocs/checkPwd.php
     
 ?>
