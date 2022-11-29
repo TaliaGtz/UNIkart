@@ -151,6 +151,13 @@ textarea{
 }
 
 /*Responsive*/
+@media screen and (max-width: 1335px) {
+    .title p {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+}
 @media screen and (max-width: 460px){
     #titleImg{
         top: 80px;
@@ -189,3 +196,5 @@ textarea{
 form{
     min-height: 50vh;
 }
+
+

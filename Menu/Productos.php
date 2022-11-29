@@ -2,7 +2,8 @@
 
     include("../PhpDocs/Conexion.php");
 
-    $consulta = "SELECT ID_Producto, Nombre FROM productos";
+    $IDNeg = $_SESSION['IDNegocio'];
+    $consulta = "SELECT ID_Producto, Nombre FROM productos WHERE Negocio='$IDNeg'";
     $ejecutar = $conexion->query($consulta);
     while($fila = $ejecutar->fetch_array()):
                     
