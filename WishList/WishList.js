@@ -50,7 +50,7 @@ $("#publicar").click(function(){
     '<p style="align-self: flex-start;"> Privacidad: <input type="radio" name="Privacidad" value="1" required/> Privado <input type="radio" name="Privacidad" value="0" required/> Público </p>' + 
     '<br>' + '<br>' + 
     '<p style="align-self: flex-start;">Descripción:</p>' + '<br>' + 
-    '<textarea id="commentBox" name="comentario" contenteditable="true" dir="auto" class="commentBox" placeholder="Agrega un comentario..." style="width: 100%;"></textarea>', 
+    '<textarea id="commentBox" name="comentario" class="commentBox" placeholder="Agrega un comentario..." style="width: 100%;"></textarea>', 
     'Aceptar');
 });
 
