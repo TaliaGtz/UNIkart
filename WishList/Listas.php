@@ -19,7 +19,7 @@
             <h2><?php echo $fila['Nombre'] ?></h2>
             <p> Lista <?php echo $fila['Privacidad'] ?></p>
             <p> Descripción: <?php echo $fila['Descripcion'] ?></p>
-            <a href="../ListN/ListN.php" id="arrow"><i id="view" class="fa-solid fa-circle-chevron-right"></i></a>
+            <a href="../ListN/ListN.php?IDBtn=<?php echo $fila['ID_Wishlist']; ?>" id="arrow"><i id="view" class="fa-solid fa-circle-chevron-right"></i></a>
             <br><hr>
         </div>
     </article>

@@ -19,12 +19,23 @@ include("../PhpDocs/PhpInclude.php");
 <body>
     <?php require "../PhpDocs/Nav.php"; ?>
 
+    <?php 
+        $idBtn = $_GET['IDBtn'];
+        $consulta = "SELECT Nombre 
+                    FROM wishlist 
+                    WHERE ID_Wishlist = '$idBtn'";
+        $consulta = mysqli_query($conexion, $consulta);
+        $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+        $_SESSION['Lista'] = $consulta['Nombre'];
+        $_SESSION['IDLista'] = $idBtn;
+    ?>
+
     <section class="grid">
         <div class="square">
-            <h1>Lista de deseos - Lista n</h1>
+            <h1>Listas de deseos - <?php echo $_SESSION['Lista']; ?></h1>
             <ul class="menuABC" >
                 <button type="button" id="publicar" class="ABC"><li><span>Agregar</span></li></button>
-                <button type="button" class="ABC"><li><span>Modificar</span></li></button>
+                <button type="button" id="listo" class="ABC"><li><span>Listo</span></li></button>
                 <button type="button" id="eliminar" class="ABC"><li><span>Eliminar</span></li></button>
             </ul>  
         </div>
