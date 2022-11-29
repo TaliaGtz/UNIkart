@@ -152,3 +152,7 @@ form{
 form{
     margin-top: 20px;
 }
+
+.user .quitar{
+    transform: translateY(85px);
+}

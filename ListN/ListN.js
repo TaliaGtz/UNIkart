@@ -126,13 +126,15 @@ $("#listo").click(function(){
 $("#cart").click(function(){
     Modal('Carrito de compras', 
     '<div class="user">'+
+        '<i id="xmark" class="fa-solid fa-circle-xmark quitar visQuitar2"></i>'+
         '<img src="../ExtraDocs/Soup.png" height="70" width="70" id="image" alt="Imagen" class="file">'+
         '<p class="productName">Producto</p>'+
-        '<i class="fa-solid fa-square-minus quantity"></i>'+
+        '<i class="fa-solid fa-square-minus quantity borrar"></i>'+
         '<p class="quantityNum">1</p>'+
         '<i class="fa-solid fa-square-plus quantity"></i>'+
     '</div>'+
     '<div class="user">'+
+        '<i id="xmark" class="fa-solid fa-circle-xmark quitar visQuitar2"></i>'+
         '<img src="../ExtraDocs/Soup.png" height="70" width="70" id="image" alt="Imagen" class="file">'+
         '<p class="productName">Producto</p>'+
         '<i class="fa-solid fa-square-minus quantity"></i>'+
