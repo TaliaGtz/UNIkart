@@ -16,7 +16,7 @@
         
 ?>
 
-    <a href="../Menu/Menu.php" class="card">
+    <a href="../Menu/Menu.php?IDBtn=<?php echo $fila['ID_negocio']; ?>" class="card">
         <div>
             <div>
                 <img class="text" src="../ExtraDocs/OrangeBlack.png" width="150px" height="150px">

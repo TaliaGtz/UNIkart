@@ -114,3 +114,6 @@ form{       /*form*/
     border-bottom: 1px solid #2c1507;
     outline: none;
 }
+form{
+    margin-top: 20px;
+}

@@ -26,58 +26,6 @@ include("../PhpDocs/PhpInclude.php");
     <?php require "../PhpDocs/Nav.php"; ?>
 
     <section class="body-chat">
-        <!--<div class="seccion-titulo">
-            <h3><i class="fas fa-comments"></i>Sistema de mensajería</h3>
-        </div>
-        <div class="seccion-usuarios">
-            <div class="seccion-buscar">
-                <div class="input-buscar">
-                    <input type="search" placeholder="Buscar usuario">
-                    <i class="fas fa-search"></i>
-                </div>
-            </div>
-            <div class="seccion-lista-usuarios">
-                <div class="usuario">
-                    <div class="avatar">
-                        <img src="../ExtraDocs/croissantBlack.png" alt="img">
-                        <span class="estado-usuario enlinea"></span>
-                    </div>
-                    <div class="cuerpo">
-                        <span> Nombre apellido</span>
-                        <span>detalles de mensaje</span>
-                    </div>
-                    <span class="notificacion">
-                        3
-                    </span>
-                </div>
-                <div class="usuario">
-                    <div class="avatar">
-                        <img src="../ExtraDocs/tacoBlack.png" alt="img">
-                        <span class="estado-usuario ocupado"></span>
-                    </div>
-                    <div class="cuerpo">
-                        <span> Nombre apellido</span>
-                        <span>detalles de mensaje</span>
-                    </div>
-                    <span class="notificacion">
-                        1
-                    </span>
-                </div>
-                <div class="usuario">
-                    <div class="avatar">
-                        <img src="../ExtraDocs/pretzelBlack.png" alt="img">
-                        <span class="estado-usuario desconectado"></span>
-                    </div>
-                    <div class="cuerpo">
-                        <span> Nombre apellido</span>
-                        <span>detalles de mensaje</span>
-                    </div>
-                    <span class="notificacion">
-                        1
-                    </span>
-                </div>
-            </div>
-        </div>-->
         <div class="seccion-chat">
             <div class="usuario-seleccionado">
                 <div class="avatar">

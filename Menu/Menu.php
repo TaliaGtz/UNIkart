@@ -10,24 +10,35 @@ include("../PhpDocs/PhpInclude.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNIkart - Menu</title>
-    <link rel="stylesheet" href="Menu.css">
-    <link rel="stylesheet" href="../AddModal/Plus.css">
     <link rel="stylesheet" href="../AddModal/Cart.css">
+    <link rel="stylesheet" href="../AddModal/Plus.css">
     <link rel="stylesheet" href="../ExtraDocs/Nav.css">
+    <link rel="stylesheet" href="Menu.css">
     <link rel="stylesheet" href="../ExtraDocs/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
-
 </head>
 <body>
     <?php require "../PhpDocs/Nav.php"; ?>
 
+    <?php 
+        $idBtn = $_GET['IDBtn'];
+        $consulta = "SELECT Nombre 
+                    FROM negocios 
+                    WHERE ID_Negocio = '$idBtn'";
+        $consulta = mysqli_query($conexion, $consulta);
+        $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+        $_SESSION['Negocio'] = $consulta['Nombre'];
+        $_SESSION['IDNegocio'] = $idBtn;
+    ?>
+
     <div class="body">
         <div class="title">
             <img src="../ExtraDocs/macs.jpg" id="titleImg">
-            <p>Menú</p>
+            <!--<p>Menú</p>-->
+            <p><?php echo $_SESSION['Negocio']; ?> </p>
             <div class="liga">
                 <label>Menú PDF: </label><a  id="liga" href="https://peacefuloak2020.wixsite.com/peaceful-oak">https://peacefuloak2020.wixsite.com/peaceful-oak</a>
                 <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
@@ -39,6 +50,19 @@ include("../PhpDocs/PhpInclude.php");
 
 
         <div id="menu" class="menu">
+            
+            <?php
+
+                $consulta = "SELECT Nombre FROM productos";
+                $ejecutar = $conexion->query($consulta);
+                while($fila = $ejecutar->fetch_array()):
+                    
+            ?>
+                    
+                <input type="checkbox" class="CB" name="checkbox" value="<?php $fila['Categoria'] ?>"><label> <?php echo $fila['Categoria']; ?></label>
+
+            <?php endwhile; ?> 
+
             <div class="card">
                 <a href="../Producto/Producto.php">
                 <div>
@@ -49,6 +73,7 @@ include("../PhpDocs/PhpInclude.php");
                 </div>
                 </a>
             </div>  
+
         </div>
     </div>
     

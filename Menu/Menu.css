@@ -185,3 +185,7 @@ textarea{
     padding-bottom: 20px;
     background-color: whitesmoke;
 }
+
+form{
+    min-height: 50vh;
+}
