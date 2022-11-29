@@ -291,8 +291,11 @@ nav ul li:hover{
     overflow: hidden;
 }
 
-.carousel-item{
-    margin-right: 0px;
+.carousel .carousel-indicators{
+    width: auto;
+}
+.carousel-item-start{
+    width: auto;
     /*transform: translate(0, 100px);*/
 }
 

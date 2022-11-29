@@ -56,7 +56,7 @@ include("../PhpDocs/PhpInclude.php");
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="../ExtraDocs/chilaquiles.jpg" class="d-block w-100 productImg" alt="...">
+                    <img src="../ExtraDocs/chilaquiles1.jpg" class="d-block w-100 productImg" alt="...">
                   </div>
                   <div class="carousel-item">
                     <img src="../ExtraDocs/chilaquiles2.jpg" class="d-block w-100 productImg" alt="...">
