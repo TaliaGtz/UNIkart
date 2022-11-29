@@ -2,6 +2,7 @@
 
     include("../PhpDocs/PhpInclude.php");
 
+    $IDBtn = $_SESSION['IDNegocio'];
     //Se guardan los datos de los nombres de los inputs a la tabla en la base de datos
     $ID         = "";
     $negID    = "$_SESSION[IDNegocio]";
@@ -43,7 +44,7 @@
        
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('El producto se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Producto/Producto.php");
+            header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
@@ -53,7 +54,7 @@
             echo "El producto ya existe";
         }else{
             $sql = "INSERT INTO productos 
-        VALUES(
+            VALUES(
             '$ID        ',
             '$negID   ',
             '$product   ',
@@ -64,11 +65,12 @@
             '$desc      ',
             '$ID_Cat    ',
             '$ID_Com    '
-        )";
+            )";
+
        
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('El producto se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Producto/Producto.php");
+            header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
