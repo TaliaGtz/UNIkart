@@ -43,16 +43,8 @@ include("../PhpDocs/PhpInclude.php");
     <div class="box">
         <input type="text" id="inputSearch" name="search" class="src" placeholder="¿Qué quieres comer hoy?" autocomplete="off">
     </div>
-    <ul id="boxSearch"> <!--Filtro por facultades y por comidas-->
-        <li><a href="../Producto/Producto.php?IDBtn=12"><i class="fas fa-search"></i>Chilaquiles</a></li>
-        <li><a href="../Producto/Producto.php?IDBtn=14"><i class="fas fa-search"></i>Hamburguesa</a></li>
-        <li><a href="../Producto/Producto.php?IDBtn=9"><i class="fas fa-search"></i>Pizza</a></li>
-        <li><a href="../Producto/Producto.php?IDBtn=17"><i class="fas fa-search"></i>Sushi</a></li>
-        <li><a href="../Producto/Producto.php?IDBtn=15"><i class="fas fa-search"></i>Pasta</a></li>
-        <li><a href="../Producto/Producto.php?IDBtn=10"><i class="fas fa-search"></i>Hot-dog</a></li>
-        <li><a href="../Producto/Producto.php?IDBtn=13"><i class="fas fa-search"></i>Tacos</a></li>
-        <li><a href="../Producto/Producto.php?IDBtn=18"><i class="fas fa-search"></i>Chimichangas</a></li>
-        
+    <ul id="boxSearch"> <!--Filtro por comidas-->
+        <?php include("../Home/Buscador.php"); ?>  
     </ul>
     <div id="coverCtnSearch"></div>
         
