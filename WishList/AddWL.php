@@ -7,7 +7,7 @@
     $imagen  = $_POST["nombre"];
     $wlName  = $_POST["nombre"];
     $Priv    = $_POST["Privacidad"];
-    $Desc    = $_POST["comment"];
+    $Desc    = $_POST["comentario"];
     $Prod    = "";
     $user    = "$_SESSION[user]";
     $imagen = "../ExtraDocs/User.png";   //Foto por defecto
