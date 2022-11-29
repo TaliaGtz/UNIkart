@@ -26,9 +26,20 @@ include("../PhpDocs/PhpInclude.php");
 <body>
     <?php require "../PhpDocs/Nav.php"; ?>
 
+    <?php 
+        $idBtn = $_GET['IDBtn'];
+        $consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion  
+                    FROM productos 
+                    WHERE ID_Producto = '$idBtn'";
+        $consulta = mysqli_query($conexion, $consulta);
+        $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+        $_SESSION['Producto'] = $consulta['Nombre'];
+        $_SESSION['ID_Producto'] = $idBtn;
+    ?>
+
     <section class="grid">
         <div class="square">
-            <h1 class="h1">Producto</h1>
+            <h1 class="h1"><?php echo $_SESSION['Producto']; ?></h1>
         </div>
 
         <!-- sección de Producto -->
@@ -69,15 +80,20 @@ include("../PhpDocs/PhpInclude.php");
 
 
             <div class="description">
-                <p id="productName">Chilaquiles</p>
-                <p>Valoración</p>
-                <p>Precio/<a id="cotiz" href="../Chat/chat.php">Cotización</a></p>
+                <p id="productName"><?php echo $_SESSION['Producto']; ?></p>
+                <p>Valoración: <?php echo $consulta['Valoracion']; ?></p>
+                <?php
+                    if($consulta['Precio'] == 0){
+                        ?><p><a id="cotiz" href="../Chat/chat.php">Cotización</a></p><?php
+                    }else{
+                        ?><p>$<?php echo $consulta['PrecioCant']; ?></p><?php
+                    }
+                ?>
                 <p>Categoría</p>
-                <d>Disponibilidad</d>
-                <p>(Descripción)Los famosos chilaquiles en la salsa que mejor se acople a tu gusto.</p>
+                <p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</p>
+                <p><?php echo $consulta['Descripcion']; ?></p>
                 <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
                 <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
-                <!--<i id="add" class="fa-solid fa-circle-plus"></i>-->
             </div>
         </section>
 

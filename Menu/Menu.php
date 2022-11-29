@@ -50,29 +50,7 @@ include("../PhpDocs/PhpInclude.php");
 
 
         <div id="menu" class="menu">
-            
-            <?php
-
-                $consulta = "SELECT Nombre FROM productos";
-                $ejecutar = $conexion->query($consulta);
-                while($fila = $ejecutar->fetch_array()):
-                    
-            ?>
-                    
-                <input type="checkbox" class="CB" name="checkbox" value="<?php $fila['Categoria'] ?>"><label> <?php echo $fila['Categoria']; ?></label>
-
-            <?php endwhile; ?> 
-
-            <div class="card">
-                <a href="../Producto/Producto.php">
-                <div>
-                    <img src="../ExtraDocs/HDBlack.png" width="80px" height="80px">
-                    <h3>Chilaquiles</h3>
-                    <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
-                    <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
-                </div>
-                </a>
-            </div>  
+            <?php require "../Menu/Productos.php"; ?>
 
         </div>
     </div>

@@ -267,7 +267,7 @@ nav ul li:hover{
     padding: 20px;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 #editImg{
@@ -302,10 +302,11 @@ nav ul li:hover{
 }
 
 .description{
-    /*­­­­grid-row: 2/6;
+    /*grid-row: 2/6;
     grid-column: 8/14;*/
     color:#2c1507;
     padding: 5px;
+    min-width: 500px;
 }
 
 .description p{
