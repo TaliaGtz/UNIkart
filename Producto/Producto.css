@@ -560,6 +560,17 @@ div.valoracion input:checked ~ label {
     background-color: white;
 }
 
+.prodSimi .card h4, p{
+    color: #2c1507;
+}
+
+.prodSimi img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 .prodSimi .card:hover{
     transform: translate(-15px);
     box-shadow: 0 12px 16px rgba(0, 0, 0, 0.527);
