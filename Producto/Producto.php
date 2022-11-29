@@ -113,7 +113,7 @@ include("../PhpDocs/PhpInclude.php");
                     <input type="radio" class="catRB" name="genero" id="IDCat3"/> Categoría 3
                 </div>
                 <br>-->
-                <div class="valoracion">
+                <div class="valoracion"> 
                     <input type="radio" name="estrellas" id="rate5" value="5">
                     <label for="rate5" class="fas fa-star"></label>
                     <input type="radio" name="estrellas" id="rate4" value="4">
