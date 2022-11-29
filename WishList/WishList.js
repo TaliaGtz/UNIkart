@@ -40,9 +40,9 @@ $(window).on("load",function checkPosition(){
 });
 
 $("#publicar").click(function(){
-    Modal('Agregar Lista', 
+    AddList('Agregar Lista', 
     '<div class="user"><img src="../ExtraDocs/Menu.png" height="100" width="100" id="image" alt="Imagen" class="file"></div>' + 
-    '<form runat="server"  method="POST" action="../Wishlist/AddWL.php" class="image"><div class="image"><label id="archivo" for="archivo">Cambiar imagen</label><input type="file" id="userPic" name="archivo" onclick="read()"/></div>' + 
+    '<div class="image"><label id="archivo" for="archivo">Cambiar imagen</label><input type="file" id="userPic" name="archivo" onclick="read()"/></div>' + 
     '<p> Nombre de la lista: <input type="text" name="nombre" class="nombre" contenteditable="true" required/></p>' + 
     '<br>' + '<br>' + 
     //'<p> Categoría: <input type="radio" name="Categoria" value="Categoría 1" required/> Categoría 1 <input type="radio" name="Categoria" value="Categoría 2" required/> Categoría 2 </p>' + 
@@ -50,68 +50,9 @@ $("#publicar").click(function(){
     '<p style="align-self: flex-start;"> Privacidad: <input type="radio" name="Privacidad" value="1" required/> Privado <input type="radio" name="Privacidad" value="0" required/> Público </p>' + 
     '<br>' + '<br>' + 
     '<p style="align-self: flex-start;">Descripción:</p>' + '<br>' + 
-    '<div id="commentBox" name="comment" contenteditable="true" dir="auto" class="commentBox" placeholder="Agrega un comentario..." style="width: 100%;"></div>' +
-    '</div><div><button id="buy" onclick="agregar()">Agregar</button></div></form><div id="modButtons"><a id="mclose" href="#">', 
+    '<div id="commentBox" name="comment" contenteditable="true" dir="auto" class="commentBox" placeholder="Agrega un comentario..." style="width: 100%;"></div>', 
     'Aceptar');
 });
-
-function agregar(){
-    i = i + 1;
-    var html = document.querySelector("#contenido");
-
-    panel = document.createElement('article');
-    panel.setAttribute('id', 'article' + i);
-    panel.setAttribute('class', 'article');
-    panel.setAttribute('style', 'display: block');
-    html.appendChild(panel);
-
-    var icon = document.createElement('img');
-    icon.setAttribute('src', '../ExtraDocs/Menu.png');
-    icon.setAttribute('height', '70');
-    icon.setAttribute('width', '70');
-    icon.setAttribute('id', 'image');
-    icon.setAttribute('alt', 'Imagen');
-    icon.setAttribute('class', 'file');
-    panel.appendChild(icon);
-
-    divisor = document.createElement('div');
-    divisor.setAttribute('class', 'contDiv');
-    panel.appendChild(divisor);
-
-    var name = document.createElement('h2');
-    name.textContent = "Lista" + i;
-    divisor.appendChild(name);
-
-    var msgRB = document.createElement('p');
-    msgRB.textContent = "categoría";
-    divisor.appendChild(msgRB);
-
-    var msgRB = document.createElement('p');
-    msgRB.textContent = "privada/pública";
-    divisor.appendChild(msgRB);
-    
-    msg = document.createElement('p');
-    msg.textContent = "Descripción";
-    divisor.appendChild(msg);
-
-    var view = document.createElement('a');
-    view.setAttribute('id', 'arrow');
-    view.setAttribute('href', '../ListN/ListN.php');
-    divisor.appendChild(view);
-
-    var arrow = document.createElement('i');
-    arrow.setAttribute('id', 'view');
-    arrow.setAttribute('class', 'fa-solid fa-circle-chevron-right');
-    view.appendChild(arrow);
-
-    var br = document.createElement('br');
-    divisor.appendChild(br);
-
-    var hr = document.createElement('hr');
-    divisor.appendChild(hr);
-
-    borrar('modal');
-}
 
 $("#eliminar").click(function(){
     j = j + 1;
@@ -193,6 +134,27 @@ function Modal(titulo, contenido, idioma) {
     ModalData.innerHTML = '<div id="modal-back"></div><div class="newModal"><div id="modal-new"><h3>'
     + titulo +'</h3><div id="mc">'
     + contenido
+    + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
+    + boton + '</div></div></div>';
+    document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';
+    document.getElementById('mclose').onclick = function(){ 
+        borrarModal('modal'); 
+    };
+    document.getElementById('modal-back').onclick = function(){ 
+        borrarModal('modal'); 
+    }
+}
+
+function AddList(titulo, contenido, idioma) {
+    var padre = document.createElement('div');
+    padre.id = 'modal';
+    document.body.appendChild(padre);
+    var bc = idioma ? idioma : 'Aceptar';
+    var ModalData = document.getElementById("modal");
+    var boton = "";
+    ModalData.innerHTML = '<div id="modal-back"></div><div class="newModal"><div id="modal-new"><h3>'
+    + titulo +'</h3><form id="mc" method="POST" action="../Wishlist/AddWL.php" class="image">'
+    + contenido +'<div class="buy"><br><br><button type="submit" id="buy">Agregar</button></div></form><div id="modButtons"><a id="mclose" href="#">'
     + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
     + boton + '</div></div></div>';
     document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';

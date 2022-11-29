@@ -42,7 +42,7 @@
        
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('La lista se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Home/Home.php");
+            header("Location: http://localhost:8080/unikart2/Wishlist/Wishlist.php");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

@@ -34,6 +34,7 @@ include("../PhpDocs/PhpInclude.php");
         <!-- sección de listas -->
 
         <section id="contenido">
+            <?php include("../Wishlist/Listas.php"); ?>
         </section>
 
         <!-- fin sección de listas -->

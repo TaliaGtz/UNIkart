@@ -147,3 +147,10 @@ input[type="file"]{
     margin: 20px;
     margin-top: 0px;
 }
+
+.buy{
+    width: 100%;
+}
+.buy #buy{
+    width: 100%;
+}
