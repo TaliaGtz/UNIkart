@@ -92,7 +92,15 @@ include("../PhpDocs/PhpInclude.php");
                 <p>Categoría</p>
                 <p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</p>
                 <p><?php echo $consulta['Descripcion']; ?></p>
-                <a href="../WishList/WishList.php"><i id="add" class="fa-solid fa-heart-circle-plus"></i></a>
+                <a href="../WishList/WishList.php"></a>
+                
+                <div class="dropdown">
+                    <i id="add" class="fa-solid fa-heart-circle-plus" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <?php include("../Producto/WLists.php"); ?>
+                    </ul>
+                </div>
+
                 <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
             </div>
         </section>

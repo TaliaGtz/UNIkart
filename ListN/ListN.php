@@ -43,6 +43,7 @@ include("../PhpDocs/PhpInclude.php");
         <!-- sección de listas -->
 
         <section id="contenido">
+            
         </section>
 
         <!-- fin sección de listas -->
