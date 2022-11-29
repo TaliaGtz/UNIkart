@@ -42,16 +42,16 @@ $(window).on("load",function checkPosition(){
 $("#publicar").click(function(){
     Modal('Agregar Lista', 
     '<div class="user"><img src="../ExtraDocs/Menu.png" height="100" width="100" id="image" alt="Imagen" class="file"></div>' + 
-    '<form runat="server" action class="image"><div class="image"><label id="archivo" for="archivo">Cambiar imagen</label><input type="file" id="userPic" name="archivo" onclick="read()"/></div></form>' + 
+    '<form runat="server"  method="POST" action="../Wishlist/AddWL.php" class="image"><div class="image"><label id="archivo" for="archivo">Cambiar imagen</label><input type="file" id="userPic" name="archivo" onclick="read()"/></div>' + 
     '<p> Nombre de la lista: <input type="text" name="nombre" class="nombre" contenteditable="true" required/></p>' + 
     '<br>' + '<br>' + 
-    '<p> Categoría: <input type="radio" name="Categoria" value="Categoría 1" required/> Categoría 1 <input type="radio" name="Categoria" value="Categoría 2" required/> Categoría 2 </p>' + 
+    //'<p> Categoría: <input type="radio" name="Categoria" value="Categoría 1" required/> Categoría 1 <input type="radio" name="Categoria" value="Categoría 2" required/> Categoría 2 </p>' + 
+    //'<br>' + '<br>' + 
+    '<p style="align-self: flex-start;"> Privacidad: <input type="radio" name="Privacidad" value="1" required/> Privado <input type="radio" name="Privacidad" value="0" required/> Público </p>' + 
     '<br>' + '<br>' + 
-    '<p> Privacidad: <input type="radio" name="Privacidad" value="Privado" required/> Privado <input type="radio" name="Privacidad" value="Público" required/> Público </p>' + 
-    '<br>' + '<br>' + 
-    '<p>Descripción:</p>' + '<br>' + 
-    '<div id="commentBox" contenteditable="true" dir="auto" class="commentBox" placeholder="Agrega un comentario..."></div>' +
-    '</div><div><button id="buy" onclick="agregar()">Agregar</button></div><div id="modButtons"><a id="mclose" href="#">', 
+    '<p style="align-self: flex-start;">Descripción:</p>' + '<br>' + 
+    '<div id="commentBox" name="comment" contenteditable="true" dir="auto" class="commentBox" placeholder="Agrega un comentario..." style="width: 100%;"></div>' +
+    '</div><div><button id="buy" onclick="agregar()">Agregar</button></div></form><div id="modButtons"><a id="mclose" href="#">', 
     'Aceptar');
 });
 
