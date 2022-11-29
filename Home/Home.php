@@ -74,72 +74,21 @@ include("../PhpDocs/PhpInclude.php");
     <div class="prodSimi">
         <h3>Productos más vendidos</h3>
         <div class="prodSimi">
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
+            <?php include("../PhpDocs/ProductosPlus.php"); ?>
         </div>
     </div>
 
     <div class="prodSimi">
         <h3>Productos recomendados</h3>
         <div class="prodSimi">
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
+            <?php include("../PhpDocs/ProductosPlus.php"); ?>
         </div>
     </div>
 
     <div class="prodSimi">
         <h3>Productos populares</h3>
         <div class="prodSimi">
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
-            <div class="card">
-                <img src="../ExtraDocs/SoupBlack.png" width="150px" height="150px">
-                <h4>Producto</h4>
-                <br>
-                <a href="../Producto/Producto.php">Leer más</a>
-            </div>
+            <?php include("../PhpDocs/ProductosPlus.php"); ?>
         </div>
     </div>
     </div>
