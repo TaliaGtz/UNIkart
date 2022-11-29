@@ -17,6 +17,25 @@ include("../PhpDocs/PhpInclude.php");
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
+
+    <script type="text/javascript">
+        function ajax(){
+            var req2 = new XMLHttpRequest();
+            req2.onreadystatechange = function(){
+                if(req2.readyState == 4 && req2.status ==  200){
+                    document.getElementById("contenido").innerHTML = req2.responseText;
+                }
+                if(req2.readyState == 3){
+                    
+                }
+            }
+            
+            req2.open('GET', '../Wishlist/Listas.php', true);
+            req2.send();
+        }
+
+        setInterval(function(){ajax();}, 1000);    //refresca la página automáticamente
+    </script>
 </head>
 <body>
     <?php require "../PhpDocs/Nav.php"; ?>
@@ -34,6 +53,7 @@ include("../PhpDocs/PhpInclude.php");
         <!-- sección de listas -->
 
         <section id="contenido">
+            
         </section>
 
         <!-- fin sección de listas -->

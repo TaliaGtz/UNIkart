@@ -330,7 +330,9 @@ h1{
 
 #contenido{
     grid-row: 2/12;
-    grid-column: 1/10;
+    grid-column: 1/15;
+    overflow-y: scroll;
+    width: 100%;
 }
 
 .article{
@@ -353,6 +355,26 @@ h1{
 }
 #view:hover{
     color: #67432e;
+}
+
+.quitar{
+    font-size: 30px;
+    float: right;
+    position: relative;
+    top: -52px;
+    cursor: pointer;
+    color: #2c1507;
+    transform: translateX(-20px);
+}
+.quitar:hover{
+    color: #67432e;
+}
+
+.visQuitar{
+    display: block;
+}
+.visQuitar2{
+    display: none;
 }
 
 .other{

@@ -38,7 +38,7 @@ include("../PhpDocs/PhpInclude.php");
         <div class="title">
             <img src="../ExtraDocs/macs.jpg" id="titleImg">
             <!--<p>Menú</p>-->
-            <p><?php echo $_SESSION['Negocio']; ?> </p>
+            <p><?php echo $_SESSION['Negocio']; ?></p>
             <div class="liga">
                 <label>Menú PDF: </label><a  id="liga" href="https://peacefuloak2020.wixsite.com/peaceful-oak">https://peacefuloak2020.wixsite.com/peaceful-oak</a>
                 <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 

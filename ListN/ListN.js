@@ -88,26 +88,38 @@ $("#publicar").click(function(){
     arrow.setAttribute('class', 'fa-solid fa-circle-chevron-right');
     view.appendChild(arrow);
 
+    var xmark = document.createElement('i');
+    xmark.setAttribute('id', 'xmark');
+    xmark.setAttribute('class', 'fa-solid fa-circle-xmark quitar visQuitar2');
+    divisor.appendChild(xmark);
+
     var br = document.createElement('br');
     divisor.appendChild(br);
 
     var hr = document.createElement('hr');
     divisor.appendChild(hr);
 
-    /*
-    var datmsg = document.createElement('input');
-    datmsg.setAttribute('type', 'date');
-    datmsg.setAttribute('id', 'dateID' + i);
-    datmsg.setAttribute('class', 'datepkdP');
-    //console.log(date);
-    datmsg.setAttribute('value', date);
-    datmsg.setAttribute('disabled', 'true');
-    divisor.appendChild(datmsg);*/
+});
+
+$("#xmark").click(function(){
+    j = j + 1;
+    $("#article" + j).remove();       //Quita todo el código que tenga que ver con la lista
+    //document.getElementById("xmark").classList.add("visQuitar");
+    //document.getElementById("xmark").classList.remove("visQuitar2");
 });
 
 $("#eliminar").click(function(){
-    j = j + 1;
-    $("#article" + j).remove();       //Quita todo el código que tenga que ver con la lista
+    //j = j + 1;
+    //$("#article" + j).remove();       //Quita todo el código que tenga que ver con la lista
+    document.getElementsByClassName("quitar").classList.remove("visQuitar2");
+    document.getElementsByClassName("quitar").classList.add("visQuitar");
+});
+
+$("#listo").click(function(){
+    //j = j + 1;
+    //$("#article" + j).remove();       //Quita todo el código que tenga que ver con la lista
+    document.getElementById("quitar").classList.remove("visQuitar");
+    document.getElementById("quitar").classList.add("visQuitar2");
 });
 
 /*Cart*/
