@@ -15,7 +15,25 @@
             <a href="../PhpDocs/CerrarSesion.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Cerrar Sesión</li></a>
         </ul>  
         <div class="btns">
-            <button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button>
+            <?php
+                $user=$_SESSION['user'];
+
+                //Queremos el ID del usuario
+                $consulta =   "SELECT ID_Registro 
+                                FROM registro
+                                WHERE Username = '$user'";
+                $consulta = mysqli_query($conexion, $consulta);
+                $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+                $user = $consulta['ID_Registro'];
+
+                $consultaWL =   "SELECT ID_Carrito, ID_KartList
+                                FROM carrito
+                                WHERE ID_User='$user'";
+                $consultaWL = mysqli_query($conexion, $consultaWL);
+                $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
+                $ID_KartList = $consultaWL['ID_KartList'];
+            ?>
+            <a href="../Producto/ListN.php?IDBtn=<?php echo $ID_KartList?>"><button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button></a>
             <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
         </div>
     </nav>

@@ -4,7 +4,9 @@
 
     //Se guardan los datos de los nombres de los inputs a la tabla en la base de datos
     $ID         = "";
-    $IDMedia    = rand(10000, 99999);
+    $IDMedia    = rand(10000, 65535);
+    $ID_KartList= rand(10000, 65535);
+    //shuffle($ID_KartList);
     $nombres    = $_POST["nombres"];
     $apellidos  = $_POST["apellidos"];
     $rol        = "1";
@@ -28,21 +30,21 @@
     //Evaluamos si el rand ingresado ya existe
     $consultaRand =   "SELECT ID_media
                         FROM registro
-                        WHERE ID_media='$ID_media'";
+                        WHERE ID_media='$IDMedia'";
     $consultaRand = mysqli_query($conexion, $consultaRand);
     $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
 
     if($consultaRand){
-        $IDMedia = rand(10000, 99999);
+        $IDMedia = rand(10000, 65535);
 
         //Evaluamos si el rand ingresado ya existe
         $consultaRand =   "SELECT ID_media
                         FROM registro
-                        WHERE ID_media='$ID_media'";
+                        WHERE ID_media='$IDMedia'";
         $consultaRand = mysqli_query($conexion, $consultaRand);
         $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
         while($consultaRand){
-            $IDMedia = rand(10000, 99999);
+            $IDMedia = rand(10000, 65535);
         }
     }
 

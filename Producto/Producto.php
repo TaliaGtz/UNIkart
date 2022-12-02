@@ -107,8 +107,18 @@ include("../PhpDocs/PhpInclude.php");
                         <?php include("../Producto/WLists.php"); ?>
                     </ul>
                 </div>
+                    <?php
+                    $User = "$_SESSION[user]";
+                    //Queremos el ID del usuario
+                    $consulta =   "SELECT ID_Registro 
+                                    FROM registro
+                                    WHERE Username = '$User'";
+                    $consulta = mysqli_query($conexion, $consulta);
+                    $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+                    $User = $consulta['ID_Registro'];
 
-                <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
+                    ?>
+                <a href="../Producto/AddProduct.php?IDBtn=<?php echo $User?>&IDProd=<?php echo $idBtn;?>" ><i id="addCart" class="fa-solid fa-cart-plus"></i></a><!--onclick="addCart()"-->
             </div>
         </section>
 
