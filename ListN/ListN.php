@@ -21,6 +21,10 @@ include("../PhpDocs/PhpInclude.php");
 
     <?php 
         $idBtn = $_GET['IDBtn'];
+        if(isset($_GET['IDProd'])) {
+            $IDProd = $_GET['IDProd'];
+        }
+        
         $consulta = "SELECT Nombre 
                     FROM wishlist 
                     WHERE ID_Wishlist = '$idBtn'";
@@ -43,7 +47,7 @@ include("../PhpDocs/PhpInclude.php");
         <!-- sección de listas -->
 
         <section id="contenido">
-            
+            <?php include("../ListN/ProductList.php"); ?>
         </section>
 
         <!-- fin sección de listas -->
