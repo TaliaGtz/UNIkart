@@ -29,8 +29,8 @@ include("../PhpDocs/PhpInclude.php");
         <div class="informe">
             <h3>Detalles del pedido</h3><br>
             <i class="fa-solid fa-location-dot"></i>Lugar de entrega<br>
-            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Chat/chat.php" id="chat">(Ir al chat)</a><br>
-            <i class="fa-solid fa-handshake"></i>Nombre del vendedor <a href="../Chat/chat.php" id="chat">(Ir al chat)</a><br>
+            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php" id="chat">(Ir al chat)</a><br>
+            <i class="fa-solid fa-handshake"></i>Nombre del vendedor <a href="../Mensajes/mensajes.php" id="chat">(Ir al chat)</a><br>
             <i class="fa-solid fa-barcode"></i>(CODE)<br>
             <br><hr><br>
             <p>Fecha y hora de compra</p>
