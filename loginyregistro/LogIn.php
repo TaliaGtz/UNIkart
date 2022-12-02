@@ -13,6 +13,10 @@
     $consulta =   "SELECT ID_Registro, Nombres, Apellidos, Rol, FechaNac, Email, Username, Contrasenia, ID_media
                     FROM registro
                     WHERE Username='$user'";
+    
+    /*//con esto mandamos a llamar el stored procedure con parámetros
+    $consulta  = mysqli_query($conexion,'CALL sp_LogIn(1, "'.$user.'");');*/
+
     $consulta = mysqli_query($conexion, $consulta);
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
 

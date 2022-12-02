@@ -348,11 +348,26 @@ nav ul li:hover{
     margin-bottom: 0px;
 }
 
+.form{
+    margin: 5px;
+}
+
+.video{
+    grid-row: 5/10;
+    grid-column: 1/10;
+}
+
+video{
+    width: auto;
+    height: 440px;
+    margin: 20px;
+}
+
 /* sección de comentarios */
 
 .comments{
-    grid-row: 5/-8;
-    grid-column: 2/-2;
+    grid-row: 6/-8;
+    grid-column: 9/-1;
     margin-top: 30px;
     overflow: hidden;
     /*max-height: 800px;*/
@@ -366,7 +381,7 @@ nav ul li:hover{
 
 #publicacion{
     float: left;
-    width: calc(80% - 80px);
+    width: 90%;     /*calc(80% - 80px)*/
     min-height: 50px;
     background: rgba(239, 88, 61, 0.632);
     padding: 20px;

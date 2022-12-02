@@ -78,7 +78,6 @@ include("../PhpDocs/PhpInclude.php");
                 </button>
             </div>
 
-
             <div class="description">
                 <p id="productName"><?php echo $_SESSION['Producto']; ?></p>
                 <p>Valoración: <?php echo $consulta['Valoracion']; ?></p>
@@ -104,6 +103,34 @@ include("../PhpDocs/PhpInclude.php");
                 <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
             </div>
         </section>
+
+        <div class="video">
+            <form action="../videos/save_video.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+					<label class="form">Subir Video</label><br>
+					<input type="file" name="video" class="form-control-file form"/><br>
+                    <button name="save" class="btn btn-primary form"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+				</div>
+            </form>
+            <div class="col-md-6 well">
+                <?php
+                    include("../PhpDocs/Conexion.php");
+                    
+                    $query = mysqli_query($conexion, "SELECT video_id, video_name, location FROM `video` WHERE ID_Producto = '$idBtn'") or die(mysqli_error());
+                    while($fetch = mysqli_fetch_array($query)){
+                ?>
+                <div class="col-md-12">
+                    <div class="col-md-8">
+                        <video width="600px" height="auto" controls>
+                            <source src="<?php echo $fetch['location']?>">
+                        </video>
+                    </div>
+                </div>
+                <?php
+                    }
+                ?>
+            </div>
+        </div>
 
         <!-- fin sección de Producto -->
 
