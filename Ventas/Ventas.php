@@ -30,7 +30,7 @@ include("../PhpDocs/PhpInclude.php");
             <h3>Detalles de la venta</h3><br>
             <i class="fa-solid fa-location-dot"></i>Lugar de entrega<br>
             <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Chat/chat.html" id="chat">(Ir al chat)</a><br>
-            <i class="fa-solid fa-handshake"></i>Nombre del cliente <a href="../Chat/chat.html" id="chat">(Ir al chat)*</a><br>
+            <i class="fa-solid fa-handshake"></i>Nombre del cliente <a href="../Chat/chat.html" id="chat">(Ir al chat)</a><br>
             <i class="fa-solid fa-barcode"></i>(CODE)<br>
             <br><hr><br>
             <p>Fecha y hora de la venta</p>

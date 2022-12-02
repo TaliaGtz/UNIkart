@@ -10,7 +10,7 @@
     $password   = $_POST["Pwd"];
 
     //Evaluamos si el user ingresado ya existe
-    $consulta =   "SELECT * 
+    $consulta =   "SELECT ID_Registro, Nombres, Apellidos, Rol, FechaNac, Email, Username, Contrasenia, ID_media
                     FROM registro
                     WHERE Username='$user'";
     $consulta = mysqli_query($conexion, $consulta);
