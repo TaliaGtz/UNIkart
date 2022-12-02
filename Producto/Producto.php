@@ -83,7 +83,7 @@ include("../PhpDocs/PhpInclude.php");
                 <p>Valoración: <?php echo $consulta['Valoracion']; ?></p>
                 <?php
                     if($consulta['Precio'] == 0){
-                        ?><p><a id="cotiz" href="../Chat/chatpage.php">Cotización</a></p><?php
+                        ?><p><a id="cotiz" href="../Mensajes/mensajes.php">Cotización</a></p><?php
                     }else{
                         ?><p>$<?php echo $consulta['PrecioCant']; ?></p><?php
                     }
