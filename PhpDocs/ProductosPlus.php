@@ -4,7 +4,7 @@
     
     $_SESSION['Producto']="";
     $consulta = "SELECT ID_Producto, Nombre, Precio, PrecioCant 
-                FROM productos";
+                FROM mostVisited_products";
     $ejecutar = $conexion->query($consulta);
     $j = 3;
     for($i = 0; $i < $j; $i++){

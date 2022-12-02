@@ -28,13 +28,21 @@ include("../PhpDocs/PhpInclude.php");
 
     <?php 
         $idBtn = $_GET['IDBtn'];
-        $consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion  
+        $consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
                     FROM productos 
                     WHERE ID_Producto = '$idBtn'";
         $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
         $_SESSION['Producto'] = $consulta['Nombre'];
         $_SESSION['ID_Producto'] = $idBtn;
+
+        $Views = $consulta['Views'];
+        $Views = $Views + 1;
+        $query = "UPDATE productos
+                SET Views = '$Views'
+                WHERE ID_Producto = '$idBtn'";
+        mysqli_query($conexion, $query);
+        
     ?>
 
     <section class="grid">
