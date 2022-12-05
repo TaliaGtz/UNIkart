@@ -46,13 +46,14 @@ include("../PhpDocs/PhpInclude.php");
 
         <!-- sección de listas -->
         <section id="contenido">
-            <?php include("../Producto/ProductList.php"); ?>
+            <div id="contCart"><?php include("../Producto/ProductList.php"); ?></div>
+            
+            
+        </section>
             <div class="total">
                 <hr>
                 <strong><p>Total: $<?php include("../Producto/pay.php"); ?> </p></strong>
             </div>
-        </section>
-            
         
         <!-- fin sección de listas -->
 

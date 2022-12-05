@@ -31,7 +31,8 @@
                     '$IDWL',
                     '',
                     '$ID_KartList',
-                    '$User'
+                    '$User',
+                    ''
                 )";
 
         //Guardamos el producto

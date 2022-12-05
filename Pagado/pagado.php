@@ -34,7 +34,7 @@ include("../PhpDocs/PhpInclude.php");
                         <br>
                         <p>Una vez entregado tu pedido, favor de proporcionar a tu repartidor el siguiente código:</p>
                         <br>
-                        <h1 class="title">(CODE)</h1>
+                        <h1 class="title"> <?php include("../Pagado/CODE.php"); //(CODE)?></h1>
                         <br>
                         <p class="title">(También puedes consultarlo en tu consulta del pedido)</p>
                         <br>

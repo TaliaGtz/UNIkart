@@ -426,11 +426,15 @@ h1{
     background-color: floralwhite;
 }
 
+.contCart{
+    position: relative;
+}
+
 .total{
     width: 90%;
     margin: 20px;
     position: absolute;
-    transform: translateY(-70px);
+    transform: translateY(670px);
 }
 .total p{
     font-size: 30px;

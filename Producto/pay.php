@@ -21,5 +21,6 @@
         $total = $total + $fila['PrecioCant'];
     endwhile; 
     
+    $_SESSION['Total2Pay'] = $total;
     echo $total;
 ?>
