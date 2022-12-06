@@ -14,7 +14,7 @@
                         FROM carrito K
                         INNER JOIN productoxkart PK ON K.ID_KartList = PK.ID_Cart
                         INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
-                        WHERE K.ID_KartList = '$IDWL'";
+                        WHERE K.ID_KartList = '$IDWL' AND PK.status = '0'";
     $ejecutar = $conexion->query($consultaWLProd);
     
     while($fila = $ejecutar->fetch_array()):

@@ -6,6 +6,12 @@
    // } 
     $IDProd = $_GET['IDProd'];
     $User = "$_SESSION[user]";
+    if(isset($_SESSION['Entrega'])) {
+        $Entrega = "$_SESSION[Entrega]";
+    }else{
+        $Entrega = rand(10000, 65535);
+        $_SESSION['Entrega'] = $Entrega;
+    }
     
     //Queremos el ID del usuario
     $consulta =   "SELECT ID_Registro 
@@ -32,6 +38,7 @@
                     '',
                     '$ID_KartList',
                     '$User',
+                    '',
                     ''
                 )";
 
@@ -40,7 +47,8 @@
                 VALUES(
                     '$ID_KartList',
                     '1',
-                    '$IDProd'
+                    '$IDProd',
+                    '$Entrega'
                 )";
        
        if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
@@ -50,7 +58,7 @@
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
     }else{
-
+        
         $consultaWL =   "SELECT ID_Carrito, ID_KartList
                         FROM carrito
                         WHERE ID_Carrito='$IDWL'";
@@ -63,7 +71,9 @@
                 VALUES(
                     '$ID_KartList',
                     '1',
-                    '$IDProd'
+                    '',
+                    '$IDProd',
+                    '$Entrega'
                 )";
 
         if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos

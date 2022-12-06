@@ -31,7 +31,27 @@
                                 WHERE ID_User='$user'";
                 $consultaWL = mysqli_query($conexion, $consultaWL);
                 $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
-                $ID_KartList = $consultaWL['ID_KartList'];
+                if($consultaWL){
+                    $ID_KartList = $consultaWL['ID_KartList'];
+                }else{
+                    $ID_KartList = rand(10000, 65535);
+                    $sql1 = "INSERT INTO carrito 
+                            VALUES(
+                                '$user',
+                                '',
+                                '$ID_KartList',
+                                '$user',
+                                '', 
+                                ''
+                            )";
+
+                    if(mysqli_query($conexion, $sql1)){  //Ejecutamos el query y verificamos si se guardaron los datos
+                        //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
+                    }else{
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+                    }
+                }
+                
             ?>
             <a href="../Producto/ListN.php?IDBtn=<?php echo $ID_KartList?>"><button id="cart" class="cart"><i class="fa-solid fa-cart-shopping"></i></button></a>
             <button id="bars" class="nav-toggle"><i id="iBars" class="fas fa-bars"></i></button>
