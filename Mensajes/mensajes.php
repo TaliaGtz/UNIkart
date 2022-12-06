@@ -42,9 +42,15 @@ include("../PhpDocs/PhpInclude.php");
 
     <?php require "../PhpDocs/Nav.php"; ?>
 
+    <?php 
+        if(isset($_GET['Prod'])) {
+            $Prod = $_GET['Prod'];
+        }
+    ?>
+
     <div id="contenedor">
         <div id="caja-chat">
-            <h3>Cotización</h3>
+            <h3>Cotización <?php if(isset($Prod)) { echo "- " . $Prod; }?></h3>
 
             <div id="chat">
             </div>
@@ -75,9 +81,9 @@ include("../PhpDocs/PhpInclude.php");
     </div>
 
     <div class="trato">
-        <form>
+        <form method="POST" action="../Mensajes/trato.php">
             <strong><label>Cerrar con: </label></strong><br>
-            <label>$</label><input type="number" class="num"><input id="send" type="submit" name="enviar" value="Aceptar"></input>
+            <label>$</label><input type="number" class="num" name="trato" step=".01"><input id="send" type="submit" value="Aceptar"></input>
         </form>
     </div>
 

@@ -21,7 +21,7 @@
         <h4 style="color: #2c1507;"><?php echo $fila['Nombre'] ?></h4>
         <?php
             if($fila['Precio'] == 0){
-                ?><p><a id="cotiz" href="../Mensajes/mensajes.php">Cotización</a></p><?php
+                ?><p><a id="cotiz" href="../Mensajes/mensajes.php?Prod=<?php echo $fila['Nombre'] ?>">Cotización</a></p><?php
             }else{
                 ?><p>$<?php echo $fila['PrecioCant']; ?></p><?php
             }
