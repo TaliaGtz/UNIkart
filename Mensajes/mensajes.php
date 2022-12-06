@@ -43,8 +43,17 @@ include("../PhpDocs/PhpInclude.php");
     <?php require "../PhpDocs/Nav.php"; ?>
 
     <?php 
-        if(isset($_GET['Prod'])) {
-            $Prod = $_GET['Prod'];
+        if(isset($_GET['IDProd'])) {
+            $IDProd = $_GET['IDProd'];
+
+            $consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
+                        FROM productos 
+                        WHERE ID_Producto = '$IDProd'";
+            $consulta = mysqli_query($conexion, $consulta);
+            $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+            $_SESSION['Prod'] = $consulta['Nombre'];
+            $Prod = $_SESSION['Prod'];
+            $_SESSION['IDProd'] = $IDProd;
         }
     ?>
 

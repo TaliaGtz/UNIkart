@@ -47,6 +47,7 @@
                 VALUES(
                     '$ID_KartList',
                     '1',
+                    '0',
                     '$IDProd',
                     '$Entrega'
                 )";
@@ -71,7 +72,7 @@
                 VALUES(
                     '$ID_KartList',
                     '1',
-                    '',
+                    '0',
                     '$IDProd',
                     '$Entrega'
                 )";

@@ -2,6 +2,15 @@
 
     include("../PhpDocs/Conexion.php");
 
+    $User = "$_SESSION[user]";
+    //Queremos el ID del usuario
+    $consulta =   "SELECT ID_Registro 
+                FROM registro
+                WHERE Username = '$User'";
+    $consulta = mysqli_query($conexion, $consulta);
+    $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+    $User = $consulta['ID_Registro'];
+
     $IDNeg = $_SESSION['IDNegocio'];
     $consulta = "SELECT ID_Producto, Nombre 
                 FROM productos 
@@ -23,7 +32,7 @@
                     <?php //include("../Producto/WLists.php"); ?>
                 </ul>
             </!--div-->
-            <a href="#" onclick="addCart()"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
+            <a href="../Producto/AddProduct.php?IDBtn=<?php echo $User?>&IDProd=<?php echo $fila['ID_Producto'];?>"><i id="addCart" class="fa-solid fa-cart-plus"></i></a>
         </div>
         </a>
     </div>

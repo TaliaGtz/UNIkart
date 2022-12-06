@@ -28,7 +28,7 @@
             <p><?php echo $fila['Descripcion'] ?></p>
             <?php
             if($fila['Precio'] == 0){
-                ?><p><a id="cotiz" href="../Chat/chatpage.php">Cotización</a></p><?php
+                ?><label><a id="cotiz" href="../Mensajes/mensajes.php?IDProd=<?php echo $fila['ID_Producto']; ?>">Cotización </a></label><label>($<?php echo $fila['PrecioCant']; ?>)</label><?php
             }else{
                 ?><p>$<?php echo $fila['PrecioCant']; ?></p><?php
             }
