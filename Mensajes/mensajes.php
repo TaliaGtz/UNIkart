@@ -61,7 +61,8 @@ include("../PhpDocs/PhpInclude.php");
                 $mensaje = $_POST['mensaje'];
                 $mensaje = base64_encode($mensaje);
 
-                $consulta = "INSERT INTO chat(Usuario, Mensaje) VALUES('$nombre', '$mensaje')";
+                $consulta = "INSERT INTO chat (Usuario, Mensaje) 
+                            VALUES('$nombre', '$mensaje')";
                 $ejecutar = $conexion->query($consulta);
 
                 if($ejecutar){
@@ -71,6 +72,13 @@ include("../PhpDocs/PhpInclude.php");
                 }
             }
         ?>
+    </div>
+
+    <div class="trato">
+        <form>
+            <strong><label>Cerrar con: </label></strong><br>
+            <label>$</label><input type="number" class="num"><input id="send" type="submit" name="enviar" value="Aceptar"></input>
+        </form>
     </div>
 
 

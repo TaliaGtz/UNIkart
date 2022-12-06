@@ -77,3 +77,50 @@ textarea{
     border-radius: 5px;
     padding-left: 5px;
 }
+
+.trato{
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    background-color: rgba(210, 224, 236, 0.792);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.527);
+    border-radius: 12px;
+    /*margin: 0 auto;
+    height: fit-content;*/
+    width: fit-content;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
+}
+.num{
+    outline: none;
+    border: none;
+    border-bottom: 2px solid crimson;
+    background-color: transparent;
+    width: 90px;
+    padding: 5px;
+}
+
+#send{
+    width: 90px;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/*Responsive*/
+@media screen and (max-width: 400px){
+    .trato{
+        transform: translateY(15px);
+    }
+}
