@@ -1,10 +1,10 @@
 <?php
 
-    include("../PhpDocs/Conexion.php");
+    include("../PhpDocs/PhpInclude.php");
     include("../PhpDocs/Fecha.php");
 
-    /*$userName = $_SESSION['user'];
-    $_SESSION['ProdSel'] = $idBtn;
+    $userName = $_SESSION['user'];
+    //$_SESSION['ProdSel'] = $idBtn;
 
     //Queremos el ID del usuario
     $consulta1 =   "SELECT ID_Registro 
@@ -12,10 +12,11 @@
                     WHERE Username='$userName'";
     $consulta1 = mysqli_query($conexion, $consulta1);
     $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
-    $IDUser    = $consulta1['ID_Registro'];*/
+    $IDUser    = $consulta1['ID_Registro'];
 
     $consulta = "SELECT ID_Entrega, Fecha 
                 FROM entregas
+                WHERE ID_User = '$IDUser'
                 ORDER BY Fecha DESC";
     $ejecutar = $conexion->query($consulta);
 
