@@ -57,7 +57,7 @@ include("../PhpDocs/PhpInclude.php");
         }
         if(isset($_GET['ID'])) {
             $Rol = $_GET['ID'];
-
+            $CODE = $_GET['COD'];
             /*$consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
                         FROM productos 
                         WHERE ID_Producto = '$IDProd'";
@@ -113,13 +113,25 @@ include("../PhpDocs/PhpInclude.php");
         ?>
     </div>
 
-    <div class="trato">
-        <form method="POST" action="../Mensajes/trato.php">
-            <strong><label>Cerrar con: </label></strong><br>
-            <label>$</label><input type="number" class="num" name="trato" step=".01"><input id="send" type="submit" value="Aceptar"></input>
-        </form>
-    </div>
-
+    <?php 
+    if(isset($Prod)) { ?>
+        <div class="trato">
+            <form method="POST" action="../Mensajes/trato.php">
+                <strong><label>Cerrar con: </label></strong><br>
+                <label>$</label><input type="number" class="num" name="trato" step=".01"><input id="send" type="submit" value="Aceptar"></input>
+            </form>
+        </div>
+    <?php } ?>
+    
+    <?php 
+    if(isset($Rol)) { ?>
+        <div class="tratoL">
+            <form method="POST" action="../Mensajes/trato.php?ID=<?php echo $Rol; ?>&COD=<?php echo $CODE; ?>">
+                <strong><label>Lugar de entrega: </label></strong><br>
+                <input type="text" class="lugar" name="tratoLugar"></input><input id="send" type="submit" value="Aceptar"></input>
+            </form>
+        </div>
+    <?php } ?>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="mensajes.js"></script>

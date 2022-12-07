@@ -38,7 +38,12 @@ include("../PhpDocs/PhpInclude.php");
 
     <div class="areas">
         <div class="bar">
-        <h2>Historial de pedidos</h2>
+            <h2>Historial de pedidos</h2>
+            <a href="../VentasG/VentasG.php"><button class="Res">De hoy</button></a>
+            <a href="../VentasG/VentasG.php"><button class="Res">De esta semana</button></a>
+            <a href="../VentasG/VentasG.php"><button class="Res">De este mes</button></a>
+            <a href="../VentasG/VentasG.php"><button class="Res">De este año</button></a>
+            <a href="../VentasG/VentasG.php"><button class="Res">Todos</button></a>
         </div>
         <div id="categorias" class="categorias">
             

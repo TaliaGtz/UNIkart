@@ -69,6 +69,28 @@ h2{
     max-height: 100vh;
 }
 
+.stars{
+    float: left;
+}
+
+.valoracion input{
+    display: none;
+}
+
+.valoracion label{
+    font-size: 30px;
+    color:#444;
+    float: right;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+div.valoracion label:hover,
+div.valoracion label:hover ~ label,
+div.valoracion input:checked ~ label {
+    color: #fd4;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
 /*Responsive*/
 @media screen and (max-width: 920px){
     .mapa{

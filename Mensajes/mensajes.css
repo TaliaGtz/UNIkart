@@ -92,6 +92,20 @@ textarea{
     padding-bottom: 10px;
 }
 
+.tratoL{
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    background-color: rgba(210, 224, 236, 0.792);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.527);
+    border-radius: 12px;
+    /*margin: 0 auto;
+    height: fit-content;*/
+    width: 80%;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -109,6 +123,15 @@ input[type=number]{
     padding: 5px;
 }
 
+.lugar{
+    outline: none;
+    border: none;
+    border-bottom: 2px solid crimson;
+    background-color: transparent;
+    width: 85%;
+    padding: 5px;
+}
+
 #send{
     width: 90px;
     height: 40px;
@@ -116,11 +139,26 @@ input[type=number]{
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
+    float: right;
 }
 
 /*Responsive*/
+@media screen and (max-width: 883px){
+    .lugar{
+        width: 100%;
+    }
+    #send{
+        margin-top: 10px;
+    }
+}
 @media screen and (max-width: 400px){
     .trato{
         transform: translateY(15px);
+    }
+    .tratoL{
+        transform: translateY(15px);
+    }
+    #send{
+        margin-top: 10px;
     }
 }

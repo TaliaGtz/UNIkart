@@ -104,3 +104,14 @@ h2{
 #view:hover{
     color: #67432e;
 }
+
+.Res{
+    background-color: tomato;
+    padding: 10px;
+    border: 0px solid transparent;
+    border-radius: 25px;
+    color: aliceblue;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+}

@@ -4,6 +4,6 @@ function formatearFecha($fecha){
 }
 
 function formatearFechaEntregas($fecha){
-    return date('d/M/Y', strtotime($fecha));
+    return date('d/M/Y g:i a', strtotime($fecha));
 }
 ?>
