@@ -1,5 +1,9 @@
 <?php
 function formatearFecha($fecha){
-    return date('g:i a', strtotime($fecha));
+    return Date('g:i a', strtotime($fecha));
+}
+
+function formatearFechaEntregas($fecha){
+    return date('d/M/Y', strtotime($fecha));
 }
 ?>

@@ -55,11 +55,35 @@ include("../PhpDocs/PhpInclude.php");
             $Prod = $_SESSION['Prod'];
             $_SESSION['IDProd'] = $IDProd;
         }
+        if(isset($_GET['ID'])) {
+            $Rol = $_GET['ID'];
+
+            /*$consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
+                        FROM productos 
+                        WHERE ID_Producto = '$IDProd'";
+            $consulta = mysqli_query($conexion, $consulta);
+            $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+            $_SESSION['Prod'] = $consulta['Nombre'];
+            $Prod = $_SESSION['Prod'];
+            $_SESSION['IDProd'] = $IDProd;*/
+        }
     ?>
 
     <div id="contenedor">
         <div id="caja-chat">
-            <h3>Cotización <?php if(isset($Prod)) { echo "- " . $Prod; }?></h3>
+            <h3>Chat <?php if(isset($Prod)) { echo "- " . $Prod; }?>
+            <?php if(isset($Rol)) { 
+                if($Rol == '1'){
+                    echo "- Repartidor"; 
+                }
+                if($Rol == '2'){
+                    echo "- Vendedor"; 
+                }
+                if($Rol == '3'){
+                    echo "- Cliente"; 
+                }
+                
+                }?></h3>
 
             <div id="chat">
             </div>

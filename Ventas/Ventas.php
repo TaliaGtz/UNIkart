@@ -29,8 +29,8 @@ include("../PhpDocs/PhpInclude.php");
         <div class="informe">
             <h3>Detalles de la venta</h3><br>
             <i class="fa-solid fa-location-dot"></i>Lugar de entrega<br>
-            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php" id="chat">(Ir al chat)</a><br>
-            <i class="fa-solid fa-handshake"></i>Nombre del cliente <a href="../Mensajes/mensajes.php" id="chat">(Ir al chat)</a><br>
+            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php?ID=1" id="chat">(Ir al chat)</a><br>
+            <i class="fa-solid fa-handshake"></i>Nombre del cliente <a href="../Mensajes/mensajes.php?ID=3" id="chat">(Ir al chat)</a><br>
             <i class="fa-solid fa-barcode"></i>(CODE)<br>
             <br><hr><br>
             <p>Fecha y hora de la venta</p>
@@ -48,7 +48,7 @@ include("../PhpDocs/PhpInclude.php");
             <h3>Transacciones</h3><br>
             <p>(Espacio de Paypal)</p>
         </div>
-        
+        <?php include("../PhpDocs/Mapas.php"); ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

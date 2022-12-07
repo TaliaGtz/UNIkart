@@ -18,47 +18,30 @@ include("../PhpDocs/PhpInclude.php");
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
+    <script type="text/javascript">
+        function ajax(){
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function(){
+                if(req.readyState == 4 && req.status ==  200){
+                    document.getElementById("categorias").innerHTML = req.responseText;
+                }
+            }
+            req.open('GET', '../ConsultaPedidos/AddPedC.php', true);
+            req.send();
+        }
+
+        setInterval(function(){ajax();}, 1000);    //refresca la página automáticamente
+    </script>
 </head>
-<body>
+<body onload="ajax();">
     <?php require "../PhpDocs/Nav.php"; ?>
 
     <div class="areas">
         <div class="bar">
         <h2>Historial de pedidos</h2>
         </div>
-        <div class="categorias">
-            <a href="../Pedido/Pedido.php" class="card"><div>
-                <div>
-                    <img class="text" src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
-                    <h3 class="text">Pedido 1</h3>
-                    <i id="view" class="fa-solid fa-circle-chevron-right"></i>
-                </div>
-                </div>
-            </a>
-            <a href="../Pedido/Pedido.php" class="card"><div>
-                <div class="text">
-                    <img src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
-                    <h3>Pedido 2</h3>
-                    <i id="view" class="fa-solid fa-circle-chevron-right"></i>
-                </div>
-                </div>
-            </a>
-            <a href="../Pedido/Pedido.php" class="card"><div>
-                <div class="text">
-                    <img src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
-                    <h3>Pedido 3</h3>
-                    <i id="view" class="fa-solid fa-circle-chevron-right"></i>
-                </div>
-                </div>
-            </a>
-            <a href="../Pedido/Pedido.php" class="card"><div>
-                <div class="text">
-                    <img src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
-                    <h3>Pedido 4</h3>
-                    <i id="view" class="fa-solid fa-circle-chevron-right"></i>
-                </div>
-                </div>
-            </a>
+        <div id="categorias" class="categorias">
+            
         </div>
     </div>
 
