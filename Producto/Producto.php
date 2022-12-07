@@ -63,18 +63,23 @@ include("../PhpDocs/PhpInclude.php");
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="../ExtraDocs/chilaquiles1.jpg" class="d-block w-100 productImg" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../ExtraDocs/chilaquiles2.jpg" class="d-block w-100 productImg" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../ExtraDocs/chilaquiles3.jpeg" class="d-block w-100 productImg" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="../ExtraDocs/chilaquiles4.jpg" class="d-block w-100 productImg" alt="...">
-                  </div>
+                    <div class="carousel-item active">
+                        <img src="../ExtraDocs/chilaquiles1.jpg" class="d-block w-100 productImg" alt="...">
+                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
+                        
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../ExtraDocs/chilaquiles2.jpg" class="d-block w-100 productImg" alt="...">
+                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../ExtraDocs/chilaquiles3.jpeg" class="d-block w-100 productImg" alt="...">
+                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../ExtraDocs/chilaquiles4.jpg" class="d-block w-100 productImg" alt="...">
+                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
+                    </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -87,7 +92,6 @@ include("../PhpDocs/PhpInclude.php");
             </div>
 
             <div class="description">
-                <p id="productName"><?php echo $_SESSION['Producto']; ?></p>
                 <p>Valoración: <?php echo $consulta['Valoracion']; ?></p>
                 <?php
                     if($consulta['Precio'] == 0){
