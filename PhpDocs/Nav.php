@@ -47,7 +47,7 @@
         <div class="empty"></div>
         <ul id="navList" class="nav-menu" >
             <a href="../Home/Home.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Home</li></a>
-            <a href="../UserPerfil/UserPerfil.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
+            <a href="../UserPerfil/UserPerfil.php?IDP=<?php echo $_SESSION['ID_Registro']; ?>" class="nav-menu-link nav-link"><li class="nav-menu-item">Mi Perfil</li></a>
             <a href="../WishList/WishList.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Wishlists</li></a>
             <a href="../ConsultaPedidos/PedC.php" class="nav-menu-link nav-link"><li class="nav-menu-item">Consulta de pedidos</li></a>
             <?php if ($Rol == '2' || $Rol == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 

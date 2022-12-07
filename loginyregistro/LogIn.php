@@ -25,6 +25,7 @@
         //echo "introduje:<br>" . base64_decode($pwdHash) . "<br>en sql:<br>" . base64_decode($consulta['Password']) . "<br>";
         if(base64_decode($pwdHash) === base64_decode($consulta['Contrasenia'])){   //password_verify($pwdHash, $consulta['Password'])
             $_SESSION['login']      = true;
+            $_SESSION['ID_Registro']=$consulta['ID_Registro'];
             $_SESSION['nombres']    =$consulta['Nombres'];
             $_SESSION['apellidos']  =$consulta['Apellidos'];
             $_SESSION['rol']        =$consulta['Rol']; 

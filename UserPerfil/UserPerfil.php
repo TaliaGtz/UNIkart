@@ -30,6 +30,22 @@ include("../PhpDocs/PhpInclude.php");
     
     <?php require "../PhpDocs/Nav.php"; ?>
 
+    <?php 
+        if(isset($_GET['IDP'])) {
+            $IDP = $_GET['IDP'];
+
+            $consulta = "SELECT Username, ID_media, Rol, Email
+                        FROM registro
+                        WHERE ID_Registro = '$IDP'";
+            $consulta = mysqli_query($conexion, $consulta);
+            $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+            $IDNom = $consulta['Username'];
+            $_SESSION['ID_media'] = $consulta['ID_media'];
+            $Rol = $consulta['Rol'];
+            $Email = $consulta['Email'];
+        }
+    ?>
+
     <section class="grid">
         <div class="square">
         <?php
@@ -43,8 +59,6 @@ include("../PhpDocs/PhpInclude.php");
                     $imagenSubida = fopen($_FILES['archivo']['tmp_name'], 'r');
                     $binImagen = fread($imagenSubida, $sizeArchivo);
                     $binImagen = mysqli_escape_string($conexion, $binImagen);
-
-                    $ID_media = "$_SESSION[ID_media]";
 
                     $query = "UPDATE media
                             SET nombre = '$now', 
@@ -67,62 +81,71 @@ include("../PhpDocs/PhpInclude.php");
             <!-- <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file"> -->
             <img src="data:<?php echo $query['tipo'] ?>;base64,<?php echo base64_encode($query['imagen']); ?>" id="image" class="file">
         </div>    
-            
-        <form runat="server" method="POST" class="image" enctype="multipart/form-data">
-            <label class="label" for="archivo">Cambiar imagen</label>
-            <input type="file" id="userPic" name="archivo"/>  <!--disabled-->
-            <button type="submit" name="guardar" id="sendImg">Enviar</button>
-        </form>
+        
+        <?php
+            if($_SESSION['user'] == $IDNom){ ?>
+                <form runat="server" method="POST" class="image" enctype="multipart/form-data">
+                    <label class="label" for="archivo">Cambiar imagen</label>
+                    <input type="file" id="userPic" name="archivo"/>  <!--disabled-->
+                    <button type="submit" name="guardar" id="sendImg">Enviar</button>
+                </form>
+            <?php }else{ ?>
+                <br>
+            <?php }
+        ?>
              
         <ul class="userInfo">
             <br>
-            <li id="username"><?php echo "$_SESSION[user]" ?></li>
+            <li id="username"><?php echo $IDNom ?></li>
             
-            <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <?php if ($Rol == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin  ?>
                 <label>Comprador</label>
-                <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
-                
-                <li>Cuenta: privada
-                <!-- Rounded switch -->
-                <label for="toggle" class="switch">
-                    <input type="checkbox" id="toggle" onclick="validatePriv()">
-                    <span for="toggle" class="slider round"></span>
-                </label> pública</li>
+                <li class="no-private"><?php echo $Email ?></li>
+                <?php if($_SESSION['user'] == $IDNom){ ?>                
+                    <li>Cuenta: privada
+                    <!-- Rounded switch -->
+                    <label for="toggle" class="switch">
+                        <input type="checkbox" id="toggle" onclick="validatePriv()">
+                        <span for="toggle" class="slider round"></span>
+                    </label> pública</li>
+                <?php } ?>
             <?php } ?>
 
-            <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <?php if ($Rol == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
                 <label>Vendedor</label>
                 <li class="vendedor">(Vendedor) Negocio, <a href="../Menu/Menu.php">Menú</a></li>
-                <li class="no-private"><?php echo "$_SESSION[correo]" ?></li>
+                <li class="no-private"><?php echo $Email ?></li>
             <?php } ?>
 
-            <?php if ($_SESSION['rol'] == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+            <?php if ($Rol == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
                 <label>Administrador</label>
-                <li><?php echo "$_SESSION[correo]" ?></li>
+                <li><?php echo $Email ?></li>
             <?php } ?>
 
-            <?php if ($_SESSION['rol'] != '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
-                <br>
-                <a class="a" href="../Roles/Roles.php">¿Quieres una cuenta de vendedor/repartidor?</a>
+            <?php if ($Rol != '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+                <?php if($_SESSION['user'] == $IDNom){ ?> 
+                    <br>
+                    <a class="a" href="../Roles/Roles.php">¿Quieres una cuenta de vendedor/repartidor?</a>
+                <?php } ?>
             <?php } ?>
         </ul>
         </div>
                     
-        <?php if ($_SESSION['rol'] == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+        <?php if ($Rol == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
                 <p class="private">Esta cuenta es privada</p><br>
                 <p class="no-private">Wishlists</p><br>
             </div>
         <?php } ?>
 
-        <?php if ($_SESSION['rol'] == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+        <?php if ($Rol == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
                 <p class="no-private">Wishlists</p><br>
                 <p class="vendedor">Productos autorizados por el admin (con existencias)</p><br>
             </div>
         <?php } ?>
         
-        <?php if ($_SESSION['rol'] == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
+        <?php if ($Rol == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
                 <p class="no-private">Wishlists</p><br>
                 <p class="admin">Productos autorizados por mí</p><br>
