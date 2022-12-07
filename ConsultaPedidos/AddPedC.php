@@ -14,7 +14,7 @@
     $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
     $IDUser    = $consulta1['ID_Registro'];*/
 
-    $consulta = "SELECT Fecha 
+    $consulta = "SELECT ID_Entrega, Fecha 
                 FROM entregas
                 ";
     $ejecutar = $conexion->query($consulta);
@@ -23,7 +23,7 @@
         
 ?>
 
-    <a href="../Pedido/Pedido.php" class="card"><div>
+    <a href="../Pedido/Pedido.php?IDEnt=<?php echo ($fila['ID_Entrega']); ?>" class="card"><div>
         <div>
             <img class="text" src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
             <h3 class="text"><?php echo formatearFechaEntregas($fila['Fecha']); ?></h3>
