@@ -16,7 +16,7 @@
 
     $consulta = "SELECT ID_Entrega, Fecha 
                 FROM entregas
-                ";
+                ORDER BY Fecha DESC";
     $ejecutar = $conexion->query($consulta);
 
     while($fila = $ejecutar->fetch_array()):

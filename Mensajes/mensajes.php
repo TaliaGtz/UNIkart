@@ -89,11 +89,22 @@ include("../PhpDocs/PhpInclude.php");
             </div>
 
         </div>
-        <form method="POST" action="../Mensajes/mensajes.php">
-            <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
-            <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
-            <input type="submit" name="enviar" value="Enviar"></input>
-        </form>
+        <?php
+            if(isset($Prod)) { ?>
+                <form method="POST" action="../Mensajes/mensajes.php?IDProd=<?php echo $IDProd ?>">
+                    <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
+                    <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
+                    <input type="submit" name="enviar" value="Enviar"></input>
+                </form>
+            <?php }
+            if(isset($Rol)) { ?>
+                <form method="POST" action="../Mensajes/mensajes.php?ID=<?php echo $Rol ?>&COD=<?php echo $CODE?>">
+                    <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
+                    <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
+                    <input type="submit" name="enviar" value="Enviar"></input>
+                </form>
+            <?php }
+        ?>
         <?php
             if(isset($_POST['enviar'])){
                 $nombre = $_SESSION['user'];  //$_POST['nombre'];
@@ -116,7 +127,7 @@ include("../PhpDocs/PhpInclude.php");
     <?php 
     if(isset($Prod)) { ?>
         <div class="trato">
-            <form method="POST" action="../Mensajes/trato.php">
+            <form method="POST" action="../Mensajes/trato.php?IDProd=<?php echo $Prod; ?>">
                 <strong><label>Cerrar con: </label></strong><br>
                 <label>$</label><input type="number" class="num" name="trato" step=".01"><input id="send" type="submit" value="Aceptar"></input>
             </form>
