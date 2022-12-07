@@ -91,7 +91,7 @@ include("../PhpDocs/Fecha.php");
             </div>
             <!--p>(Calificación)</p-->
             <br><hr><br>
-            <h3>Costo total: $<?php echo $consulta['Total']; ?></h3><br>
+            <h3>Costo total</h3><br>
             <p>Costo de los productos: $<?php echo $consulta['Total']; ?></p>
             <p>Propina</p>
             <p>Tarifa de servicio</p>
