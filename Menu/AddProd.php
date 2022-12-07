@@ -38,6 +38,7 @@
             '$precioCant',
             '$disp      ',
             '$desc      ',
+            '0          ',
             '$ID_Cat    ',
             '$ID_Com    '
         )";

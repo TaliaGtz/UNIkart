@@ -5,7 +5,7 @@
 
 <p>Precio: </p>
 <input type="radio" name="precio" class="precio" value="1"><input type="number" name="money" class="precio" placeholder="00.00">
-<label><input type="radio" name="precio" class="precio" value="0">A cotizar</label><br><br>
+<input type="radio" name="precio" class="precio" value="0">A cotizar<br><br>
 
 <label>Categoría(s):</label><br><br>
 <?php

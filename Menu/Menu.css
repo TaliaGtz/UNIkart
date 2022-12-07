@@ -197,4 +197,6 @@ form{
     min-height: 50vh;
 }
 
-
+.newModal { 
+    height: 800px;
+}

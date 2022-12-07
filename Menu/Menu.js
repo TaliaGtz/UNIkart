@@ -126,7 +126,7 @@ function Plus(titulo, contenido, idioma) {
     + contenido +'</form><div id="modButtons"><a id="mclose" href="#">'
     + '<i id="close" class="fa-solid fa-circle-xmark"></i>' +'</a>' 
     + boton + '</div></div></div>';
-    document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 200 + 'px';
+    document.querySelector(".newModal").style.height = document.getElementById("mc").offsetHeight + 400 + 'px';
     document.getElementById('mclose').onclick = function(){ 
         borrarModal('modal'); 
     };
