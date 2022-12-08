@@ -75,7 +75,9 @@
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             mysqli_query($conexion, $sql2);
             echo "alert('El negocio se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Category/category.php?IDBtn=$IDBtn");
+            $url = "Category/category.php?IDBtn=$IDBtn";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Category/category.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
@@ -88,7 +90,9 @@
         )";
         if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('El negocio se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Category/category.php?IDBtn=$IDBtn");
+            $url = "Category/category.php?IDBtn=$IDBtn";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Category/category.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

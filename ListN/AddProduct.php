@@ -20,8 +20,10 @@
                     '$IDWL'
                 )";
        
-       if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
-            header("Location: http://localhost:8080/unikart2/ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd");
+        if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
+            $url = "ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
@@ -42,13 +44,17 @@
                     )";
 
             if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
-                header("Location: http://localhost:8080/unikart2/ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd");
+                $url = "ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd";
+                include("../PhpDocs/header.php");
+                //header("Location: http://localhost:8080/unikart2/ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd");
             }else{
                 echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
             }
         }else{
             //echo "El producto ya existe en la lista";
-            header("Location: http://localhost:8080/unikart2/ListN/ListN.php?IDBtn=$IDWL");
+            $url = "ListN/ListN.php?IDBtn=$IDWL";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/ListN/ListN.php?IDBtn=$IDWL");
         }
         
     }

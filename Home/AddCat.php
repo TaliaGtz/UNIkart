@@ -33,7 +33,9 @@
        
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('La categoría se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Home/Home.php");
+            $url = "Home/Home.php";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Home/Home.php");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

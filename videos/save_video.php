@@ -36,7 +36,9 @@
 											VALUES('', '$name', '$location', '$IDBtn')") or die(mysqli_error());
 						//echo "<script>alert('Video Uploaded')</script>";
 						//echo "<script>window.location = '../Producto/Producto.php?IDBtn='.$IDBtn.'</script>";
-						header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
+						$url = "Producto/Producto.php?IDBtn=$IDBtn";
+            			include("../PhpDocs/header.php");
+						//header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
 					}else{
 						unlink($Ruta);
 
@@ -46,7 +48,9 @@
 
 						if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
 							//echo "alert('Tu cuenta ha sido creada')";
-							header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
+							$url = "Producto/Producto.php?IDBtn=$IDBtn";
+            				include("../PhpDocs/header.php");
+							//header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
 						}else{
 							echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
 						}

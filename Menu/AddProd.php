@@ -76,7 +76,9 @@
 
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('El producto se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
+            $url = "Menu/Menu.php?IDBtn=$IDBtn";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
@@ -111,7 +113,9 @@
 
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('El producto se ha añadido')";
-            header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
+            $url = "Menu/Menu.php?IDBtn=$IDBtn";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

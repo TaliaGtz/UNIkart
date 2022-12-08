@@ -54,7 +54,9 @@
        
        if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
             mysqli_query($conexion, $sql1);
-            header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
+            $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
@@ -78,12 +80,16 @@
                 )";
 
         if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
-            header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
+            $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
 
-        header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
+        $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";
+        include("../PhpDocs/header.php");
+        //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
         /*//Buscamos si el producto existe en esa lista de ese usuario
         $consultaWL =   "SELECT ID_Wishlist
                         FROM productoxwl

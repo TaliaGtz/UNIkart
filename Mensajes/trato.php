@@ -12,7 +12,9 @@
                 WHERE ID_Producto = '$IDProd'";
         mysqli_query($conexion, $query);
 
-        header("Location: http://localhost:8080/unikart2/Mensajes/mensajes.php?IDProd=$IDProd");
+        $url = "Mensajes/mensajes.php?IDProd=$IDProd";
+        include("../PhpDocs/header.php");
+        //header("Location: http://localhost:8080/unikart2/Mensajes/mensajes.php?IDProd=$IDProd");
     }
 
 
@@ -26,7 +28,9 @@
                 WHERE CODE = '$CODE'";
         mysqli_query($conexion, $query);
 
-        header("Location: http://localhost:8080/unikart2/Mensajes/mensajes.php?Rol=$ID&COD=$CODE");
+        $url = "Mensajes/mensajes.php?Rol=$ID&COD=$CODE";
+        include("../PhpDocs/header.php");
+        //header("Location: http://localhost:8080/unikart2/Mensajes/mensajes.php?Rol=$ID&COD=$CODE");
     } 
 
 ?>

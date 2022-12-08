@@ -75,7 +75,9 @@
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             mysqli_query($conexion, $sql2);
             //echo "alert('Tu cuenta ha sido creada')";
-            header("Location: http://localhost:8080/unikart2/Landing Page/Landing.html");
+            $url = "Landing Page/Landing.html";
+            include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Landing Page/Landing.html");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
