@@ -8,7 +8,7 @@
     $DuenioUser     = "$_SESSION[user]";
     $adminApproved  = "";
     $IDCat          = "";
-    $IDNeg          = rand(10000, 99999);
+    $IDNeg          = rand(10000, 65535);
 
     //Queremos el ID del usuario
     $consulta =   "SELECT ID_Registro 
@@ -42,7 +42,7 @@
         $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
 
         if($consultaRand){
-            $IDNeg = rand(10000, 99999);
+            $IDNeg = rand(10000, 65535);
 
             //Evaluamos si el rand ingresado ya existe
             $consultaRand =   "SELECT ID_Negocio
@@ -51,7 +51,7 @@
             $consultaRand = mysqli_query($conexion, $consultaRand);
             $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
             while($consultaRand){
-                $IDNeg = rand(10000, 99999);
+                $IDNeg = rand(10000, 65535);
             }
         }
 

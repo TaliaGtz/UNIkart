@@ -101,7 +101,17 @@ include("../PhpDocs/PhpInclude.php");
                         ?><p>$<?php echo $consulta['PrecioCant']; ?></p><?php
                     }
                 ?>
-                <p>Categoría</p>
+                <p>Categoría/s:</p>
+                <?php 
+                    $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                        FROM productoxcat PC
+                                        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                        WHERE PC.ID_Producto = '$idBtn'";
+                    $ejecutar = $conexion->query($consultaCatProd);
+                    while($fila = $ejecutar->fetch_array()):
+                        ?><label>°<?php echo $fila['Categoria'] ?></label><?php 
+                    endwhile;
+                ?>
                 <p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</p>
                 <p><?php echo $consulta['Descripcion']; ?></p>
                 <a href="../WishList/WishList.php"></a>

@@ -55,8 +55,8 @@ include("../PhpDocs/PhpInclude.php");
             $Prod = $_SESSION['Prod'];
             $_SESSION['IDProd'] = $IDProd;
         }
-        if(isset($_GET['ID'])) {
-            $Rol = $_GET['ID'];
+        if(isset($_GET['Rol'])) {
+            $Rol = $_GET['Rol'];
             $CODE = $_GET['COD'];
             /*$consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
                         FROM productos 
@@ -90,15 +90,15 @@ include("../PhpDocs/PhpInclude.php");
 
         </div>
         <?php
-            if(isset($Prod)) { ?>
+            if(isset($_GET['IDProd'])) { ?>
                 <form method="POST" action="../Mensajes/mensajes.php?IDProd=<?php echo $IDProd ?>">
                     <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
                     <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
                     <input type="submit" name="enviar" value="Enviar"></input>
                 </form>
             <?php }
-            if(isset($Rol)) { ?>
-                <form method="POST" action="../Mensajes/mensajes.php?ID=<?php echo $Rol ?>&COD=<?php echo $CODE?>">
+            if(isset($_GET['Rol'])) { ?>
+                <form method="POST" action="../Mensajes/mensajes.php?Rol=<?php echo $Rol ?>&COD=<?php echo $CODE?>">
                     <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
                     <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
                     <input type="submit" name="enviar" value="Enviar"></input>
@@ -125,7 +125,7 @@ include("../PhpDocs/PhpInclude.php");
     </div>
 
     <?php 
-    if(isset($Prod)) { ?>
+    if(isset($_GET['IDProd'])) { ?>
         <div class="trato">
             <form method="POST" action="../Mensajes/trato.php?IDProd=<?php echo $Prod; ?>">
                 <strong><label>Cerrar con: </label></strong><br>
@@ -135,9 +135,9 @@ include("../PhpDocs/PhpInclude.php");
     <?php } ?>
     
     <?php 
-    if(isset($Rol)) { ?>
+    if(isset($_GET['Rol'])) { ?>
         <div class="tratoL">
-            <form method="POST" action="../Mensajes/trato.php?ID=<?php echo $Rol; ?>&COD=<?php echo $CODE; ?>">
+            <form method="POST" action="../Mensajes/trato.php?Rol=<?php echo $Rol; ?>&COD=<?php echo $CODE; ?>">
                 <strong><label>Lugar de entrega: </label></strong><br>
                 <input type="text" class="lugar" name="tratoLugar"></input><input id="send" type="submit" value="Aceptar"></input>
             </form>

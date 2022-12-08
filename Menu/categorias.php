@@ -18,7 +18,7 @@
         
 ?>
         
-    <input type="checkbox" class="CB" name="checkbox" value="<?php $fila['Categoria'] ?>"><label> <?php echo $fila['Categoria']; ?></label>
+    <input type="checkbox" class="CB" name="checkbox[]" value="<?php echo $fila['ID_Categoria'] ?>"><label> <?php echo $fila['Categoria']; ?></label>
 
 <?php endwhile; ?> 
     

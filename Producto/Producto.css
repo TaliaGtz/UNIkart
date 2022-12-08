@@ -353,7 +353,7 @@ nav ul li:hover{
     font-size: 30px;
     float: right;
     position: relative;
-    top: -125px;
+    top: -145px;
     cursor: pointer;
     color: #2c1507;
 }
@@ -364,7 +364,7 @@ nav ul li:hover{
     font-size: 30px;
     float: right;
     position: relative;
-    top: 45px;
+    top: 25px;
     right: -32px;
     cursor: pointer;
     color: #2c1507;

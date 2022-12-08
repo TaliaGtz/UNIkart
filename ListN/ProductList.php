@@ -18,7 +18,7 @@
     $ejecutar = $conexion->query($consultaWLProd);
     
     while($fila = $ejecutar->fetch_array()):
-        
+        $IDPr = $fila['ID_Producto'];
 ?>
 
     <article id="article+i" class="article" style="display:block;">
@@ -33,8 +33,19 @@
                 ?><p>$<?php echo $fila['PrecioCant']; ?></p><?php
             }
             ?>
-            <p>Media(img,mp4)</p>
-            <a id="arrow" href="../Producto/Producto.php?IDBtn=<?php echo $IDProd;?>"><i id="view" class="fa-solid fa-circle-chevron-right"></i></a>
+            <label>Categoría/s:</label>
+            <?php 
+                $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                    FROM productoxcat PC
+                                    INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                    WHERE PC.ID_Producto = '$IDPr'";
+                $ejecutar2 = $conexion->query($consultaCatProd);
+                while($fila2 = $ejecutar2->fetch_array()):
+                    ?><label> °<?php echo $fila2['Categoria'] ?></label><?php 
+                endwhile;
+            ?>
+            <br>
+            <a id="arrow" href="../Producto/Producto.php?IDBtn=<?php echo $fila['ID_Producto'];?>"><i id="view" class="fa-solid fa-circle-chevron-right"></i></a>
             <i id="xmark" class="fa-solid fa-circle-xmark quitar visQuitar2"></i>
             <br><hr>
         </div>

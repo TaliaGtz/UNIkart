@@ -26,7 +26,7 @@
                 WHERE CODE = '$CODE'";
         mysqli_query($conexion, $query);
 
-        header("Location: http://localhost:8080/unikart2/Mensajes/mensajes.php?ID=$ID&COD=$CODE");
+        header("Location: http://localhost:8080/unikart2/Mensajes/mensajes.php?Rol=$ID&COD=$CODE");
     } 
 
 ?>

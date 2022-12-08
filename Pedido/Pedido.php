@@ -44,7 +44,6 @@ include("../PhpDocs/Fecha.php");
                                     INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
                                     INNER JOIN negocios N ON P.Negocio = N.ID_Negocio
                                     WHERE E.ID_Entrega = '$IDEnt'";
-
     ?>
 
     <div class="areas">
@@ -54,25 +53,40 @@ include("../PhpDocs/Fecha.php");
         <div class="informe">
             <h3>Detalles del pedido</h3><br>
             <i class="fa-solid fa-location-dot"></i>Lugar de entrega: <?php if($consulta['Lugar'] == NULL){ echo "No especificado"; }else{ echo $consulta['Lugar']; } ?><br>
-            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php?ID=1&COD=<?php echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a><br>
+            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php?Rol=1&COD=<?php echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a><br>
             <i class="fa-solid fa-handshake"></i>Nombre de/los vendedor/es:<br><?php 
                                                                                 $ejecutar2 = $conexion->query($consultaCatNeg2);
 
                                                                                 while($fila2 = $ejecutar2->fetch_array()): 
                                                                                    ?> °<?php echo $fila2['Nombre'];
                                                                                 endwhile; 
-                                                                            ?> <!--a href="../Mensajes/mensajes.php?ID=2&COD=<?php //echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a--><br>
+                                                                            ?> <!--a href="../Mensajes/mensajes.php?Rol=2&COD=<?php //echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a--><br>
             <i class="fa-solid fa-barcode"></i>CODE: <?php echo $consulta['CODE']; ?><br>
             <br><hr><br>
             <p>Fecha y hora de compra: <?php echo formatearFechaEntregas($consulta['Fecha']); ?></p>
-            <p>Categoría(s)</p>
-            <p>Producto(s):<br><?php 
+            <p>Producto(s):</p><?php 
                 $ejecutar = $conexion->query($consultaCatNeg);
 
                 while($fila = $ejecutar->fetch_array()): 
                    ?> °<?php echo $fila['Nombre'];
+                   $ID_Producto[] = $fila['ID_Producto'];
+                   
                 endwhile; ?> 
-            </p>
+            
+            <p>Categoría(s):</p>
+            <?php 
+                foreach ($ID_Producto as $value) {
+                    $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                        FROM productoxcat PC
+                                        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                        WHERE PC.ID_Producto = '$value'";
+                    $ejecutar5 = $conexion->query($consultaCatProd);
+                    while($fila5 = $ejecutar5->fetch_array()):
+                        ?><label> °<?php echo $fila5['Categoria'] ?></label><?php 
+                    endwhile;
+                    ?><label> | </label><?php
+                }
+            ?>
             <p>Calidad del servicio:</p>
             <div class="valoracion"> 
                 <div class="stars">
