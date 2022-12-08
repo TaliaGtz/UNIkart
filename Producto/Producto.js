@@ -631,4 +631,3 @@ function limpiar(){
         document.getElementById("search").value = "";
     }
 }
-

@@ -302,17 +302,15 @@ nav ul li:hover{
     width: 199px;
 }
 
-.carousel-item:hover{
-    filter: blur(5px);
-    cursor: pointer;
-}
-
 .change{
     position: absolute;
     background-color: rgba(0, 0, 0, 0.54);
     width: 199px;
     height: 199px;
     top: 0;
+    cursor: pointer;
+    transform: translateY(199px);
+    transition: 0.5s;
 }
 
 .change .cruz{
@@ -323,6 +321,11 @@ nav ul li:hover{
     top: 50%;
     transform: translate(0, -50%);
     font-size: 45px;
+}
+
+.carousel-item:hover .change{
+    transform: translateY(0);
+    transition: 0.5s;
 }
 
 #productName{

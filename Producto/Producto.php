@@ -65,8 +65,9 @@ include("../PhpDocs/PhpInclude.php");
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="../ExtraDocs/chilaquiles1.jpg" class="d-block w-100 productImg" alt="...">
-                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
-                        
+                        <?php //if($_SESSION['user'] == $IDNom){ ?>                
+                            <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
+                        <?php //} ?>
                     </div>
                     <div class="carousel-item">
                         <img src="../ExtraDocs/chilaquiles2.jpg" class="d-block w-100 productImg" alt="...">
