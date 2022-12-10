@@ -9,7 +9,7 @@ include("../PhpDocs/PhpInclude.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIkart - ListaN</title>
+    <title>UNIkart - Carrito</title>
     <link rel="stylesheet" href="ListN.css">
     <link rel="stylesheet" href="../AddModal/Cart.css">
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
@@ -36,12 +36,15 @@ include("../PhpDocs/PhpInclude.php");
     <section class="grid">
         <div class="square">
             <h1>Carrito - <?php echo $_SESSION['ID_KartList']; ?></h1>
-            <ul class="menuABC" >
-                <!--button type="button" id="publicar" class="ABC"><li><span>Agregar</span></li></!--button>
-                <button type="button" id="listo" class="ABC"><li><span>Listo</span></li></button>
-                <button-- type="button" id="eliminar" class="ABC"><li><span>Eliminar</span></li></button-->
-                <button type="button" class="ABC"><a class="ABC" href="../SisPago/SisPago.php"><li><span>Pagar carrito</span></li></a></button>
-            </ul>  
+            <?php 
+            //if($_SESSION['Total2Pay'] != '0'){ ?>
+                <ul class="menuABC" >
+                    <!--button type="button" id="publicar" class="ABC"><li><span>Agregar</span></li></!--button>
+                    <button type="button" id="listo" class="ABC"><li><span>Listo</span></li></button>
+                    <button-- type="button" id="eliminar" class="ABC"><li><span>Eliminar</span></li></button-->
+                    <button type="button" class="ABC"><a class="ABC" href="../SisPago/SisPago.php"><li><span>Pagar carrito</span></li></a></button>
+                </ul> 
+            <?php //} ?>
         </div>
 
         <!-- sección de listas -->

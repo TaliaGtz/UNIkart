@@ -86,8 +86,8 @@ include("../PhpDocs/Fecha.php");
             <h3>Costo total</h3><br>
             <p>Costo de los productos: $<?php echo $consulta['Total']; ?></p>
             <p>Propina</p>
-            <p>Tarifa de servicio</p>
-            <h4>Total pagado</h4>
+            <p>Tarifa de servicio $10</p>
+            <h4>Total pagado: $<?php echo $consulta['Total'] + 10; ?></h4>
             <br><hr><br>
             <h3>Transacciones</h3><br>
             <p>(Espacio de Paypal)</p>

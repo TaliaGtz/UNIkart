@@ -1,5 +1,9 @@
 <?php
 
+if(isset($_GET['Key'])) { 
+    $key = $_SESSION['key'];
+}
+
 function str_CODE(){
     $strlength = 7;
     $input = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -57,7 +61,7 @@ if(!$consultaWL){   //Si no existe el carrito
             WHERE ID_KartList = '$ID_KL'";
     
     $sql4 = "UPDATE entregas 
-            SET ID_Entrega = '$Entrega'
+            SET ID_Entrega = '$Entrega', Pago = '$key'
             WHERE CODE='$CODIGO'";
 
     $Entrega = rand(10000, 65535);

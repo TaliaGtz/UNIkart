@@ -16,6 +16,7 @@ include("../PhpDocs/PhpInclude.php");
         <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
         <link rel="icon" href="../ExtraDocs/Ukart.png">
+        <script src="https://www.paypal.com/sdk/js?client-id=AcUJ-uowh7ZUs48Rik1WMSGHUasoB2Lcmx-C0A5RkGWvCBuccoKy_HiCheC9DfTJT5Jh28D9I5wUOVvC&currency=MXN"></script>
     </head>
     <body>
         <?php require "../PhpDocs/Nav.php"; ?>
@@ -25,7 +26,7 @@ include("../PhpDocs/PhpInclude.php");
             <div class="info">
                 <div class="texto">
                     <h1>UNIkart</h1>
-                    <h2>Orden de compra</h2>
+                    <h2>Orden de compra - <?php echo $_SESSION['Entrega']; ?></h2>
                     <br><br>
                     <div class="nota">
                         <div class="titles">
@@ -34,14 +35,14 @@ include("../PhpDocs/PhpInclude.php");
                             <p>Tarifa de servicio</p>
                         </div>
                         <div class="costos">
-                            <p id="prod">$ 0.00</p>
+                            <p id="prod">$ <?php echo $_SESSION['Total2Pay']; ?></p>
                             <!--<p>$ 0.00</p>-->
                             <input type="number" id="prop" placeholder="0.00">
-                            <p>$ 0.00</p>
+                            <p>$ 10.00</p>
                         </div>
                     </div>
                     <p>Total a pagar</p>
-                    <p id="total" class="total">$ 0.00</p>
+                    <p id="total" class="total">$ <?php $total = $_SESSION['Total2Pay'] + 10; echo $total ?></p>
                     <br><br>
                     <h2>Información de pago</h2>
                     <br>
@@ -73,12 +74,58 @@ include("../PhpDocs/PhpInclude.php");
                         </div>
                     </div>
                     <div id="PayPal" class="PayPal" style="display: none;">
-                        <p>Espacio para PayPal</p>
+                        <div id="paypal-button-container"></div>
+                        <script>
+                            // Render the PayPal button into #paypal-button-container
+                            paypal.Buttons({
+
+                                style:{
+                                    color: 'gold',
+                                    shape: 'pill',
+                                    label: 'pay'
+                                },
+
+                                // Set up the transaction
+                                createOrder: function(data, actions) {
+                                    return actions.order.create({
+                                        purchase_units: [{
+                                            amount: {
+                                                value: '<?php echo $total; ?>'
+                                            }
+                                        }]
+                                    });
+                                },
+
+                                onCancel: function(data){
+                                    alert("Pago cancelado");
+                                    concole.log(data);
+                                },
+
+                                // Finalize the transaction
+                                onApprove: function(data, actions) {
+                                    return actions.order.capture().then(function(orderData) {
+                                        // Successful capture! For demo purposes:
+                                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                        var transaction = orderData.purchase_units[0].payments.captures[0];
+                                        //alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+                                        // Replace the above to show a success message within this page, e.g.
+                                        // const element = document.getElementById('paypal-button-container');
+                                        // element.innerHTML = '';
+                                        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                                        // Or go to another URL:  actions.redirect('thank_you.html');
+                                        window.location.href="../Pagado/pagado.php?Key=3";
+                                    });
+                                }
+
+
+                            }).render('#paypal-button-container');
+                        </script>
                     </div>
                     <br><br>
                 </div>
                 <div>
-                    <a href="../Pagado/pagado.php"><button id="pay" class="precio">Pagar</button></a>
+                    <a id="link" href="../Pagado/pagado.php?Key=2"><button id="pay" class="precio">Pagar</button></a>
                 </div>
             </div>
         </div>

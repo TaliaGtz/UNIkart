@@ -118,18 +118,27 @@ payToggle.addEventListener("click", ()=>{
         document.getElementById("Tarjeta").style = "display: none";
         document.getElementById("PayPal").style = "display: none";
         document.getElementById("pay").innerText = "Aceptar";
+        document.getElementById("pay").style = "display: block";
+        var strLink = "../Pagado/pagado.php?Key=" + selCategory;
+        document.getElementById("link").setAttribute("href",strLink);
     }
     if(selCategory == 2){
         document.getElementById("Efectivo").style = "display: none";
         document.getElementById("Tarjeta").style = "display: block";
         document.getElementById("PayPal").style = "display: none";
         document.getElementById("pay").innerText = "Pagar";
+        document.getElementById("pay").style = "display: block";
+        var strLink = "../Pagado/pagado.php?Key=" + selCategory;
+        document.getElementById("link").setAttribute("href",strLink);
     }
     if(selCategory == 3){
         document.getElementById("Efectivo").style = "display: none";
         document.getElementById("Tarjeta").style = "display: none";
         document.getElementById("PayPal").style = "display: block";
-        document.getElementById("pay").innerText = "Pagar";
+        document.getElementById("pay").style = "display: none";
+        //document.getElementById("pay").innerText = "Pagar";
+        var strLink = "../Pagado/pagado.php?Key=" + selCategory;
+        document.getElementById("link").setAttribute("href",strLink);
     }
 });
 

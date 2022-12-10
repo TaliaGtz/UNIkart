@@ -20,12 +20,19 @@ include("../PhpDocs/PhpInclude.php");
     <body>
         <?php require "../PhpDocs/Nav.php"; ?>
         
+        <?php 
+            if(isset($_GET['Key'])) { 
+                $key = $_GET['Key']; 
+                $_SESSION['key'] = $key;
+            } 
+        ?>
+
         <div class="presentacion">
             <div class="img"><img id="buyImg" src="../ExtraDocs/bolsa.png"></div>
             <div class="info">
                 <div class="texto">
                     <h1>UNIkart</h1>
-                    <h2>Orden de compra</h2>
+                    <h2>Orden de compra - <?php echo $_SESSION['Entrega']; ?></h2>
                     <br>
                     <div class="nota">
                         <h2 class="title">¡Gracias por tu confianza!</h2>

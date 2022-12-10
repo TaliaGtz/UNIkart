@@ -44,6 +44,7 @@ include("../PhpDocs/Fecha.php");
                                     INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
                                     INNER JOIN negocios N ON P.Negocio = N.ID_Negocio
                                     WHERE E.ID_Entrega = '$IDEnt'";
+                                    
     ?>
 
     <div class="areas">
@@ -54,13 +55,13 @@ include("../PhpDocs/Fecha.php");
             <h3>Detalles del pedido</h3><br>
             <i class="fa-solid fa-location-dot"></i>Lugar de entrega: <?php if($consulta['Lugar'] == NULL){ echo "No especificado"; }else{ echo $consulta['Lugar']; } ?><br>
             <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php?Rol=1&COD=<?php echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a><br>
-            <i class="fa-solid fa-handshake"></i>Nombre de/los vendedor/es:<br><?php 
-                                                                                $ejecutar2 = $conexion->query($consultaCatNeg2);
-
-                                                                                while($fila2 = $ejecutar2->fetch_array()): 
-                                                                                   ?> °<?php echo $fila2['Nombre'];
-                                                                                endwhile; 
-                                                                            ?> <!--a href="../Mensajes/mensajes.php?Rol=2&COD=<?php //echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a--><br>
+            <i class="fa-solid fa-handshake"></i>Nombre de/los vendedor/es:<br>
+                <?php 
+                    $ejecutar2 = $conexion->query($consultaCatNeg2);
+                    while($fila2 = $ejecutar2->fetch_array()): 
+                       ?> °<?php echo $fila2['Nombre'];
+                    endwhile; 
+                ?> <!--a href="../Mensajes/mensajes.php?Rol=2&COD=<?php //echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a--><br>
             <i class="fa-solid fa-barcode"></i>CODE: <?php echo $consulta['CODE']; ?><br>
             <br><hr><br>
             <p>Fecha y hora de compra: <?php echo formatearFechaEntregas($consulta['Fecha']); ?></p>
@@ -108,8 +109,8 @@ include("../PhpDocs/Fecha.php");
             <h3>Costo total</h3><br>
             <p>Costo de los productos: $<?php echo $consulta['Total']; ?></p>
             <p>Propina</p>
-            <p>Tarifa de servicio</p>
-            <h4>Total pagado</h4>
+            <p>Tarifa de servicio $10</p>
+            <h4>Total pagado: $<?php echo $consulta['Total'] + 10; ?></h4>
             <br><hr><br>
             <h3>Transacciones</h3><br>
             <p>(Espacio de Paypal)</p>
