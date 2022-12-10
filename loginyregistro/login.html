@@ -17,7 +17,7 @@
             <form id="form" method="POST" action="../loginyregistro/LogIn.php" onsubmit="return validateLogIn()" name="LogIn">
                 <!--- USERNAME --->
                 <label for="username">Nombre de Usuario</label>
-                <input type="text" id="username" name="User" placeholder="Introduce tu nombre de usuario">
+                <input type="text" id="username" name="User" value="" placeholder="Introduce tu nombre de usuario">
                 
                 <!--- PASSWORD --->
                 <label for="password">Contraseña</label>
@@ -30,6 +30,29 @@
             </form>
         </div>   
         <script src="js/validarLogin.js"></script>
+        <script>    //?user=unikart
+            const valores = window.location.search;
+            const urlParams = new URLSearchParams(valores);
+            var usuario = urlParams.get('user');
+            console.log(usuario);
+            variable = usuario;
+            obtener(variable);
+
+            function obtener(variable){
+                fetch('http://localhost:8080/unikart2/API/' + variable)
+                .then(datos=>datos.json())
+                .then(datos=>{
+                    var resultado = document.getElementById('username');
+                    var resultado1 = document.getElementById('password');
+                    resultado.value = '';
+                    resultado1.value = '';
+                    for(let dato of datos){
+                        resultado.value = `${dato.Username}`;
+                        resultado1.value = atob(`${dato.Contrasenia}`);
+                    }
+                })
+            }
+        </script>
     </body>   
 
 </html>

@@ -1,8 +1,8 @@
 <?php
 
-include_once 'apiAreas.php';
+include_once '../1Backend/apiPersonas.php';
 
-$api = new ApiAreas();
+$api = new ApiPersonas();
 $api->getAll();
 
 ?>

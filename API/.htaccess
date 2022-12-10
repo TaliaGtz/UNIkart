@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9]*)$ datos.php?variable=$1
+
+#Comentarios
