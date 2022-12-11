@@ -67,6 +67,25 @@ h2{
     max-height: 100vh;
 }
 
+.Pp{
+    border-radius: 13px;
+    border: 1px solid rgba(149, 149, 149, 0.549);
+    width: 95%;
+    /*width: 15%;*/
+    margin: auto auto;
+}
+
+.PpBorder{
+    width: 17%;
+    background-color: rgb(255, 193, 0);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    height: 90px;
+    border-radius: 13px;
+    box-shadow: 0px 2px 2px rgb(210, 159, 0);
+}
+
 /*Responsive*/
 @media screen and (max-width: 920px){
     .mapa{

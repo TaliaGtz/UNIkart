@@ -25,7 +25,7 @@ include("../PhpDocs/Fecha.php");
 
     <?php 
         $IDEnt = $_GET['IDEnt'];
-        $consulta = "SELECT Fecha, CODE, Total, Lugar
+        $consulta = "SELECT Fecha, CODE, Total, Lugar, Pago
                     FROM entregas 
                     WHERE ID_Entrega = '$IDEnt'";
         $consulta = mysqli_query($conexion, $consulta);
@@ -113,7 +113,18 @@ include("../PhpDocs/Fecha.php");
             <h4>Total pagado: $<?php echo $consulta['Total'] + 10; ?></h4>
             <br><hr><br>
             <h3>Transacciones</h3><br>
-            <p>(Espacio de Paypal)</p>
+            <?php
+                if($consulta['Pago'] == '1'){
+                    ?> <p>Método de pago en efectivo</p> <?php
+                }else if ($consulta['Pago'] == '2'){
+                    ?> <p>Pago en tarjeta</p> <?php
+                }else if ($consulta['Pago'] == '3'){
+                    ?> <div class="PpBorder"><img class="Pp" src="../ExtraDocs/PayPal2.png"> 
+                    </div><?php
+                }else{
+                    ?> <p>Transacción no identificada</p> <?php
+                }
+            ?>
         </div>
         <?php include("../PhpDocs/Mapas.php"); ?>
         
