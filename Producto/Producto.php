@@ -52,35 +52,54 @@ include("../PhpDocs/PhpInclude.php");
 
         <!-- sección de Producto -->
 
-        <section id="contenidoImg">
-            <!--<img src="../ExtraDocs/chilaquiles.jpg" class="productImg">-->
+        <?php
+            include("../PhpDocs/imgCode.php");
 
+            $IDMedia = rand(10000, 65535);
+
+            if(isset($_REQUEST['guardar'])){
+                if(isset($_FILES['archivo']['name'])){
+                    $tipoArchivo = $_FILES['archivo']['type'];
+                    $nombreArchivo = $_FILES['archivo']['name'];
+                    $sizeArchivo = $_FILES['archivo']['size'];
+                    $imagenSubida = fopen($_FILES['archivo']['tmp_name'], 'r');
+                    $binImagen = fread($imagenSubida, $sizeArchivo);
+                    $binImagen = mysqli_escape_string($conexion, $binImagen);
+
+                    $query = "INSERT INTO media
+                                VALUES(
+                                    '$IDMedia',
+                                    '$now', 
+                                    '$binImagen', 
+                                    '$tipoArchivo'
+                                    )";
+                    
+                    $query1 = "INSERT INTO productoxmedia
+                                VALUES(
+                                    '$idBtn',
+                                    '$IDMedia'
+                                    )";
+
+                    if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
+                        mysqli_query($conexion, $query1);
+                        //echo "alert('Tu foto ha sido guardada')";
+                        //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
+                    }else{
+                        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+                    }
+                    //header('Location: http://localhost:8080/unikart2/UserPerfil/UserPerfil.php');
+                }
+            }
+        ?>
+
+        <section id="contenidoImg">
             <div id="carouselExampleIndicators" class="carousel slide productImg" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <?php  include("../Producto/indic.php");  ?>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../ExtraDocs/img1.png" class="d-block w-100 productImg" alt="...">
-                        <?php //if($_SESSION['user'] == $IDNom){ ?>                
-                            <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
-                        <?php //} ?>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../ExtraDocs/img2.png" class="d-block w-100 productImg" alt="...">
-                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../ExtraDocs/img3.png" class="d-block w-100 productImg" alt="...">
-                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../ExtraDocs/img4.png" class="d-block w-100 productImg" alt="...">
-                        <div class="change"><i class="fa-solid fa-plus cruz"></i></div>
-                    </div>
+                    <?php  include("../Producto/imgs.php");  ?>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -163,7 +182,7 @@ include("../PhpDocs/PhpInclude.php");
                     }
                 ?>
             </div>
-        </div>
+        </div> 
 
         <!-- fin sección de Producto -->
 

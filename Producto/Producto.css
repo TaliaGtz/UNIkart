@@ -286,9 +286,10 @@ nav ul li:hover{
 
 .productImg{
     max-width: 300px;
+    /*width: 199px;*/
     height: 199px;
-    /*height: auto;*/
     overflow: hidden;
+    /*background-color: #f5deb3;*/
 }
 
 .carousel .carousel-indicators{
@@ -311,6 +312,8 @@ nav ul li:hover{
     cursor: pointer;
     transform: translateY(199px);
     transition: 0.5s;
+    overflow: hidden;
+    border: none;
 }
 
 .change .cruz{
@@ -319,13 +322,54 @@ nav ul li:hover{
     justify-content: center;
     position: relative;
     top: 50%;
-    transform: translate(0, -50%);
+    transform: translate(0, -55%);
     font-size: 45px;
+    z-index: 8;
 }
 
 .carousel-item:hover .change{
     transform: translateY(0);
     transition: 0.5s;
+}
+
+/*#userPic { 
+    cursor: pointer;
+    width: 5px;
+    position: absolute;
+    z-index: 1;
+    padding: 90px 75px;
+    background-color: red;
+    transform: translate(20px, -200px);
+    /*display: none;
+}*/
+
+#userPic { 
+    cursor: pointer;
+    max-width: 1px;
+    max-height: 1px;
+    position: absolute;
+    z-index: 1;
+    padding: 80px 60px;
+    /*background-color: red;*/
+    transform: translate(40px, 10px);
+    /*display: none;*/
+}
+
+.doneB{
+    position: absolute;
+    width: 43px;
+    height: 50px;
+    transform: translateY(-50px);
+    font-size: 30px;
+    background-color: transparent;
+    border: 0px;
+    color: whitesmoke;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    z-index: 6;
+}
+
+.done{
+    transform: translate(-70px, 145px);
 }
 
 #productName{

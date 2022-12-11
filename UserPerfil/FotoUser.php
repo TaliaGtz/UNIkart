@@ -8,5 +8,4 @@
     $query = mysqli_query($conexion, $query);
     $query = mysqli_fetch_array($query);  //Devuelve un array o NULL
     
-    
 ?>

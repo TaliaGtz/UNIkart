@@ -631,3 +631,9 @@ function limpiar(){
         document.getElementById("search").value = "";
     }
 }
+/*
+let $miBoton = document.getElementById('mi-boton')
+
+$miBoton.addEventListener('click', (e) => {
+   e.target.previousElementSibling.click()
+})*/
