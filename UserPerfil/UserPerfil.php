@@ -41,6 +41,7 @@ include("../PhpDocs/PhpInclude.php");
             $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
             $IDNom = $consulta['Username'];
             $_SESSION['ID_media'] = $consulta['ID_media'];
+            $ID_media = $_SESSION['ID_media'];
             $Rol = $consulta['Rol'];
             $Email = $consulta['Email'];
         }
@@ -133,21 +134,36 @@ include("../PhpDocs/PhpInclude.php");
                     
         <?php if ($Rol == '1') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
-                <p class="private">Esta cuenta es privada</p><br>
-                <p class="no-private">Wishlists</p><br>
+                <h2 class="private">Esta cuenta es privada</h2><br>
+                <!-- sección de listas -->
+                <section id="contenido" class="no-private">
+                    <h2>Wishlists:</h2><br>
+                    <?php include("../UserPerfil/Listas.php"); ?>
+                </section>
+                <!-- fin sección de listas -->
             </div>
         <?php } ?>
 
         <?php if ($Rol == '2') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
-                <p class="no-private">Wishlists</p><br>
+                <!-- sección de listas -->
+                <section id="contenido" class="no-private">
+                    <h2>Wishlists:</h2><br>
+                    <?php include("../UserPerfil/Listas.php"); ?>
+                </section>
+                <!-- fin sección de listas -->
                 <p class="vendedor">Productos autorizados por el admin (con existencias)</p><br>
             </div>
         <?php } ?>
         
         <?php if ($Rol == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
             <div class="contenido">
-                <p class="no-private">Wishlists</p><br>
+                <!-- sección de listas -->
+                <section id="contenido" class="no-private">
+                    <h2>Wishlists:</h2><br>
+                    <?php include("../UserPerfil/Listas.php"); ?>
+                </section>
+                <!-- fin sección de listas -->
                 <p class="admin">Productos autorizados por mí</p><br>
             </div>
         <?php } ?>

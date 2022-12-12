@@ -3,7 +3,7 @@
     include("../PhpDocs/PhpInclude.php");
 
     //Se guardan los datos de los nombres de los inputs a la tabla en la base de datos
-    $ID      = "";
+    $ID      = rand(10000, 65535);
     $imagen  = $_POST["nombre"];
     $wlName  = $_POST["nombre"];
     $Priv    = $_POST["Privacidad"];

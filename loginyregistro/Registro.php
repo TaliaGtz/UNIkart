@@ -3,7 +3,7 @@
     include("../PhpDocs/Conexion.php");
 
     //Se guardan los datos de los nombres de los inputs a la tabla en la base de datos
-    $ID         = "";
+    $ID         = rand(10000, 65535);
     $IDMedia    = rand(10000, 65535);
     $ID_KartList= rand(10000, 65535);
     //shuffle($ID_KartList);

@@ -265,15 +265,57 @@ li{
 
 .userInfo .a{
     padding: 7px 15px;
+    margin: 10px;
     background-color: tomato;
     color: aliceblue;
     border-radius: 15px;
+    position: absolute;
+    right: 0;
+    transform: translateY(110px);
 }
 
 .contenido{
     margin: 20px;
     grid-row: 7/12;
     grid-column: 1/15;
+    overflow-y: scroll;
+    width: 100%;
+}
+/*
+#contenido{
+    grid-row: 2/-5;
+    grid-column: 1/-1;
+    overflow-y: scroll;
+    width: 100%;
+}*/
+
+.articles{
+    padding: 10px 20px 0px 20px;
+    display: flex;
+    display: inline;
+}
+
+.files{
+    clip-path: circle(50% at 50% 50%);
+    float: left;
+    margin: 10px;
+}
+
+.contDiv{
+    width: 80%;
+    align-items: flex-start;
+}
+
+#view{
+    font-size: 30px;
+    float: right;
+    position: relative;
+    top: -52px;
+    cursor: pointer;
+    color: #2c1507;
+}
+#view:hover{
+    color: #67432e;
 }
 
 .no-private, .admin, .vendedor{
