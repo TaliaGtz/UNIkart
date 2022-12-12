@@ -147,8 +147,9 @@ include("../PhpDocs/PhpInclude.php");
                     <?php include("../UserPerfil/Listas.php"); ?>
                 </section>
                 <!-- fin sección de listas -->
-                <p class="vendedor">Productos autorizados por el admin (con existencias)</p><br>
+                
             </div>
+            <p class="vendedor">Productos autorizados por el admin (con existencias)</p><br>
         <?php } ?>
         
         <?php if ($Rol == '4') {    //1:comprador, 2:vendedor, 3:repartidor, 4:admin ?> 
@@ -159,8 +160,9 @@ include("../PhpDocs/PhpInclude.php");
                     <?php include("../UserPerfil/Listas.php"); ?>
                 </section>
                 <!-- fin sección de listas -->
-                <p class="admin">Productos autorizados por mí</p><br>
+                
             </div>
+            <p class="admin">Productos autorizados por mí</p><br>
         <?php } ?>
 
         
