@@ -24,22 +24,91 @@ include("../PhpDocs/PhpInclude.php");
 
     <?php
         $consulta = "SELECT * 
-                FROM total_entregas";
+                    FROM total_entregas";
         $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+
+        $consulta2 = "SELECT Categoria, total FROM most_categorias";
+
+        $consulta3 = "SELECT Nombre, total FROM most_products";
+
+        $consulta4 = "SELECT Pago, total FROM most_pays";
+        $consulta4 = mysqli_query($conexion, $consulta4);
+        $consulta4 = mysqli_fetch_array($consulta4);  //Devuelve un array o NULL
+        
     ?>
     <div class="areas">
         <div class="bar">
-        <h2>Venta N</h2>
+        <h2>Resumen de ventas</h2>
         </div>
         <div class="informe">
-            <h3>Resumen de ventas</h3><br>
             <i class="fa-solid fa-location-dot"></i>Frecuencia de lugares de entrega<br>
             <i class="fa-solid fa-truck"></i>Frecuencia de nombre del repartidor<br>
             <br><hr><br>
-            <p>Mes y año de la venta</p>
-            <p>Categoría(s)</p>
-            <p>Ventas totales: $<?php echo $consulta['sum(Total)']; ?></p>
+            <h3>Rango de fechas más usual:</h3>
+            <br><hr><br>
+            <div class="tablas">
+                <div>
+                    <h3>Categorías más vendidas:</h3>
+                    <br>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $ejecutar = $conexion->query($consulta2);
+                        
+                                while($fila = $ejecutar->fetch_array()): 
+                                ?> <tr> <?php
+                                ?> <td><?php echo $fila['Categoria'];?></td> <?php
+                                ?> <td><?php echo $fila['total'];?></td> <?php
+                                ?> </tr> <?php
+                                endwhile; 
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3>Productos más vendidos:</h3>
+                    <br>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $ejecutar = $conexion->query($consulta3);
+                        
+                                while($fila = $ejecutar->fetch_array()): 
+                                ?> <tr> <?php
+                                ?> <td><?php echo $fila['Nombre'];?></td> <?php
+                                ?> <td><?php echo $fila['total'];?></td> <?php
+                                ?> </tr> <?php
+                                endwhile; 
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br><hr><br>
+            <h3>Ventas totales: $<?php echo $consulta['sum(Total)']; ?></h3>
+            <br><hr><br>
+            <h3>Transacción más usada, con un total de <?php echo $consulta4['total']; ?> veces</h3>
+            <?php if($consulta4['Pago'] == '1'){
+                    ?> <p>Método de pago en efectivo</p> <?php
+                }else if ($consulta4['Pago'] == '2'){
+                    ?> <p>Pago en tarjeta</p> <?php
+                }else if ($consulta4['Pago'] == '3'){
+                    ?><div class="PpBorder"><img class="Pp" src="../ExtraDocs/PayPal2.png"></div><?php
+                } 
+            ?> 
         </div>
         
     </div>

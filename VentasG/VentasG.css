@@ -51,3 +51,68 @@ h2{
     padding: 5px;
     padding-left: 0;
 }
+
+.tablas{
+    display: flex;
+}
+
+.tablas div{
+    margin: 0 30px;
+}
+
+.table{
+    min-width: 300px;
+    border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.table thead tr{
+    background-color: #84b295;
+    color: aliceblue;
+    text-align: left;
+}
+
+.table th, td{
+    padding: 8px 15px;
+}
+
+.table td{
+    padding: 8px 15px;
+    border-bottom: 1px solid #428347;
+}
+
+.table tbody tr:nth-of-type(even){
+    /*background-color: rgba(255, 99, 71, 0.1);*/
+    background-color: rgba(132, 178, 149, 0.30);
+}
+
+.table tbody tr:last-of-type{
+    /*background-color: rgba(255, 99, 71, 0.1);*/
+    border-bottom: 2px solid #428347;
+}
+
+.table tbody tr:first-child{
+    color: tomato;
+    font-weight: bold;
+}
+
+.Pp{
+    border-radius: 13px;
+    border: 1px solid rgba(149, 149, 149, 0.549);
+    width: 193px;/*95%*/
+    margin: auto auto;
+}
+
+.PpBorder{
+    width: 210px;/*17%*/
+    background-color: rgb(255, 193, 0);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    height: 90px;
+    border-radius: 13px;
+    box-shadow: 0px 2px 2px rgb(210, 159, 0);
+    margin-bottom: 50px;
+}
