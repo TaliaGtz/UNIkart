@@ -17,7 +17,7 @@ set name=pname;
 	END =)
 delimiter ;
 
-
+#_______________________________________________________________________
 
 delimiter =)
 create procedure sp_cat
@@ -67,6 +67,44 @@ set idBtn=pidBtn;
         SELECT ID_Categoria, Categoria FROM categorias;
 
     end if;
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_neg
+(
+	paccion tinyint,
+	pidBtn varchar(45)
+)
+BEGIN
+declare idBtn varchar(45);
+set idBtn=pidBtn;
+
+	if paccion = 1 then
+		SELECT Nombre, ID_Negocio
+        FROM negocios
+        WHERE Nombre = idBtn;
+			
+	end if;
+    if paccion = 2 then
+        SELECT ID_Negocio
+        FROM negocios
+        WHERE ID_Negocio=idBtn;
+    
+    end if;
+    if paccion = 3 then
+        SELECT ID_Negocio, Nombre FROM negocios;
+
+    end if;
+    if paccion = 4 then
+        SELECT Nombre 
+        FROM negocios 
+        WHERE ID_Negocio = idBtn;
+    end if;
+
 
 	END =)
 delimiter ;

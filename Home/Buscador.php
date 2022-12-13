@@ -14,9 +14,10 @@
 
 <?php
 
-    $consulta = "SELECT ID_Negocio, Nombre FROM negocios";
-    $ejecutar = $conexion->query($consulta);
-    while($fila = $ejecutar->fetch_array()):
+    
+    $consulta  = mysqli_query($conexion,'CALL sp_neg(3, "");');
+    while(mysqli_next_result($conexion)){;}
+    while($fila = $consulta->fetch_array()):
         
 ?>
 

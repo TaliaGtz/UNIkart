@@ -23,36 +23,26 @@
     $consultaCat  = mysqli_query($conexion,'CALL sp_cat(2, "'.$Category.'");');
     $consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
     while(mysqli_next_result($conexion)){;}
-    //$consultaCat =   "SELECT ID_Categoria
-    //                FROM categorias
-    //                WHERE Categoria = '$Category'";
-    //$consultaCat = mysqli_query($conexion, $consultaCat);
-    //$consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
     $IDCat = $consultaCat['ID_Categoria'];
 
     //Evaluamos si el negocio ingresado ya existe
-    $consultaNeg =   "SELECT Nombre, ID_Negocio
-                    FROM negocios
-                    WHERE Nombre = '$negName'";
-    $consultaNeg = mysqli_query($conexion, $consultaNeg);
+    $consultaNeg  = mysqli_query($conexion,'CALL sp_neg(1, "'.$negName.'");');
     $consultaNeg = mysqli_fetch_array($consultaNeg);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
 
         //Evaluamos si el rand ingresado ya existe
-        $consultaRand =   "SELECT ID_Negocio
-                            FROM negocios
-                            WHERE ID_Negocio='$IDNeg'";
-        $consultaRand = mysqli_query($conexion, $consultaRand);
+        $consultaRand  = mysqli_query($conexion,'CALL sp_neg(2, "'.$IDNeg.'");');
         $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
 
         if($consultaRand){
             $IDNeg = rand(10000, 65535);
 
             //Evaluamos si el rand ingresado ya existe
-            $consultaRand =   "SELECT ID_Negocio
-                            FROM negocios
-                            WHERE ID_Negocio='$IDNeg'";
-            $consultaRand = mysqli_query($conexion, $consultaRand);
+            $consultaRand  = mysqli_query($conexion,'CALL sp_neg(2, "'.$IDNeg.'");');
             $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
+            while(mysqli_next_result($conexion)){;}
+
             while($consultaRand){
                 $IDNeg = rand(10000, 65535);
             }
