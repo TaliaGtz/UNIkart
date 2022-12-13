@@ -43,11 +43,15 @@ include("../PhpDocs/PhpInclude.php");
     <?php require "../PhpDocs/Nav.php"; ?>
     <?php 
         $idBtn = $_GET['IDBtn'];
-        $consulta = "SELECT Categoria 
-                    FROM categorias 
-                    WHERE ID_Categoria = '$idBtn'";
-        $consulta = mysqli_query($conexion, $consulta);
+
+        $consulta  = mysqli_query($conexion,'CALL sp_cat(1, "'.$idBtn.'");');
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+
+        //$consulta = "SELECT Categoria 
+        //            FROM categorias 
+        //            WHERE ID_Categoria = '$idBtn'";
+        //$consulta = mysqli_query($conexion, $consulta);
+        //$consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
         $_SESSION['Category'] = $consulta['Categoria'];
         $_SESSION['IDCategory'] = $idBtn;
     ?>

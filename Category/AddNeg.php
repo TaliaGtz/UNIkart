@@ -20,11 +20,14 @@
 
     //Queremos el ID de la categoría accedida
     $Category = $_SESSION['Category'];
-    $consultaCat =   "SELECT ID_Categoria
-                    FROM categorias
-                    WHERE Categoria = '$Category'";
-    $consultaCat = mysqli_query($conexion, $consultaCat);
+    $consultaCat  = mysqli_query($conexion,'CALL sp_cat(2, "'.$Category.'");');
     $consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
+    //$consultaCat =   "SELECT ID_Categoria
+    //                FROM categorias
+    //                WHERE Categoria = '$Category'";
+    //$consultaCat = mysqli_query($conexion, $consultaCat);
+    //$consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
     $IDCat = $consultaCat['ID_Categoria'];
 
     //Evaluamos si el negocio ingresado ya existe

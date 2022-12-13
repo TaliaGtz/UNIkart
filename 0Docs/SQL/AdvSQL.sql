@@ -64,14 +64,3 @@ from entregas
 GROUP BY YEAR(Fecha)
 ORDER BY yTotal DESC
 LIMIT 0, 1;
-
-
-
-
-
-
-create view mostVisited_places AS
-select Lugar, count(Lugar) as total
-from entregas
-group by Lugar
-order by 2 desc;

@@ -12,9 +12,12 @@
     
     include("../PhpDocs/Conexion.php");
 
-    $consulta = "SELECT ID_Categoria, Categoria FROM categorias";
-    $ejecutar = $conexion->query($consulta);
-    while($fila = $ejecutar->fetch_array()):
+    //$consulta = "SELECT ID_Categoria, Categoria FROM categorias";
+    $consulta  = mysqli_query($conexion,'CALL sp_cat(6, "");');
+    
+    //$consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
+    //$ejecutar = $conexion->query($consulta);
+    while($fila = $consulta->fetch_array()):
         
 ?>
         

@@ -4,16 +4,19 @@
 
     //Queremos el ID de la categoría accedida
     $IDCat      = $_SESSION['IDCategory'];
-        
-    $consultaCatNeg  =  "SELECT C.ID_Categoria, CN.ID_negocio, N.Nombre
-                        FROM categorias C
-                        INNER JOIN categoriaxnegocio CN ON C.ID_Categoria = CN.ID_categoria
-                        INNER JOIN negocios N ON CN.ID_negocio = N.ID_Negocio
-                        WHERE C.ID_Categoria = '$IDCat'";
-    $ejecutar = $conexion->query($consultaCatNeg);
 
-    while($fila = $ejecutar->fetch_array()):
-        
+    $consultaCatNeg  = mysqli_query($conexion,'CALL sp_cat(3, "'.$IDCat.'");');
+    //$consultaCatNeg = mysqli_fetch_array($consultaCatNeg);  //Devuelve un array o NULL
+
+    //$consultaCatNeg  =  "SELECT C.ID_Categoria, CN.ID_negocio, N.Nombre
+    //                    FROM categorias C
+    //                    INNER JOIN categoriaxnegocio CN ON C.ID_Categoria = CN.ID_categoria
+    //                    INNER JOIN negocios N ON CN.ID_negocio = N.ID_Negocio
+    //                    WHERE C.ID_Categoria = '$IDCat'";
+    //$ejecutar = $conexion->query($consultaCatNeg);
+    
+    while($fila = $consultaCatNeg->fetch_array()):
+        while(mysqli_next_result($conexion)){;}
 ?>
 
     <a href="../Menu/Menu.php?IDBtn=<?php echo $fila['ID_negocio']; ?>" class="card">
@@ -31,15 +34,18 @@
 
     //Queremos el ID de la categoría accedida
     $IDCat      = $_SESSION['IDCategory'];
-        
-    $consultaCatNeg  =  "SELECT C.ID_Categoria, CN.ID_Producto, N.Nombre
-                        FROM categorias C
-                        INNER JOIN productoxcat CN ON C.ID_Categoria = CN.ID_Categoria
-                        INNER JOIN productos N ON CN.ID_Producto = N.ID_Producto
-                        WHERE C.ID_Categoria = '$IDCat'";
-    $ejecutar = $conexion->query($consultaCatNeg);
+    while(mysqli_next_result($conexion)){;}
+    $consultaCatNeg  = mysqli_query($conexion,'CALL sp_cat(4, "'.$IDCat.'");');
+    //$consultaCatNeg = mysqli_fetch_array($consultaCatNeg);  //Devuelve un array o NULL
 
-    while($fila = $ejecutar->fetch_array()):
+    //$consultaCatNeg  =  "SELECT C.ID_Categoria, CN.ID_Producto, N.Nombre
+    //                    FROM categorias C
+    //                    INNER JOIN productoxcat CN ON C.ID_Categoria = CN.ID_Categoria
+    //                    INNER JOIN productos N ON CN.ID_Producto = N.ID_Producto
+    //                    WHERE C.ID_Categoria = '$IDCat'";
+    //$ejecutar = $conexion->query($consultaCatNeg);
+
+    while($fila = $consultaCatNeg->fetch_array()):
         
 ?>
 
