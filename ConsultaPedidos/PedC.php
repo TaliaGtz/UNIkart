@@ -59,11 +59,20 @@ include("../PhpDocs/PhpInclude.php");
                     $fecha_inicio = $_POST['fecha_inicio'];
                     $fecha_final = $_POST['fecha_final'];
 
-                    //echo $fecha_inicio . " y " . $fecha_final;
+                    $userName = $_SESSION['user'];
+                    //$_SESSION['ProdSel'] = $idBtn;
+
+                    //Queremos el ID del usuario
+                    $consulta1 =   "SELECT ID_Registro 
+                                    FROM registro
+                                    WHERE Username='$userName'";
+                    $consulta1 = mysqli_query($conexion, $consulta1);
+                    $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
+                    $IDUser    = $consulta1['ID_Registro'];
 
                     $Fechas = "SELECT ID_Entrega, Fecha 
                                     FROM entregas
-                                    WHERE Fecha BETWEEN '{$fecha_inicio}' AND '{$fecha_final}'
+                                    WHERE Fecha BETWEEN '$fecha_inicio' AND '$fecha_final' AND ID_User = '$IDUser'
                                     ORDER BY Fecha DESC";
 
                     $ejecutar = $conexion->query($Fechas);

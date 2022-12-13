@@ -25,7 +25,7 @@ include("../PhpDocs/Fecha.php");
 
     <?php 
         $IDEnt = $_GET['IDEnt'];
-        $consulta = "SELECT Fecha, CODE, Total, Lugar, Pago
+        $consulta = "SELECT Fecha, CODE, Total, Lugar, Pago, ID_Entrega
                     FROM entregas 
                     WHERE ID_Entrega = '$IDEnt'";
         $consulta = mysqli_query($conexion, $consulta);
@@ -49,7 +49,7 @@ include("../PhpDocs/Fecha.php");
 
     <div class="areas">
         <div class="bar">
-        <h2>Venta N</h2>
+        <h2>Venta <?php echo formatearFechaEntregas($consulta['Fecha']); ?></h2>
         </div>
         <div class="informe">
             <h3>Detalles de la venta</h3><br>
@@ -59,15 +59,16 @@ include("../PhpDocs/Fecha.php");
             <i class="fa-solid fa-barcode"></i>CODE: <?php echo $consulta['CODE']; ?><br>
             <br><hr><br>
             <p>Fecha y hora de la venta: <?php echo formatearFechaEntregas($consulta['Fecha']); ?></p>
-            <p>Producto(s):</p><?php 
+            <p>Producto(s):</p>
+            <?php 
                 $ejecutar = $conexion->query($consultaCatNeg);
-
+        
                 while($fila = $ejecutar->fetch_array()): 
                    ?> °<?php echo $fila['Nombre'];
                    $ID_Producto[] = $fila['ID_Producto'];
-                   
-                endwhile; ?> 
-            
+                   ?> <label>, disponibilidad: <?php echo $fila['Disponibilidad'];?> | </label><?php
+                endwhile; 
+            ?> 
             <p>Categoría(s):</p>
             <?php 
                 foreach ($ID_Producto as $value) {
@@ -81,8 +82,9 @@ include("../PhpDocs/Fecha.php");
                     endwhile;
                     ?><label> | </label><?php
                 }
-            ?>
-            <br><br><hr><br>
+            ?><br>
+            <p>Calificación</p>
+            <br><hr><br>
             <h3>Costo total</h3><br>
             <p>Costo de los productos: $<?php echo $consulta['Total']; ?></p>
             <p>Propina</p>
