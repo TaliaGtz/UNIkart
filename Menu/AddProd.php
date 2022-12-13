@@ -52,7 +52,7 @@
         $sql = "INSERT INTO productos 
         VALUES(
             '$ID        ',
-            '$negID   ',
+            '$negID     ',
             '$product   ',
             '$rate      ',
             '$precio    ',
@@ -63,18 +63,18 @@
             '0          ',
             '$ID_Com    '
         )";
-       
-        foreach($_POST['checkbox'] as $seleccion) {
-            //echo "<p>".$seleccion ."</p>";
-            $sql1 = "INSERT INTO productoxcat
-            VALUES(
-                '$seleccion ',
-                '$ID        '
-            )";
-            mysqli_query($conexion, $sql1);
-        }
 
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
+            
+            foreach($_POST['checkbox'] as $seleccion) {
+                //echo "<p>".$seleccion ."</p>";
+                $sql1 = "INSERT INTO productoxcat
+                VALUES(
+                    '$seleccion ',
+                    '$ID        '
+                )";
+                mysqli_query($conexion, $sql1);
+            }
             echo "alert('El producto se ha añadido')";
             $url = "Menu/Menu.php?IDBtn=$IDBtn";
             include("../PhpDocs/header.php");
