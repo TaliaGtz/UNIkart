@@ -131,7 +131,14 @@ include("../PhpDocs/PhpInclude.php");
                         ?><label>°<?php echo $fila['Categoria'] ?></label><?php 
                     endwhile;
                 ?>
-                <p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</p>
+                <?php
+                    $Disp = $consulta['Disponibilidad'];
+                    if($consulta['Disponibilidad'] == 0){
+                        ?><p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles, no sabemos cúando volverá a estar a la venta</p><?php
+                    }else{
+                        ?><p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</p><?php
+                    }
+                ?>
                 <p><?php echo $consulta['Descripcion']; ?></p>
                 <a href="../WishList/WishList.php"></a>
                 
@@ -141,18 +148,21 @@ include("../PhpDocs/PhpInclude.php");
                         <?php include("../Producto/WLists.php"); ?>
                     </ul>
                 </div>
-                    <?php
+                <?php
                     $User = "$_SESSION[user]";
                     //Queremos el ID del usuario
-                    $consulta =   "SELECT ID_Registro 
+                    $consultar =   "SELECT ID_Registro 
                                     FROM registro
                                     WHERE Username = '$User'";
-                    $consulta = mysqli_query($conexion, $consulta);
-                    $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-                    $User = $consulta['ID_Registro'];
-
-                    ?>
-                <a href="../Producto/AddProduct.php?IDBtn=<?php echo $User?>&IDProd=<?php echo $idBtn;?>" ><i id="addCart" class="fa-solid fa-cart-plus"></i></a><!--onclick="addCart()"-->
+                    $consultar = mysqli_query($conexion, $consultar);
+                    $consultar = mysqli_fetch_array($consultar);  //Devuelve un array o NULL
+                    $User = $consultar['ID_Registro'];
+                ?>
+                <?php
+                    if($Disp != 0){
+                        ?><a href="../Producto/AddProduct.php?IDBtn=<?php echo $User?>&IDProd=<?php echo $idBtn;?>" ><i id="addCart" class="fa-solid fa-cart-plus"></i></a><!--onclick="addCart()"--><?php
+                    }
+                ?>
             </div>
         </section>
 
