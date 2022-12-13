@@ -1,6 +1,6 @@
 <?php
 
-    include("../PhpDocs/PhpInclude.php");
+    //include("../PhpDocs/PhpInclude.php");
     include("../PhpDocs/Fecha.php");
 
     $userName = $_SESSION['user'];

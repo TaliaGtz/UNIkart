@@ -19,7 +19,7 @@ include("../PhpDocs/PhpInclude.php");
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
     <script type="text/javascript">
-        function ajax(){
+        /*function ajax(){
             var req = new XMLHttpRequest();
             req.onreadystatechange = function(){
                 if(req.readyState == 4 && req.status ==  200){
@@ -30,7 +30,7 @@ include("../PhpDocs/PhpInclude.php");
             req.send();
         }
 
-        setInterval(function(){ajax();}, 1000);    //refresca la página automáticamente
+        setInterval(function(){ajax();}, 1000);    //refresca la página automáticamente*/
     </script>
 </head>
 <body onload="ajax();">
@@ -39,14 +39,54 @@ include("../PhpDocs/PhpInclude.php");
     <div class="areas">
         <div class="bar">
             <h2>Historial de pedidos</h2>
-            <a href="#"><button class="Res">De hoy</button></a>
-            <a href="#"><button class="Res">De esta semana</button></a>
-            <a href="#"><button class="Res">De este mes</button></a>
-            <a href="#"><button class="Res">De este año</button></a>
-            <a href="#"><button class="Res">Todos</button></a>
+            <form method="post" name="formFechas" id="formFechas">
+                <div>
+                    <label for="fecha_inicio" class="ResN">Fecha Inicial:</label>
+                    <input type="date" class="Res" name="fecha_inicio">
+                </div>
+                <div>
+                    <label for="fecha_final" class="ResN">Fecha Final:</label>
+                    <input type="date" class="Res" name="fecha_final">
+                </div>
+                <button type="submit" name="aplicar" class="aplicar">Aplicar</button>
+                <button class="aplicar" onclick="setTimeout(function(){location.reload();}, 3000);">Reestablecer</button>
+            </form>
         </div>
         <div id="categorias" class="categorias">
-            
+            <?php 
+
+                if(isset($_POST['aplicar'])){
+                    $fecha_inicio = $_POST['fecha_inicio'];
+                    $fecha_final = $_POST['fecha_final'];
+
+                    //echo $fecha_inicio . " y " . $fecha_final;
+
+                    $Fechas = "SELECT ID_Entrega, Fecha 
+                                    FROM entregas
+                                    WHERE Fecha BETWEEN '{$fecha_inicio}' AND '{$fecha_final}'
+                                    ORDER BY Fecha DESC";
+
+                    $ejecutar = $conexion->query($Fechas);
+
+                    while($fila = $ejecutar->fetch_array()):
+                    
+            ?>
+
+                <a href="../Pedido/Pedido.php?IDEnt=<?php echo ($fila['ID_Entrega']); ?>" class="card"><div>
+                    <div>
+                        <img class="text" src="../ExtraDocs/PedidosBlack.png" width="100px" height="100px">
+                        <h3 class="text"><?php echo date('d/M/Y g:i a', strtotime($fila['Fecha'])); ?></h3>
+                        <i id="view" class="fa-solid fa-circle-chevron-right"></i>
+                    </div>
+                    </div>
+                </a>
+
+
+            <?php endwhile; }else{
+                include("../ConsultaPedidos/AddPedC.php");
+            } 
+
+            ?>
         </div>
     </div>
 

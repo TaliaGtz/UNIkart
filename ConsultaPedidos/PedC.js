@@ -104,3 +104,21 @@ function Modal(titulo, contenido, idioma) {
         borrarModal('modal'); 
     }
 }
+
+///////////////////////////////////////////////////////////////
+
+$('formFechas').submit(function(e){
+    e.preventDefault();
+    var form = $($this);
+    var url = form.attr('action');
+
+    $.ajax({
+        type: "POST",
+        url: "../ConsultaPedidos/Fechas.php",
+        data: form.serialize(),
+        success: function(data){
+            $('#categorias').html('');
+            $('#categorias').append(data);
+        }
+    });
+});

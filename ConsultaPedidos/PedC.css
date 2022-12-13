@@ -105,13 +105,60 @@ h2{
     color: #67432e;
 }
 
+form{
+    display: flex;
+    height: 50px;
+}
+
 .Res{
     background-color: tomato;
     padding: 10px;
+    border: 0px solid transparent;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: aliceblue;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+    margin-left: 0;
+    height: 43px;
+    transform: translateX(-10px);
+    outline: none;
+}
+
+.ResN{
+    background-color: tomato;
+    padding: 10px;
+    border: 0px solid transparent;
+    border-radius: 25px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: aliceblue;
+    font-size: 20px;
+    margin: 20px;
+    /*cursor: pointer;*/
+    margin-right: 0;
+}
+
+.aplicar{
+    background-color: tomato;
+    padding: 10px 20px;
     border: 0px solid transparent;
     border-radius: 25px;
     color: aliceblue;
     font-size: 20px;
     margin: 20px;
     cursor: pointer;
+    height: 43px;
+}
+
+/*Responsive*/
+@media screen and (max-width: 1441px){
+    .Res{
+        border-radius: 25px;
+    }
+    .ResN{
+        border-radius: 25px;
+    }
 }
