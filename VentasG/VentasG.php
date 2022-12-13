@@ -22,6 +22,12 @@ include("../PhpDocs/PhpInclude.php");
 <body>
     <?php require "../PhpDocs/Nav.php"; ?>
 
+    <?php
+        $consulta = "SELECT * 
+                FROM total_entregas";
+        $consulta = mysqli_query($conexion, $consulta);
+        $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+    ?>
     <div class="areas">
         <div class="bar">
         <h2>Venta N</h2>
@@ -33,7 +39,7 @@ include("../PhpDocs/PhpInclude.php");
             <br><hr><br>
             <p>Mes y año de la venta</p>
             <p>Categoría(s)</p>
-            <p>Ventas totales</p>
+            <p>Ventas totales: $<?php echo $consulta['sum(Total)']; ?></p>
         </div>
         
     </div>
