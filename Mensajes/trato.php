@@ -18,9 +18,10 @@
     }
 
 
-    if(isset($_GET['ID'])) { 
-        $ID = $_GET['ID'];
+    if(isset($_GET['Rol'])) { 
+        $ID = $_GET['Rol'];
         $CODE = $_GET['COD'];
+        $IDEnt = $_GET['IDEnt'];
         $tratoLugar = $_POST["tratoLugar"];
 
         $query = "UPDATE entregas
@@ -28,7 +29,7 @@
                 WHERE CODE = '$CODE'";
         mysqli_query($conexion, $query);
 
-        $url = "Mensajes/mensajes.php?Rol=$ID&COD=$CODE";
+        $url = "Mensajes/mensajes.php?Rol=$ID&COD=$CODE&IDEnt=$IDEnt";
         include("../PhpDocs/header.php");
         //header("Location: http://localhost:8080/unikart2/Mensajes/mensajes.php?Rol=$ID&COD=$CODE");
     } 

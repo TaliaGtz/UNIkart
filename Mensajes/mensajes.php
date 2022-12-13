@@ -58,6 +58,11 @@ include("../PhpDocs/PhpInclude.php");
         if(isset($_GET['Rol'])) {
             $Rol = $_GET['Rol'];
             $CODE = $_GET['COD'];
+            if(isset($_GET['IDEnt'])) {
+                $IDEnt = $_GET['IDEnt'];
+            }else{
+                $IDEnt = $_GET['Ent'];
+            }
             /*$consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
                         FROM productos 
                         WHERE ID_Producto = '$IDProd'";
@@ -68,7 +73,7 @@ include("../PhpDocs/PhpInclude.php");
             $_SESSION['IDProd'] = $IDProd;*/
         }
     ?>
-
+    <a href="../Pedido/Pedido.php?IDEnt=<?php echo $IDEnt ?>"><i class="fa-solid fa-arrow-left back"></i></a>
     <div id="contenedor">
         <div id="caja-chat">
             <h3>Chat <?php if(isset($Prod)) { echo "- " . $Prod; }?>
@@ -98,7 +103,7 @@ include("../PhpDocs/PhpInclude.php");
                 </form>
             <?php }
             if(isset($_GET['Rol'])) { ?>
-                <form method="POST" action="../Mensajes/mensajes.php?Rol=<?php echo $Rol ?>&COD=<?php echo $CODE?>">
+                <form method="POST" action="../Mensajes/mensajes.php?Rol=<?php echo $Rol ?>&COD=<?php echo $CODE?>&IDEnt=<?php echo $IDEnt ?>">
                     <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
                     <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
                     <input type="submit" name="enviar" value="Enviar"></input>
@@ -110,9 +115,10 @@ include("../PhpDocs/PhpInclude.php");
                 $nombre = $_SESSION['user'];  //$_POST['nombre'];
                 $mensaje = $_POST['mensaje'];
                 $mensaje = base64_encode($mensaje);
+                $IDChat = rand(10000, 65535);
 
-                $consulta = "INSERT INTO chat (Usuario, Mensaje) 
-                            VALUES('$nombre', '$mensaje')";
+                $consulta = "INSERT INTO chat (IDChat, Usuario, Mensaje) 
+                            VALUES('$IDChat', '$nombre', '$mensaje')";
                 $ejecutar = $conexion->query($consulta);
 
                 if($ejecutar){
@@ -137,7 +143,7 @@ include("../PhpDocs/PhpInclude.php");
     <?php 
     if(isset($_GET['Rol'])) { ?>
         <div class="tratoL">
-            <form method="POST" action="../Mensajes/trato.php?Rol=<?php echo $Rol; ?>&COD=<?php echo $CODE; ?>">
+            <form method="POST" action="../Mensajes/trato.php?Rol=<?php echo $Rol; ?>&COD=<?php echo $CODE; ?>&IDEnt=<?php echo $IDEnt ?>">
                 <strong><label>Lugar de entrega: </label></strong><br>
                 <input type="text" class="lugar" name="tratoLugar"></input><input id="send" type="submit" value="Aceptar"></input>
             </form>

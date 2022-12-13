@@ -6,7 +6,7 @@
     //$nombre = $_SESSION['user'];  //$_POST['nombre'];
     //echo $nombre;
 
-    $consulta = "SELECT IDChat, Usuario, Mensaje, Fecha FROM chat ORDER BY IDChat DESC";
+    $consulta = "SELECT IDChat, Usuario, Mensaje, Fecha FROM chat ORDER BY Fecha DESC";
     $ejecutar = $conexion->query($consulta);
     while($fila = $ejecutar->fetch_array()):
         $fila['Mensaje']=base64_decode($fila['Mensaje']);

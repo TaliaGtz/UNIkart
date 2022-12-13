@@ -25,6 +25,16 @@ body{
     width: 100%;
 }
 
+.back{
+    position: absolute;
+    transform: translate(0, 80px);
+    font-size: 40px;
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.879);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.527);
+    cursor: pointer;
+}
+
 /*Chat*/
 #contenedor{
     width: 80%;

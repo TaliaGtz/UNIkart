@@ -54,7 +54,7 @@ include("../PhpDocs/Fecha.php");
         <div class="informe">
             <h3>Detalles del pedido</h3><br>
             <i class="fa-solid fa-location-dot"></i>Lugar de entrega: <?php if($consulta['Lugar'] == NULL){ echo "No especificado"; }else{ echo $consulta['Lugar']; } ?><br>
-            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php?Rol=1&COD=<?php echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a><br>
+            <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php?Rol=1&COD=<?php echo $consulta['CODE'];?>&IDEnt=<?php echo$IDEnt;?>" id="chat">(Ir al chat)</a><br>
             <i class="fa-solid fa-handshake"></i>Nombre de/los vendedor/es:<br>
                 <?php 
                     $ejecutar2 = $conexion->query($consultaCatNeg2);
