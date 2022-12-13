@@ -1,6 +1,6 @@
 #Necesitamos_2_Triggers,_8_views,_2_functions_en_total;
 
-#Views_7;
+#Views_11;
 create view cot_products AS
 select Negocio, Nombre, Precio from productos where Precio = 0;
 
@@ -8,7 +8,7 @@ create view mostVisited_products AS
 select ID_Producto, Negocio, Nombre, Precio, PrecioCant, Views from productos where Views > 4 order by Views DESC;
 
 create view Total_entregas AS
-SELECT sum(Total) from entregas;
+SELECT sum(Total) AS total, count(ID_Entrega) AS ventas from entregas;
 
 create view avg_categorias AS
 SELECT E.ID_Entrega, PK.ID_Producto, P.ID_Categoria, C.Categoria
@@ -43,6 +43,29 @@ FROM entregas
 GROUP BY Pago
 ORDER BY total DESC
 LIMIT 0, 1;
+
+create view most_day AS
+select DAY(Fecha) AS dia, count(Fecha) AS dTotal
+from entregas
+GROUP BY DAY(Fecha)
+ORDER BY dTotal DESC
+LIMIT 0, 1;
+
+create view most_month AS
+select MONTH(Fecha) AS mes, count(Fecha) AS mTotal
+from entregas
+GROUP BY MONTH(Fecha)
+ORDER BY mTotal DESC
+LIMIT 0, 1;
+
+create view most_year AS
+select YEAR(Fecha) AS year, count(Fecha) AS yTotal
+from entregas
+GROUP BY YEAR(Fecha)
+ORDER BY yTotal DESC
+LIMIT 0, 1;
+
+
 
 
 

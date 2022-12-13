@@ -23,7 +23,7 @@ include("../PhpDocs/PhpInclude.php");
     <?php require "../PhpDocs/Nav.php"; ?>
 
     <?php
-        $consulta = "SELECT * 
+        $consulta = "SELECT total, ventas 
                     FROM total_entregas";
         $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
@@ -35,6 +35,18 @@ include("../PhpDocs/PhpInclude.php");
         $consulta4 = "SELECT Pago, total FROM most_pays";
         $consulta4 = mysqli_query($conexion, $consulta4);
         $consulta4 = mysqli_fetch_array($consulta4);  //Devuelve un array o NULL
+
+        $consulta5 = "SELECT dia FROM most_day";
+        $consulta5 = mysqli_query($conexion, $consulta5);
+        $consulta5 = mysqli_fetch_array($consulta5);  //Devuelve un array o NULL
+
+        $consulta6 = "SELECT mes FROM most_month";
+        $consulta6 = mysqli_query($conexion, $consulta6);
+        $consulta6 = mysqli_fetch_array($consulta6);  //Devuelve un array o NULL
+
+        $consulta7 = "SELECT year FROM most_year";
+        $consulta7 = mysqli_query($conexion, $consulta7);
+        $consulta7 = mysqli_fetch_array($consulta7);  //Devuelve un array o NULL
         
     ?>
     <div class="areas">
@@ -45,7 +57,7 @@ include("../PhpDocs/PhpInclude.php");
             <i class="fa-solid fa-location-dot"></i>Frecuencia de lugares de entrega<br>
             <i class="fa-solid fa-truck"></i>Frecuencia de nombre del repartidor<br>
             <br><hr><br>
-            <h3>Rango de fechas más usual:</h3>
+            <h3>Fecha más usual: <?php echo $consulta5['dia']; ?>/<?php echo $consulta6['mes']; ?>/<?php echo $consulta7['year']; ?></h3>
             <br><hr><br>
             <div class="tablas">
                 <div>
@@ -98,7 +110,7 @@ include("../PhpDocs/PhpInclude.php");
                 </div>
             </div>
             <br><hr><br>
-            <h3>Ventas totales: $<?php echo $consulta['sum(Total)']; ?></h3>
+            <h3>Ventas totales: <?php echo $consulta['ventas']; ?>, sumando una cantidad de: $<?php echo $consulta['total']; ?></h3>
             <br><hr><br>
             <h3>Transacción más usada, con un total de <?php echo $consulta4['total']; ?> veces</h3>
             <?php if($consulta4['Pago'] == '1'){
