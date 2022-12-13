@@ -18,6 +18,9 @@
     $ejecutar = $conexion->query($consultaWLProd);
     
     while($fila = $ejecutar->fetch_array()):
+        if($fila == null){
+            ?> <h1 class="null">Aún no hay elementos en tu carrito</h1> <?php
+        } 
         $IDPr = $fila['ID_Producto'];
 ?>
 

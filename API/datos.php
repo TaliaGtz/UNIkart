@@ -7,7 +7,7 @@ if($_GET['variable']){
     include_once 'conexion.php';
 
     $get = $_GET['variable'];
-    $sql = "SELECT * FROM registro WHERE Username = '$get'";
+    $sql = "SELECT ID_Registro, Username, Contrasenia, Rol FROM registro WHERE Username = '$get'";
     $sentencia = $pdo->prepare($sql);
     $sentencia->execute();
     $datos = $sentencia->fetchAll();

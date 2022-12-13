@@ -443,3 +443,12 @@ h1{
 .total hr{
     border: 1px solid #2c1507;
 }
+
+.null{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: rgba(44, 21, 7, 0.3);
+}

@@ -16,8 +16,11 @@
                         INNER JOIN productos P ON PW.ID_Producto = P.ID_Producto
                         WHERE W.ID_Wishlist = '$IDWL'";
     $ejecutar = $conexion->query($consultaWLProd);
-    
+
     while($fila = $ejecutar->fetch_array()):
+        if($fila == null){
+            ?> <h1 class="null">Aún no hay elementos en tu lista</h1> <?php
+        } 
         $IDPr = $fila['ID_Producto'];
 ?>
 
@@ -52,5 +55,3 @@
     </article>
 
 <?php endwhile; ?>
-
-

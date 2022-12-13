@@ -55,7 +55,7 @@ include("../PhpDocs/PhpInclude.php");
         </section>
             <div class="total">
                 <hr>
-                <strong><p>Total: $<?php include("../Producto/pay.php"); ?> </p></strong>
+                <strong><p>Subtotal: $<?php include("../Producto/pay.php"); ?> </p></strong>
             </div>
         
         <!-- fin sección de listas -->
