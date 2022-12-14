@@ -3,7 +3,7 @@
     include("../PhpDocs/PhpInclude.php");
 
     //Queremos el ID de la categoría accedida
-    $IDCat      = $_SESSION['IDCategory'];
+    $IDCat = $_SESSION['IDCategory'];
 
     $consultaCatNeg  = mysqli_query($conexion,'CALL sp_cat(3, "'.$IDCat.'");');
     

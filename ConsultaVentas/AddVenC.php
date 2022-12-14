@@ -4,7 +4,6 @@
     include("../PhpDocs/Fecha.php");
 
     $consulta  = mysqli_query($conexion,'CALL sp_1Var(3, "");');
-    $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
     while(mysqli_next_result($conexion)){;}
 
     while($fila = $consulta->fetch_array()):

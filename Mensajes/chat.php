@@ -3,12 +3,10 @@
     include("../PhpDocs/PhpInclude.php");
     include("../PhpDocs/Fecha.php");
 
-    //$nombre = $_SESSION['user'];  //$_POST['nombre'];
-    //echo $nombre;
-
-    $consulta = "SELECT IDChat, Usuario, Mensaje, Fecha FROM chat ORDER BY Fecha DESC";
-    $ejecutar = $conexion->query($consulta);
-    while($fila = $ejecutar->fetch_array()):
+    $consulta  = mysqli_query($conexion,'CALL sp_2Var(3, "");');
+    while(mysqli_next_result($conexion)){;}
+    while($fila = $consulta->fetch_array()):
+        
         $fila['Mensaje']=base64_decode($fila['Mensaje']);
 ?>
     <div id="datos-chat">

@@ -25,38 +25,29 @@ include("../PhpDocs/PhpInclude.php");
             $IDProd = $_GET['IDProd'];
         }
         
-        $consulta = "SELECT ID_KartList 
-                    FROM carrito 
-                    WHERE ID_Carrito = '$idBtn'";
-        $consulta = mysqli_query($conexion, $consulta);
+        $consulta  = mysqli_query($conexion,'CALL sp_3Var(3, "'.$idBtn.'");');
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
         $_SESSION['ID_KartList'] = $idBtn;
     ?>
 
     <section class="grid">
         <div class="square">
             <h1>Carrito - <?php echo $_SESSION['ID_KartList']; ?></h1>
-            <?php 
-            //if($_SESSION['Total2Pay'] != '0'){ ?>
-                <ul class="menuABC" >
-                    <!--button type="button" id="publicar" class="ABC"><li><span>Agregar</span></li></!--button>
-                    <button type="button" id="listo" class="ABC"><li><span>Listo</span></li></button>
-                    <button-- type="button" id="eliminar" class="ABC"><li><span>Eliminar</span></li></button-->
-                    <button type="button" class="ABC"><a class="ABC" href="../SisPago/SisPago.php"><li><span>Pagar carrito</span></li></a></button>
-                </ul> 
-            <?php //} ?>
+            <ul class="menuABC" >
+                <button type="button" class="ABC"><a class="ABC" href="../SisPago/SisPago.php"><li><span>Pagar carrito</span></li></a></button>
+            </ul> 
         </div>
 
         <!-- sección de listas -->
         <section id="contenido">
             <div id="contCart"><?php include("../Producto/ProductList.php"); ?></div>
             
-            
         </section>
-            <div class="total">
-                <hr>
-                <strong><p>Subtotal: $<?php include("../Producto/pay.php"); ?> </p></strong>
-            </div>
+        <div class="total">
+            <hr>
+            <strong><p>Subtotal: $<?php include("../Producto/pay.php"); ?> </p></strong>
+        </div>
         
         <!-- fin sección de listas -->
 

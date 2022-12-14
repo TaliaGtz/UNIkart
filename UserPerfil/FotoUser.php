@@ -1,11 +1,8 @@
 <?php
 
     $user = "$_SESSION[ID_media]";
-    $query="SELECT nombre, tipo, imagen 
-            FROM media 
-            WHERE ID_media = '$user'";
-
-    $query = mysqli_query($conexion, $query);
+    $query  = mysqli_query($conexion,'CALL sp_4Var(8, "'.$user.'");');
     $query = mysqli_fetch_array($query);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
     
 ?>

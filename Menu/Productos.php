@@ -4,19 +4,16 @@
 
     $User = "$_SESSION[user]";
     //Queremos el ID del usuario
-    $consulta =   "SELECT ID_Registro 
-                FROM registro
-                WHERE Username = '$User'";
-    $consulta = mysqli_query($conexion, $consulta);
+    $consulta  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$User.'");');
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
     $User = $consulta['ID_Registro'];
 
     $IDNeg = $_SESSION['IDNegocio'];
-    $consulta = "SELECT ID_Producto, Nombre 
-                FROM productos 
-                WHERE Negocio='$IDNeg'";
-    $ejecutar = $conexion->query($consulta);
-    while($fila = $ejecutar->fetch_array()):
+    $consulta  = mysqli_query($conexion,'CALL sp_2Var(6, "'.$IDNeg.'");');
+    while(mysqli_next_result($conexion)){;}
+
+    while($fila = $consulta->fetch_array()):
                     
 ?>
                   

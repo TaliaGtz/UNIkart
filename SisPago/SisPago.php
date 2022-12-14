@@ -30,7 +30,7 @@ include("../PhpDocs/PhpInclude.php");
                     <br><br>
                     <div class="nota">
                         <div class="titles">
-                            <p>Costo de los productos</p>
+                            <p>Costo de los productos</p> 
                             <p>Propina</p>
                             <p>Tarifa de servicio</p>
                         </div>
@@ -107,13 +107,6 @@ include("../PhpDocs/PhpInclude.php");
                                         // Successful capture! For demo purposes:
                                         console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                                         var transaction = orderData.purchase_units[0].payments.captures[0];
-                                        //alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-
-                                        // Replace the above to show a success message within this page, e.g.
-                                        // const element = document.getElementById('paypal-button-container');
-                                        // element.innerHTML = '';
-                                        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                                        // Or go to another URL:  actions.redirect('thank_you.html');
                                         window.location.href="../Pagado/pagado.php?Key=3";
                                     });
                                 }

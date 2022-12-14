@@ -23,30 +23,32 @@ include("../PhpDocs/PhpInclude.php");
     <?php require "../PhpDocs/Nav.php"; ?>
 
     <?php
-        $consulta = "SELECT total, ventas 
-                    FROM total_entregas";
-        $consulta = mysqli_query($conexion, $consulta);
+
+        $consulta  = mysqli_query($conexion,'CALL sp_ventasRes(1);');
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
 
-        $consulta2 = "SELECT Categoria, total FROM most_categorias";
+        $consulta2  = mysqli_query($conexion,'CALL sp_ventasRes(2);');
+        while(mysqli_next_result($conexion)){;}
 
-        $consulta3 = "SELECT Nombre, total FROM most_products";
+        $consulta3  = mysqli_query($conexion,'CALL sp_ventasRes(3);');
+        while(mysqli_next_result($conexion)){;}
 
-        $consulta4 = "SELECT Pago, total FROM most_pays";
-        $consulta4 = mysqli_query($conexion, $consulta4);
+        $consulta4  = mysqli_query($conexion,'CALL sp_ventasRes(4);');
         $consulta4 = mysqli_fetch_array($consulta4);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
 
-        $consulta5 = "SELECT dia FROM most_day";
-        $consulta5 = mysqli_query($conexion, $consulta5);
+        $consulta5  = mysqli_query($conexion,'CALL sp_ventasRes(5);');
         $consulta5 = mysqli_fetch_array($consulta5);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
 
-        $consulta6 = "SELECT mes FROM most_month";
-        $consulta6 = mysqli_query($conexion, $consulta6);
+        $consulta6  = mysqli_query($conexion,'CALL sp_ventasRes(6);');
         $consulta6 = mysqli_fetch_array($consulta6);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
 
-        $consulta7 = "SELECT year FROM most_year";
-        $consulta7 = mysqli_query($conexion, $consulta7);
+        $consulta7  = mysqli_query($conexion,'CALL sp_ventasRes(7);');
         $consulta7 = mysqli_fetch_array($consulta7);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
         
     ?>
     <div class="areas">
@@ -72,9 +74,7 @@ include("../PhpDocs/PhpInclude.php");
                         </thead>
                         <tbody>
                             <?php
-                                $ejecutar = $conexion->query($consulta2);
-                        
-                                while($fila = $ejecutar->fetch_array()): 
+                                while($fila = $consulta2->fetch_array()): 
                                 ?> <tr> <?php
                                 ?> <td><?php echo $fila['Categoria'];?></td> <?php
                                 ?> <td><?php echo $fila['total'];?></td> <?php
@@ -96,9 +96,7 @@ include("../PhpDocs/PhpInclude.php");
                         </thead>
                         <tbody>
                             <?php
-                                $ejecutar = $conexion->query($consulta3);
-                        
-                                while($fila = $ejecutar->fetch_array()): 
+                                while($fila = $consulta3->fetch_array()): 
                                 ?> <tr> <?php
                                 ?> <td><?php echo $fila['Nombre'];?></td> <?php
                                 ?> <td><?php echo $fila['total'];?></td> <?php

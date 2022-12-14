@@ -6,7 +6,6 @@
     $ID         = rand(10000, 65535);
     $IDMedia    = rand(10000, 65535);
     $ID_KartList= rand(10000, 65535);
-    //shuffle($ID_KartList);
     $nombres    = $_POST["nombres"];
     $apellidos  = $_POST["apellidos"];
     $rol        = "1";
@@ -17,32 +16,26 @@
     
     //encriptación
     $passwordHash = base64_encode($password);  //, PASSWORD_BCRYPT BCRYPT es el algoritmo de encriptación, devuelve una cadena de 60 caracteres
-    //$passwordHash = substr($passwordHash, 0, 60);
     $fotoPerfil = "../ExtraDocs/User.png";   //Foto por defecto
 
     //Evaluamos si el user ingresado ya existe
-    $consultaId =   "SELECT Username
-                    FROM registro
-                    WHERE Username='$user'";
-    $consultaId = mysqli_query($conexion, $consultaId);
+    $consultaId  = mysqli_query($conexion,'CALL sp_2Var(1, "'.$user.'");');
     $consultaId = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
 
     //Evaluamos si el rand ingresado ya existe
-    $consultaRand =   "SELECT ID_media
-                        FROM registro
-                        WHERE ID_media='$IDMedia'";
-    $consultaRand = mysqli_query($conexion, $consultaRand);
+    $consultaRand  = mysqli_query($conexion,'CALL sp_2Var(2, "'.$IDMedia.'");');
     $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
 
     if($consultaRand){
         $IDMedia = rand(10000, 65535);
 
         //Evaluamos si el rand ingresado ya existe
-        $consultaRand =   "SELECT ID_media
-                        FROM registro
-                        WHERE ID_media='$IDMedia'";
-        $consultaRand = mysqli_query($conexion, $consultaRand);
+        $consultaRand  = mysqli_query($conexion,'CALL sp_2Var(2, "'.$IDMedia.'");');
         $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
+
         while($consultaRand){
             $IDMedia = rand(10000, 65535);
         }
@@ -74,10 +67,9 @@
        
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             mysqli_query($conexion, $sql2);
-            //echo "alert('Tu cuenta ha sido creada')";
+
             $url = "Landing Page/Landing.html";
             include("../PhpDocs/header.php");
-            //header("Location: http://localhost:8080/unikart2/Landing Page/Landing.html");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

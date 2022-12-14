@@ -181,3 +181,368 @@ set idBtn=pidBtn;
 
 	END =)
 delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_2Var
+(
+	paccion tinyint,
+	pidBtn varchar(45)
+)
+BEGIN
+declare idBtn varchar(45);
+set idBtn=pidBtn;
+
+	if paccion = 1 then
+		SELECT Username
+        FROM registro
+        WHERE Username=idBtn;
+	end if;
+    if paccion = 2 then
+        SELECT ID_media
+        FROM registro
+        WHERE ID_media=idBtn;
+    end if;
+    if paccion = 3 then
+        SELECT IDChat, Usuario, Mensaje, Fecha FROM chat ORDER BY Fecha DESC;
+
+    end if;
+    if paccion = 4 then
+        SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
+        FROM productos 
+        WHERE ID_Producto = idBtn;
+
+    end if;
+    if paccion = 5 then
+        SELECT Nombre, Negocio
+        FROM productos
+        WHERE Nombre = idBtn;
+
+    end if;
+    if paccion = 6 then
+        SELECT ID_Producto, Nombre 
+        FROM productos 
+        WHERE Negocio=idBtn;
+
+    end if;
+    if paccion = 7 then
+        SELECT CODE
+        FROM carrito
+        WHERE ID_KartList=idBtn;
+
+    end if;
+    if paccion = 8 then
+        SELECT Fecha, CODE, Total, Lugar, Pago
+        FROM entregas 
+        WHERE ID_Entrega = idBtn;
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_3Var
+(
+	paccion tinyint,
+	pidBtn varchar(45)
+)
+BEGIN
+declare idBtn varchar(45);
+set idBtn=pidBtn;
+
+	if paccion = 1 then
+		UPDATE productoxkart 
+        SET status = '1'
+        WHERE ID_Cart=idBtn;
+
+	end if;
+    if paccion = 2 then
+        INSERT INTO entregas (CODE, Total, Fecha, ID_User, ID_Kart) 
+        SELECT CODE, Total, FechaKart, ID_User, ID_KartList
+        FROM carrito 
+        WHERE ID_KartList = idBtn;
+
+    end if;
+    if paccion = 3 then
+        SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio
+        FROM entregas E
+        INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+        INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+        WHERE E.ID_Entrega = idBtn;
+
+    end if;
+    if paccion = 4 then
+        SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio, N.Nombre
+        FROM entregas E
+        INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+        INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+        INNER JOIN negocios N ON P.Negocio = N.ID_Negocio
+        WHERE E.ID_Entrega = idBtn;
+
+    end if;
+    if paccion = 5 then
+        SELECT PC.ID_Producto, C.Categoria
+        FROM productoxcat PC
+        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+        WHERE PC.ID_Producto = idBtn;
+
+    end if;
+    if paccion = 6 then
+        SELECT ID_Carrito
+        FROM carrito
+        WHERE ID_Carrito=idBtn;
+
+    end if;
+    if paccion = 7 then
+        SELECT ID_Carrito, ID_KartList
+        FROM carrito
+        WHERE ID_Carrito=idBtn;
+
+    end if;
+    if paccion = 8 then
+        SELECT P.ID_Producto, M.nombre, M.tipo, M.imagen
+        FROM productoxmedia P
+        INNER JOIN media M ON P.ID_media = M.ID_media
+        WHERE P.ID_Producto = idBtn;
+
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_4Var
+(
+	paccion tinyint,
+	pidBtn varchar(45)
+)
+BEGIN
+declare idBtn varchar(45);
+set idBtn=pidBtn;
+
+	if paccion = 1 then
+		SELECT K.ID_KartList, PK.ID_Producto, P.Nombre, P.Descripcion, P.Precio, P.PrecioCant
+        FROM carrito K
+        INNER JOIN productoxkart PK ON K.ID_KartList = PK.ID_Cart
+        INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+        WHERE K.ID_KartList = idBtn AND PK.status = '0';
+
+	end if;
+    if paccion = 2 then
+        SELECT PC.ID_Producto, C.Categoria
+        FROM productoxcat PC
+        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+        WHERE PC.ID_Producto = idBtn;
+
+    end if;
+    if paccion = 3 then
+        SELECT ID_KartList 
+        FROM carrito 
+        WHERE ID_Carrito = idBtn;
+
+    end if;
+    if paccion = 4 then
+        SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
+        FROM productos 
+        WHERE ID_Producto = idBtn;
+
+    end if;
+    if paccion = 5 then
+        SELECT PC.ID_Producto, C.Categoria
+        FROM productoxcat PC
+        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+        WHERE PC.ID_Producto = idBtn;
+
+    end if;
+    if paccion = 6 then
+        SELECT video_id, video_name, location FROM `video` WHERE ID_Producto = idBtn;
+
+    end if;
+    if paccion = 7 then
+        SELECT ID_Wishlist, Imagen, Nombre, Privacidad, Descripcion, ID_User 
+        FROM wishlist
+        WHERE ID_User = idBtn;
+
+    end if;
+    if paccion = 8 then
+        SELECT nombre, tipo, imagen 
+        FROM media 
+        WHERE ID_media = idBtn;
+
+    end if;
+    if paccion = 9 then
+        SELECT ID_Wishlist, Imagen, Nombre, Privacidad, Descripcion, ID_User 
+        FROM wishlist
+        WHERE ID_User = idBtn AND Privacidad='0';
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_5Var
+(
+	paccion tinyint,
+	pidBtn varchar(45)
+)
+BEGIN
+declare idBtn varchar(45);
+set idBtn=pidBtn;
+
+	if paccion = 1 then
+		SELECT Username, ID_media, Rol, Email
+        FROM registro
+        WHERE ID_Registro = idBtn;
+
+	end if;
+    if paccion = 2 then
+        SELECT Fecha, CODE, Total, Lugar, Pago, ID_Entrega
+        FROM entregas 
+        WHERE ID_Entrega = idBtn;
+
+    end if;
+    if paccion = 3 then
+        SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio, P.Disponibilidad
+        FROM entregas E
+        INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+        INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+        WHERE E.ID_Entrega = idBtn;
+
+    end if;
+    if paccion = 4 then
+        SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio, N.Nombre
+        FROM entregas E
+        INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+        INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+        INNER JOIN negocios N ON P.Negocio = N.ID_Negocio
+        WHERE E.ID_Entrega = idBtn;
+
+    end if;
+    if paccion = 5 then
+        SELECT PC.ID_Producto, C.Categoria
+        FROM productoxcat PC
+        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+        WHERE PC.ID_Producto = idBtn;
+
+    end if;
+    if paccion = 6 then
+        SELECT ID_Producto, video_id, video_name, location
+		FROM video
+		WHERE ID_Producto=idBtn;
+
+    end if;
+    if paccion = 7 then
+        SELECT video_id, video_name, location FROM `video` ORDER BY `video_id` ASC;
+
+    end if;
+    if paccion = 8 then
+        SELECT Nombre
+        FROM wishlist
+        WHERE Nombre=idBtn;
+
+    end if;
+    if paccion = 9 then
+        SELECT ID_Wishlist, Imagen, Nombre, Privacidad, Descripcion, ID_User 
+        FROM wishlist
+        WHERE ID_User = idBtn;
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_ventasRes
+(
+	paccion tinyint
+)
+BEGIN
+
+	if paccion = 1 then
+		SELECT total, ventas FROM total_entregas;
+
+	end if;
+    if paccion = 2 then
+        SELECT Categoria, total FROM most_categorias;
+
+    end if;
+    if paccion = 3 then
+        SELECT Nombre, total FROM most_products;
+
+    end if;
+    if paccion = 4 then
+        SELECT Pago, total FROM most_pays;
+
+    end if;
+    if paccion = 5 then
+        SELECT dia FROM most_day;
+
+    end if;
+    if paccion = 6 then
+        SELECT mes FROM most_month;
+
+    end if;
+    if paccion = 7 then
+        SELECT year FROM most_year;
+
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_6Var
+(
+	paccion tinyint,
+	pidBtn varchar(45)
+)
+BEGIN
+declare idBtn varchar(45);
+set idBtn=pidBtn;
+
+	if paccion = 1 then
+		SELECT ID_Registro, Nombres, Apellidos, Rol, FechaNac, Email, Username, Contrasenia, ID_media 
+        FROM registro
+        WHERE Username=idBtn;
+
+	end if;
+    if paccion = 2 then
+        SELECT nombre, tipo, imagen FROM media;
+
+    end if;
+    if paccion = 3 then
+        SELECT ID_Registro, Rol
+        FROM registro
+        WHERE Username = idBtn;
+
+    end if;
+    if paccion = 4 then
+        SELECT ID_Carrito, ID_KartList
+        FROM carrito
+        WHERE ID_User=idBtn;
+
+    end if;
+    if paccion = 5 then
+        SELECT ID_Producto, Nombre, Precio, PrecioCant 
+        FROM mostVisited_products;
+
+    end if;
+
+
+	END =)
+delimiter ;

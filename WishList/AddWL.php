@@ -13,19 +13,15 @@
     $imagen = "../ExtraDocs/User.png";   //Foto por defecto
 
     //Queremos el ID del usuario
-    $consulta =   "SELECT ID_Registro 
-                    FROM registro
-                    WHERE Username='$user'";
-    $consulta = mysqli_query($conexion, $consulta);
+    $consulta  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$user.'");');
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
     $ID_User    = $consulta['ID_Registro'];
 
     //Evaluamos si la lista ingresada ya existe
-    $consultaWL =   "SELECT Nombre
-                    FROM wishlist
-                    WHERE Nombre='$wlName'";
-    $consultaWL = mysqli_query($conexion, $consultaWL);
+    $consultaWL  = mysqli_query($conexion,'CALL sp_5Var(8, "'.$wlName.'");');
     $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
 
     if(!$consultaWL){   //Si no existe la lista
         
@@ -44,7 +40,6 @@
             echo "alert('La lista se ha añadido')";
             $url = "Wishlist/Wishlist.php";
             include("../PhpDocs/header.php");
-            //header("Location: http://localhost:8080/unikart2/Wishlist/Wishlist.php");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

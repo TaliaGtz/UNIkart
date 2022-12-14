@@ -25,11 +25,9 @@
         $user = $_GET["username"];
     
         //Evaluamos si el user ingresado ya existe
-        $consulta =   "SELECT * 
-                        FROM registro
-                        WHERE Username='$user'";
-        $consulta = mysqli_query($conexion, $consulta);
+        $consulta  = mysqli_query($conexion,'CALL sp_6Var(1, "'.$user.'");');
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
 
         echo "<br>username:<br>" . $user . "<br><br>en sql:<br>" . base64_decode($consulta['Contrasenia']) . "<br>";
     

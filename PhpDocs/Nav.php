@@ -2,19 +2,16 @@
     $user=$_SESSION['user'];
 
     //Queremos el ID del usuario
-    $consulta =   "SELECT ID_Registro, Rol
-                    FROM registro
-                    WHERE Username = '$user'";
-    $consulta = mysqli_query($conexion, $consulta);
+    $consulta  = mysqli_query($conexion,'CALL sp_6Var(3, "'.$user.'");');
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
     $user = $consulta['ID_Registro'];
     $Rol = $consulta['Rol'];
 
-    $consultaWL =   "SELECT ID_Carrito, ID_KartList
-                    FROM carrito
-                    WHERE ID_User='$user'";
-    $consultaWL = mysqli_query($conexion, $consultaWL);
+    $consultaWL  = mysqli_query($conexion,'CALL sp_6Var(4, "'.$user.'");');
     $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
+
     if($consultaWL){
         $ID_KartList = $consultaWL['ID_KartList'];
     }else{

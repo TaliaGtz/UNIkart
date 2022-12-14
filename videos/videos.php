@@ -7,30 +7,21 @@
 <body>
 	
 	<div class="col-md-6 well">
-		<!--h3 class="text-primary">Subir Videos con Reproductor en PHP</!--h3>
-		<hr style="border-top:1px dotted #ccc;"/>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form_modal"><span class="glyphicon glyphicon-plus"></span> Agregar Video</button>
-		<br /><br />
-		<hr style="border-top:3px solid #ccc;"/-->
 		<?php
 			include("../PhpDocs/Conexion.php");
 			
-			$query = mysqli_query($conexion, "SELECT video_id, video_name, location FROM `video` ORDER BY `video_id` ASC") or die(mysqli_error());
+			$query  = mysqli_query($conexion,'CALL sp_5Var(7, "");');
+			while(mysqli_next_result($conexion)){;}
+
 			while($fetch = mysqli_fetch_array($query)){
 		?>
 		<div class="col-md-12">
-			<!--div class="col-md-4" style="word-wrap:break-word;">
-				<br />
-				<h4>Nombre del Video</h4>
-				<h5 class="text-primary"><?php echo $fetch['video_name']?></h5>
-			</div-->
+			<?php echo $fetch['video_name']?>
 			<div class="col-md-8">
 				<video controls>
 					<source src="<?php echo $fetch['location']?>">
 				</video>
 			</div>
-			<!--br style="clear:both;"/>
-			<hr style="border-top:1px groovy #000;"/-->
 		</div>
 		<?php
 			}
