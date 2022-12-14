@@ -1,26 +1,19 @@
 <?php
 
-    //include("../PhpDocs/PhpInclude.php");
     include("../PhpDocs/Fecha.php");
 
     $userName = $_SESSION['user'];
-    //$_SESSION['ProdSel'] = $idBtn;
 
     //Queremos el ID del usuario
-    $consulta1 =   "SELECT ID_Registro 
-                    FROM registro
-                    WHERE Username='$userName'";
-    $consulta1 = mysqli_query($conexion, $consulta1);
+    $consulta1  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$userName.'");');
     $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
     $IDUser    = $consulta1['ID_Registro'];
 
-    $consulta = "SELECT ID_Entrega, Fecha 
-                FROM entregas
-                WHERE ID_User = '$IDUser'
-                ORDER BY Fecha DESC";
-    $ejecutar = $conexion->query($consulta);
-
-    while($fila = $ejecutar->fetch_array()):
+    $consulta  = mysqli_query($conexion,'CALL sp_1Var(2, "'.$IDUser.'");');
+    while(mysqli_next_result($conexion)){;}
+    
+    while($fila = $consulta->fetch_array()):
         
 ?>
 

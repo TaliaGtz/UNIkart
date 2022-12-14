@@ -2,9 +2,9 @@
     
     include("../PhpDocs/Conexion.php");
 
-    $consulta = "SELECT ID_Producto, Nombre FROM productos";
-    $ejecutar = $conexion->query($consulta);
-    while($fila = $ejecutar->fetch_array()):
+    $consulta  = mysqli_query($conexion,'CALL sp_1Var(4, "");');
+    while(mysqli_next_result($conexion)){;}
+    while($fila = $consulta->fetch_array()):
         
 ?>
 
@@ -27,9 +27,9 @@
 
 <?php
 
-    $consulta = "SELECT ID_Registro, Username FROM registro";
-    $ejecutar = $conexion->query($consulta);
-    while($fila = $ejecutar->fetch_array()):
+    $consulta  = mysqli_query($conexion,'CALL sp_1Var(5, "");');
+    while(mysqli_next_result($conexion)){;}
+    while($fila = $consulta->fetch_array()):
         
 ?>
 

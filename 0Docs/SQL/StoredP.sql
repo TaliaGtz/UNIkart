@@ -1,3 +1,9 @@
+$consultaCat  = mysqli_query($conexion,'CALL sp_cat(2, "'.$Category.'");');
+$consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
+while(mysqli_next_result($conexion)){;}
+
+#_______________________________________________________________________
+    
 delimiter =)
 create procedure sp_LogIn
 (
@@ -103,6 +109,73 @@ set idBtn=pidBtn;
         SELECT Nombre 
         FROM negocios 
         WHERE ID_Negocio = idBtn;
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_1Var
+(
+	paccion tinyint,
+	pidBtn varchar(45)
+)
+BEGIN
+declare idBtn varchar(45);
+set idBtn=pidBtn;
+
+	if paccion = 1 then
+		SELECT ID_Registro 
+        FROM registro
+        WHERE Username = idBtn;
+	end if;
+    if paccion = 2 then
+        SELECT ID_Entrega, Fecha 
+        FROM entregas
+        WHERE ID_User = idBtn
+        ORDER BY Fecha DESC;
+    end if;
+    if paccion = 3 then
+        SELECT ID_Entrega, Fecha  
+        FROM entregas
+        ORDER BY Fecha DESC;
+    end if;
+    if paccion = 4 then
+        SELECT ID_Producto, Nombre FROM productos;
+    end if;
+    if paccion = 5 then
+        SELECT ID_Registro, Username FROM registro;
+    end if;
+    if paccion = 6 then
+        SELECT ID_Producto
+        FROM productoxwl
+        WHERE ID_Producto=idBtn;
+    end if;
+    if paccion = 7 then
+        SELECT ID_Wishlist
+        FROM productoxwl
+        WHERE ID_Producto=idBtn;
+    end if;
+    if paccion = 8 then
+        SELECT Nombre 
+        FROM wishlist 
+        WHERE ID_Wishlist = idBtn;
+    end if;
+    if paccion = 9 then
+        SELECT W.ID_Wishlist, PW.ID_Producto, P.Nombre, P.Descripcion, P.Precio, P.PrecioCant
+        FROM wishlist W
+        INNER JOIN productoxwl PW ON W.ID_Wishlist = PW.ID_Wishlist
+        INNER JOIN productos P ON PW.ID_Producto = P.ID_Producto
+        WHERE W.ID_Wishlist = idBtn;
+    end if;
+    if paccion = 0 then
+        SELECT PC.ID_Producto, C.Categoria
+        FROM productoxcat PC
+        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+        WHERE PC.ID_Producto = idBtn;
     end if;
 
 

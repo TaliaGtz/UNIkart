@@ -7,6 +7,11 @@ if($_GET['variable']){
     include_once 'conexion.php';
 
     $get = $_GET['variable'];
+    
+    //$consultaCat  = mysqli_query($conexion,'CALL sp_cat(2, "'.$Category.'");');
+    //$consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
+    //while(mysqli_next_result($conexion)){;}
+    
     $sql = "SELECT ID_Registro, Username, Contrasenia, Rol FROM registro WHERE Username = '$get'";
     $sentencia = $pdo->prepare($sql);
     $sentencia->execute();

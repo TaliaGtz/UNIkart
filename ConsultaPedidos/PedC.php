@@ -18,20 +18,6 @@ include("../PhpDocs/PhpInclude.php");
     <script src="https://kit.fontawesome.com/29079834be.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../ExtraDocs/Ukart.png">
-    <script type="text/javascript">
-        /*function ajax(){
-            var req = new XMLHttpRequest();
-            req.onreadystatechange = function(){
-                if(req.readyState == 4 && req.status ==  200){
-                    document.getElementById("categorias").innerHTML = req.responseText;
-                }
-            }
-            req.open('GET', '../ConsultaPedidos/AddPedC.php', true);
-            req.send();
-        }
-
-        setInterval(function(){ajax();}, 1000);    //refresca la página automáticamente*/
-    </script>
 </head>
 <body onload="ajax();">
     <?php require "../PhpDocs/Nav.php"; ?>
@@ -60,14 +46,11 @@ include("../PhpDocs/PhpInclude.php");
                     $fecha_final = $_POST['fecha_final'];
 
                     $userName = $_SESSION['user'];
-                    //$_SESSION['ProdSel'] = $idBtn;
 
                     //Queremos el ID del usuario
-                    $consulta1 =   "SELECT ID_Registro 
-                                    FROM registro
-                                    WHERE Username='$userName'";
-                    $consulta1 = mysqli_query($conexion, $consulta1);
+                    $consulta1  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$userName.'");');
                     $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
+                    while(mysqli_next_result($conexion)){;}
                     $IDUser    = $consulta1['ID_Registro'];
 
                     $Fechas = "SELECT ID_Entrega, Fecha 
