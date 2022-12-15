@@ -53,10 +53,12 @@ include("../PhpDocs/PhpInclude.php");
                     while(mysqli_next_result($conexion)){;}
                     $IDUser    = $consulta1['ID_Registro'];
 
-                    $Fechas = "SELECT ID_Entrega, Fecha 
+                    $Fechas = 'CALL sp_ultSelect(3, "", "", "", "'.$fecha_inicio.'", "'.$fecha_final.'", "'.$IDUser.'");';
+
+                    /*$Fechas = "SELECT ID_Entrega, Fecha 
                                     FROM entregas
                                     WHERE Fecha BETWEEN '$fecha_inicio' AND '$fecha_final' AND ID_User = '$IDUser'
-                                    ORDER BY Fecha DESC";
+                                    ORDER BY Fecha DESC";*/
 
                     $ejecutar = $conexion->query($Fechas);
 
