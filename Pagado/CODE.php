@@ -35,10 +35,6 @@ if(!$consultaWL){   //Si no existe el carrito
     //Guardamos el carrito
     $sql = 'CALL sp_upCODE(1, "'.$CODIGO.'", "'.$Total.'","'.$ID_KL.'","","","");';
 
-    /*$sql = "UPDATE carrito 
-            SET CODE = '$CODIGO', Total = '$Total'
-            WHERE ID_KartList='$ID_KL'";*/
-
     if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
         //header("Location: http://localhost:8080/unikart2/Pagado/pagado.php");
     }else{
@@ -47,9 +43,6 @@ if(!$consultaWL){   //Si no existe el carrito
 }else{
     //Guardamos el carrito
     $sql = 'CALL sp_upCODE(1, "'.$CODIGO.'", "'.$Total.'","'.$ID_KL.'","","","");';
-    /*$sql = "UPDATE carrito 
-            SET CODE = '$CODIGO', Total = '$Total'
-            WHERE ID_KartList='$ID_KL'";*/
     mysqli_query($conexion, $sql);
 
     $sql2  = mysqli_query($conexion,'CALL sp_3Var(1, "'.$ID_KL.'");');
@@ -57,9 +50,6 @@ if(!$consultaWL){   //Si no existe el carrito
     $sql3  = mysqli_query($conexion,'CALL sp_3Var(2, "'.$ID_KL.'");');
     
     $sql4 = 'CALL sp_upCODE(2, "", "","","'.$Entrega.'","'.$key.'","'.$CODIGO.'");';
-    /*$sql4 = "UPDATE entregas 
-            SET ID_Entrega = '$Entrega', Pago = '$key'
-            WHERE CODE='$CODIGO'";*/
 
     $Entrega = rand(10000, 65535);
     $_SESSION['Entrega'] = $Entrega;
