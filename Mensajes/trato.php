@@ -6,7 +6,7 @@
         $trato = $_POST["trato"];
         $IDProd = $_SESSION['IDProd'];
 
-        echo $trato;    //UPDATE PRECIOCANT IN PRODUCTOS
+        echo $trato;    //UPDTE PRECIOCANT IN PRODUCTOS
         $query = 'CALL sp_upTrato(1, "'.$trato.'", "'.$IDProd.'", "", "");';
 
         mysqli_query($conexion, $query);
