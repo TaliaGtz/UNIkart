@@ -940,3 +940,37 @@ BEGIN
 
 	END =)
 delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_upCODE
+(
+	paccion tinyint,
+
+    vCODIGO varchar(7),
+    vTotal smallint(5),
+    vID_KL smallint(5),
+    vID_Entrega smallint(5),
+    vPago tinyint(1),
+    vCODE varchar(7)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		UPDATE carrito 
+        SET CODE = vCODIGO, Total = vTotal
+        WHERE ID_KartList=vID_KL;
+
+	end if;
+    if paccion = 2 then
+		UPDATE entregas 
+        SET ID_Entrega = vID_Entrega, Pago = vPago
+        WHERE CODE=vCODE;
+
+	end if;
+
+
+	END =)
+delimiter ;
