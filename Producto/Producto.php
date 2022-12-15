@@ -64,20 +64,20 @@ include("../PhpDocs/PhpInclude.php");
                     $binImagen = fread($imagenSubida, $sizeArchivo);
                     $binImagen = mysqli_escape_string($conexion, $binImagen);
 
-                    $query = "INSERT INTO media
-                                VALUES(
-                                    '$IDMedia',
-                                    '$now', 
-                                    '$binImagen', 
-                                    '$tipoArchivo'
-                                    )";
+                    $IDMedia = rand(10000, 65535);
                     
-                    $query1 = "INSERT INTO productoxmedia
-                                VALUES(
-                                    '$idBtn',
-                                    '$IDMedia'
-                                    )";
-
+                    $query = 'CALL sp_AddVariables5(1, 
+                    "'.$IDMedia.'", "'.$now.'", "'.$binImagen.'", "'.$tipoArchivo.'", 
+                    null, null, 
+                    null, null, null, 
+                    null, null, null, null);';
+                    
+                    $query1 = 'CALL sp_AddVariables5(2, 
+                    null, null, null, null, 
+                    "'.$idBtn.'", "'.$IDMedia.'", 
+                    null, null, null, 
+                    null, null, null, null);';
+                    
                     if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
                         mysqli_query($conexion, $query1);
                     }else{

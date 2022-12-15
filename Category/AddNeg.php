@@ -48,19 +48,8 @@
 
     if(!$consultaNeg){   //Si no existe el negocio
         
-        $sql = "INSERT INTO negocios 
-        VALUES(
-            '$IDNeg',
-            '$negName',
-            '$DuenioUser',
-            '$adminApproved'
-        )";
-
-        $sql2 = "INSERT INTO categoriaxnegocio 
-        VALUES(
-            '$IDCat',
-            '$IDNeg'
-        )";
+        $sql = 'CALL sp_AddVariables(1, "'.$IDNeg.'", "'.$negName.'", "'.$DuenioUser.'", "'.$adminApproved.'", null, null, null, null, null);';
+        $sql2 = 'CALL sp_AddVariables(2, null, null, null, null, "'.$IDCat.'", "'.$IDNeg.'", null, null, null);';
 
         $IDBtn = $_SESSION['IDCategory'];
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
@@ -73,11 +62,8 @@
         }
     }else{      //El negocio ingresado ya existe en la tabla negocios
         $IDNeg = $consultaNeg['ID_Negocio'];
-        $sql2 = "INSERT INTO categoriaxnegocio 
-        VALUES(
-            '$IDCat',
-            '$IDNeg'
-        )";
+        $sql2 = 'CALL sp_AddVariables(2, null, null, null, null, "'.$IDCat.'", "'.$IDNeg.'", null, null, null);';
+
         if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('El negocio se ha añadido')";
             $url = "Category/category.php?IDBtn=$IDBtn";

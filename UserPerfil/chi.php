@@ -28,8 +28,11 @@
                 $binImagen = fread($imagenSubida, $sizeArchivo);
                 $binImagen=mysqli_escape_string($conexion, $binImagen);
                 
-                $query = "INSERT INTO media (nombre, imagen, tipo)
-                        VALUES('".$nombreArchivo."', '".$binImagen."', '".$tipoArchivo."')";
+                $query = 'CALL sp_AddVariables5(3, 
+                    null, null, null, null, 
+                    null, null, 
+                    "'.$nombreArchivo.'", "'.$binImagen.'", "'.$tipoArchivo.'", 
+                    null, null, null, null);';
                 
                 if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
                     ?>

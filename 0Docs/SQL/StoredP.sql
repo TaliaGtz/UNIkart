@@ -546,3 +546,324 @@ set idBtn=pidBtn;
 
 	END =)
 delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_Registro
+(
+	paccion tinyint,
+
+    vIDMedia smallint(5),
+    vfotoPerfilTxt varchar(100),
+    vfotoPerfil mediumblob,
+    vfecha varchar(50),
+
+    vID smallint(5),
+    vnombres varchar(25),
+    vapellidos varchar(25),
+    vrol varchar(25),
+    vfechaNac datetime,
+    vcorreo varchar(50),
+    vuser varchar(25),
+    vpasswordHash varchar(25)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		INSERT INTO media 
+        VALUES(
+            vIDMedia,
+            vfotoPerfilTxt,
+            vfotoPerfil,
+            vfecha
+        );
+
+	end if;
+    if paccion = 2 then
+		INSERT INTO registro 
+        VALUES(
+            vID,
+            vnombres,
+            vapellidos,
+            vrol,
+            vfechaNac,
+            vcorreo,
+            vuser,
+            vpasswordHash, 
+            vIDMedia
+        );
+
+	end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_AddVariables
+(
+	paccion tinyint,
+
+    vIDNeg smallint(5),
+    vnegName varchar(25),
+    vDuenioUser smallint(5),
+    vadminApproved smallint(5),
+    vIDCat smallint(5),
+    vIDNeg2 smallint(5),
+    vID smallint(5),
+    vcatName varchar(25),
+    vID_User smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		INSERT INTO negocios 
+        VALUES(
+            vIDNeg,
+            vnegName,
+            vDuenioUser,
+            vadminApproved
+        );
+
+	end if;
+    if paccion = 2 then
+		INSERT INTO categoriaxnegocio 
+        VALUES(
+            vIDCat,
+            vIDNeg2
+        );
+
+	end if;
+    if paccion = 3 then
+    INSERT INTO categorias 
+        VALUES(
+            vID,
+            vcatName,
+            vID_User
+        );
+
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_AddVariables2
+(
+	paccion tinyint,
+
+    vIDProd smallint(5),
+    vIDWL smallint(5),
+    vIDChat smallint(5), 
+    vnombre varchar(25), 
+    vmensaje text,
+    vseleccion smallint(5),
+    vID smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		INSERT INTO productoxwl 
+        VALUES(
+            vIDProd,
+            vIDWL
+        );
+
+	end if;
+    if paccion = 2 then
+		INSERT INTO chat (IDChat, Usuario, Mensaje) 
+        VALUES(vIDChat, vnombre, vmensaje);
+
+	end if;
+    if paccion = 3 then
+        INSERT INTO productoxcat
+        VALUES(
+            vseleccion,
+            vID       
+        );
+
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_AddVariables3
+(
+	paccion tinyint,
+
+    vID        smallint(5),
+    vnegID     smallint(5),
+    vproduct   varchar(25),
+    vrate      tinyint(4),
+    vprecio    tinyint(1),
+    vprecioCant smallint(6),
+    vdisp      int(11),
+    vdesc      varchar(100),
+    vNum       smallint(5),
+    vNum2      int(5),
+    vID_Com    int(5),
+    vID2 smallint(5),
+    vimagen blob,
+    vwlName varchar(25),
+    vPriv tinyint(1),
+    vDesc2 varchar(100),
+    vProd smallint(5),
+    vID_User smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		INSERT INTO productos 
+        VALUES(
+            vID        ,
+            vnegID     ,
+            vproduct   ,
+            vrate      ,
+            vprecio    ,
+            vprecioCant,
+            vdisp      ,
+            vdesc      ,
+            vNum       ,
+            vNum2      ,
+            vID_Com    
+        );
+
+	end if;
+    if paccion = 2 then
+		INSERT INTO wishlist 
+        VALUES(
+            vID2,
+            vimagen,
+            vwlName,
+            vPriv,
+            vDesc2,
+            vProd,
+            vID_User
+        );
+
+	end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_AddVariables4
+(
+	paccion tinyint,
+
+    vuser smallint(5),
+    vnull timestamp(6),
+    vID_KartList smallint(5),
+    vuser2 smallint(5),
+    vnull2 varchar(7), 
+    vnull3 smallint(5),
+    vID_KartList2 smallint(5),
+    v1 smallint(10),
+    v0 tinyint(1),
+    vIDProd smallint(5),
+    vEntrega smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		INSERT INTO carrito 
+        VALUES(
+            vuser,
+            vnull,
+            vID_KartList,
+            vuser2,
+            vnull2, 
+            vnull3
+        );
+
+	end if;
+    if paccion = 2 then
+		INSERT INTO productoxkart 
+        VALUES(
+            vID_KartList2,
+            v1,
+            v0,
+            vIDProd,
+            vEntrega
+        );
+
+	end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_AddVariables5
+(
+	paccion tinyint,
+
+    vIDMedia smallint(5),
+    vnow varchar(100), 
+    vbinImagen mediumblob, 
+    vtipoArchivo varchar(50),
+    vidBtn smallint(5),
+    vIDMedia2 smallint(5),
+    vnombreArchivo varchar(100), 
+    vbinImagen2 mediumblob, 
+    vtipoArchivo2 varchar(50),
+    vnull int(11), 
+    vname varchar(100), 
+    vlocation varchar(100), 
+    vIDBtn2 smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		INSERT INTO media
+        VALUES(
+            vIDMedia,
+            vnow, 
+            vbinImagen, 
+            vtipoArchivo
+            );
+
+	end if;
+    if paccion = 2 then
+		INSERT INTO productoxmedia
+        VALUES(
+            vidBtn,
+            vIDMedia2
+            );
+
+	end if;
+    if paccion = 3 then
+        INSERT INTO media (nombre, imagen, tipo)
+        VALUES(vnombreArchivo, vbinImagen2, vtipoArchivo2);
+    
+    end if;
+    if paccion = 4 then
+        INSERT INTO `video` 
+	    VALUES(vnull, vname, vlocation, vIDBtn2);
+    
+    end if;
+
+
+	END =)
+delimiter ;
