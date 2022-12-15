@@ -16,12 +16,36 @@
     }
     $disp       = $_POST["disp"];
     $desc       = $_POST["txtname"];
+    //$ID_Cat     = $_POST["checkbox"];
+    //Condicional para validad el genero
+    /*if(isset($_POST['checkbox'])) {
+		// Contando el numero de input seleccionados "checked" checkboxes.
+		$checked_contador = count($_POST['checkbox']);
+		//echo "<p>Has seleccionado los siguientes ".$checked_contador." opcione(s):</p> <br/>";
+
+		// Bucle para almacenar y visualizar valores activados checkbox.
+		foreach($_POST['checkbox'] as $seleccion) {
+			//echo "<p>".$seleccion ."</p>";
+            $sql1 = "INSERT INTO productoxcat
+            VALUES(
+                '$ID    ',
+                '$seleccion'
+            )";
+            mysqli_query($conexion, $sql1);
+		}
+	}
+	else{
+		//echo "<p><b>Por favor seleccione al menos una opción.</b></p>";
+        echo "<script>alert('Por favor seleccione al menos una opción.');</script>";
+	}*/
     $ID_Com     = "";
 
     //Evaluamos si el producto ingresado ya existe
-    $consultaProd  = mysqli_query($conexion,'CALL sp_2Var(5, "'.$product.'");');
+    $consultaProd =   "SELECT Nombre, Negocio
+                    FROM productos
+                    WHERE Nombre = '$product'";
+    $consultaProd = mysqli_query($conexion, $consultaProd);
     $consultaProd = mysqli_fetch_array($consultaProd);  //Devuelve un array o NULL
-    while(mysqli_next_result($conexion)){;}
 
     if(!$consultaProd){   //Si no existe el producto
         
@@ -43,6 +67,7 @@
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             
             foreach($_POST['checkbox'] as $seleccion) {
+                //echo "<p>".$seleccion ."</p>";
                 $sql1 = "INSERT INTO productoxcat
                 VALUES(
                     '$seleccion ',
@@ -53,6 +78,7 @@
             echo "alert('El producto se ha añadido')";
             $url = "Menu/Menu.php?IDBtn=$IDBtn";
             include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
@@ -76,6 +102,7 @@
             )";
 
             foreach($_POST['checkbox'] as $seleccion) {
+                //echo "<p>".$seleccion ."</p>";
                 $sql1 = "INSERT INTO productoxcat
                 VALUES(
                     '$seleccion ',
@@ -88,6 +115,7 @@
             echo "alert('El producto se ha añadido')";
             $url = "Menu/Menu.php?IDBtn=$IDBtn";
             include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Menu/Menu.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

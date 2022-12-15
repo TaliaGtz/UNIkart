@@ -25,9 +25,12 @@ $Entrega = $_SESSION['Entrega'];
 
 //Evaluamos el código existe
 $ID_KL = $_SESSION['ID_KartList'];
-$consultaWL  = mysqli_query($conexion,'CALL sp_2Var(7, "'.$ID_KL.'");');
+$consultaWL =   "SELECT CODE
+                FROM carrito
+                WHERE ID_KartList='$ID_KL'";
+$consultaWL = mysqli_query($conexion, $consultaWL);
 $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
-while(mysqli_next_result($conexion)){;}
+
 $Total = $_SESSION['Total2Pay'];
 
 if(!$consultaWL){   //Si no existe el carrito
@@ -48,14 +51,14 @@ if(!$consultaWL){   //Si no existe el carrito
             SET CODE = '$CODIGO', Total = '$Total'
             WHERE ID_KartList='$ID_KL'";
 
-    $sql2  = mysqli_query($conexion,'CALL sp_3Var(1, "'.$ID_KL.'");');
-    //$sql2 = mysqli_fetch_array($sql2);  //Devuelve un array o NULL
-    //while(mysqli_next_result($conexion)){;}
+    $sql2 = "UPDATE productoxkart 
+            SET status = '1'
+            WHERE ID_Cart='$ID_KL'";
 
-    //TODO: Probablemente este y el siguiente estén fallando, la entrega no se guarda bien
-    $sql3  = mysqli_query($conexion,'CALL sp_3Var(2, "'.$ID_KL.'");');
-    //$sql3 = mysqli_fetch_array($sql3);  //Devuelve un array o NULL
-    //while(mysqli_next_result($conexion)){;}
+    $sql3 = "INSERT INTO entregas (CODE, Total, Fecha, ID_User, ID_Kart) 
+            SELECT CODE, Total, FechaKart, ID_User, ID_KartList
+            FROM carrito 
+            WHERE ID_KartList = '$ID_KL'";
     
     $sql4 = "UPDATE entregas 
             SET ID_Entrega = '$Entrega', Pago = '$key'
@@ -65,9 +68,10 @@ if(!$consultaWL){   //Si no existe el carrito
     $_SESSION['Entrega'] = $Entrega;
 
     if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
-        //mysqli_query($conexion, $sql2);
-        //mysqli_query($conexion, $sql3);
+        mysqli_query($conexion, $sql2);
+        mysqli_query($conexion, $sql3);
         mysqli_query($conexion, $sql4);
+        //header("Location: http://localhost:8080/unikart2/Pagado/pagado.php");
     }else{
         echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
     }

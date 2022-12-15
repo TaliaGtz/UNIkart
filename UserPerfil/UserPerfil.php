@@ -29,10 +29,11 @@ include("../PhpDocs/PhpInclude.php");
         if(isset($_GET['IDP'])) {
             $IDP = $_GET['IDP'];
 
-            $consulta  = mysqli_query($conexion,'CALL sp_5Var(1, "'.$IDP.'");');
+            $consulta = "SELECT Username, ID_media, Rol, Email
+                        FROM registro
+                        WHERE ID_Registro = '$IDP'";
+            $consulta = mysqli_query($conexion, $consulta);
             $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-            while(mysqli_next_result($conexion)){;}
-
             $IDNom = $consulta['Username'];
             $_SESSION['ID_media'] = $consulta['ID_media'];
             $ID_media = $_SESSION['ID_media'];
@@ -62,14 +63,18 @@ include("../PhpDocs/PhpInclude.php");
                             WHERE ID_media = '$ID_media'";
 
                     if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
+                        //echo "alert('Tu foto ha sido guardada')";
+                        //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
                     }else{
                         echo "Error: " . $query . "<br>" . mysqli_error($conexion);
                     }
+                    //header('Location: http://localhost:8080/unikart2/UserPerfil/UserPerfil.php');
                 }
             }
         ?>
         <div id="userImg" class="userImg">
             <?php  include("../UserPerfil/FotoUser.php");  ?>
+            <!-- <img src="User.png" height="100" width="100" id="image" alt="Imagen" class="file"> -->
             <img src="data:<?php echo $query['tipo'] ?>;base64,<?php echo base64_encode($query['imagen']); ?>" id="image" class="file">
         </div>    
         

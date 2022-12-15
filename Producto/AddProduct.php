@@ -1,7 +1,9 @@
 <?php 
     include("../PhpDocs/PhpInclude.php");
 
-    $IDWL = $_GET['IDBtn'];
+    //if(isset($_GET['IDBtn'])) {
+        $IDWL = $_GET['IDBtn'];
+   // } 
     $IDProd = $_GET['IDProd'];
     $User = "$_SESSION[user]";
     if(isset($_SESSION['Entrega'])) {
@@ -12,15 +14,19 @@
     }
     
     //Queremos el ID del usuario
-    $consulta  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$User.'");');
+    $consulta =   "SELECT ID_Registro 
+                    FROM registro
+                    WHERE Username = '$User'";
+    $consulta = mysqli_query($conexion, $consulta);
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-    while(mysqli_next_result($conexion)){;}
     $User = $consulta['ID_Registro'];
 
     //Evaluamos el carrito existe
-    $consultaWL  = mysqli_query($conexion,'CALL sp_3Var(6, "'.$IDWL.'");');
+    $consultaWL =   "SELECT ID_Carrito
+                    FROM carrito
+                    WHERE ID_Carrito='$IDWL'";
+    $consultaWL = mysqli_query($conexion, $consultaWL);
     $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
-    while(mysqli_next_result($conexion)){;}
 
     if(!$consultaWL){   //Si no existe el carrito
         $ID_KartList = rand(10000, 65535);
@@ -50,14 +56,17 @@
             mysqli_query($conexion, $sql1);
             $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";
             include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
     }else{
         
-        $consultaWL  = mysqli_query($conexion,'CALL sp_3Var(7, "'.$IDWL.'");');
+        $consultaWL =   "SELECT ID_Carrito, ID_KartList
+                        FROM carrito
+                        WHERE ID_Carrito='$IDWL'";
+        $consultaWL = mysqli_query($conexion, $consultaWL);
         $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
-        while(mysqli_next_result($conexion)){;}
         $ID_KartList = $consultaWL['ID_KartList'];
 
         //Guardamos el producto
@@ -73,11 +82,37 @@
         if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
             $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";
             include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
 
         $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";
         include("../PhpDocs/header.php");
+        //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
+        /*//Buscamos si el producto existe en esa lista de ese usuario
+        $consultaWL =   "SELECT ID_Wishlist
+                        FROM productoxwl
+                        WHERE ID_Producto='$IDProd'";
+        $consultaWL = mysqli_query($conexion, $consultaWL);
+        $consultaWL = mysqli_fetch_array($consultaWL);  //Devuelve un array o NULL
+        if($consultaWL['ID_Wishlist'] != $IDWL){
+            //Guardamos el producto
+            $sql2 = "INSERT INTO productoxwl 
+                    VALUES(
+                        '$IDProd',
+                        '$IDWL'
+                    )";
+
+            if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
+                header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$IDWL&IDProd=$IDProd");
+            }else{
+                echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+            }
+        }else{
+            //echo "El producto ya existe en la lista";
+            header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$IDWL");
+        }
+        */
     }
 ?>

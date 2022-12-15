@@ -25,15 +25,25 @@ include("../PhpDocs/Fecha.php");
 
     <?php 
         $IDEnt = $_GET['IDEnt'];
-        $consulta  = mysqli_query($conexion,'CALL sp_2Var(8, "'.$IDEnt.'");');
+        $consulta = "SELECT Fecha, CODE, Total, Lugar, Pago
+                    FROM entregas 
+                    WHERE ID_Entrega = '$IDEnt'";
+        $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-        while(mysqli_next_result($conexion)){;}
+        
+        $consultaCatNeg  =  "SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio
+                                    FROM entregas E
+                                    INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+                                    INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+                                    WHERE E.ID_Entrega = '$IDEnt'";
 
-        $consultaCatNeg  = mysqli_query($conexion,'CALL sp_3Var(3, "'.$IDEnt.'");');
-        while(mysqli_next_result($conexion)){;}
 
-        $consultaCatNeg2  = mysqli_query($conexion,'CALL sp_3Var(4, "'.$IDEnt.'");');
-        while(mysqli_next_result($conexion)){;}
+        $consultaCatNeg2  =  "SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio, N.Nombre
+                                    FROM entregas E
+                                    INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+                                    INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+                                    INNER JOIN negocios N ON P.Negocio = N.ID_Negocio
+                                    WHERE E.ID_Entrega = '$IDEnt'";
                                     
     ?>
 
@@ -47,7 +57,8 @@ include("../PhpDocs/Fecha.php");
             <i class="fa-solid fa-truck"></i>Nombre del repartidor <a href="../Mensajes/mensajes.php?Rol=1&COD=<?php echo $consulta['CODE'];?>&IDEnt=<?php echo$IDEnt;?>" id="chat">(Ir al chat)</a><br>
             <i class="fa-solid fa-handshake"></i>Nombre de/los vendedor/es:<br>
                 <?php 
-                    while($fila2 = $consultaCatNeg2->fetch_array()): 
+                    $ejecutar2 = $conexion->query($consultaCatNeg2);
+                    while($fila2 = $ejecutar2->fetch_array()): 
                        ?> °<?php echo $fila2['Nombre'];
                     endwhile; 
                 ?> <!--a href="../Mensajes/mensajes.php?Rol=2&COD=<?php //echo $consulta['CODE']; ?>" id="chat">(Ir al chat)</a--><br>
@@ -55,8 +66,9 @@ include("../PhpDocs/Fecha.php");
             <br><hr><br>
             <p>Fecha y hora de compra: <?php echo formatearFechaEntregas($consulta['Fecha']); ?></p>
             <p>Producto(s):</p><?php 
+                $ejecutar = $conexion->query($consultaCatNeg);
 
-                while($fila = $consultaCatNeg->fetch_array()): 
+                while($fila = $ejecutar->fetch_array()): 
                    ?> °<?php echo $fila['Nombre'];
                    $ID_Producto[] = $fila['ID_Producto'];
                    
@@ -65,11 +77,12 @@ include("../PhpDocs/Fecha.php");
             <p>Categoría(s):</p>
             <?php 
                 foreach ($ID_Producto as $value) {
-
-                    $consultaCatProd  = mysqli_query($conexion,'CALL sp_3Var(5, "'.$value.'");');
-                    while(mysqli_next_result($conexion)){;}
-
-                    while($fila5 = $consultaCatProd->fetch_array()):
+                    $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                        FROM productoxcat PC
+                                        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                        WHERE PC.ID_Producto = '$value'";
+                    $ejecutar5 = $conexion->query($consultaCatProd);
+                    while($fila5 = $ejecutar5->fetch_array()):
                         ?><label> °<?php echo $fila5['Categoria'] ?></label><?php 
                     endwhile;
                     ?><label> | </label><?php
@@ -91,6 +104,7 @@ include("../PhpDocs/Fecha.php");
                 </div>    
                 <br>
             </div>
+            <!--p>(Calificación)</p-->
             <br><hr><br>
             <h3>Costo total</h3><br>
             <p>Costo de los productos: $<?php echo $consulta['Total']; ?></p>

@@ -3,12 +3,12 @@
     include("../PhpDocs/Conexion.php");
     
     $_SESSION['Producto']="";
-    $consulta  = mysqli_query($conexion,'CALL sp_6Var(5, "");');
-    while(mysqli_next_result($conexion)){;}
-
+    $consulta = "SELECT ID_Producto, Nombre, Precio, PrecioCant 
+                FROM mostVisited_products";
+    $ejecutar = $conexion->query($consulta);
     $j = 3;
     for($i = 0; $i < $j; $i++){
-        $fila = $consulta->fetch_array();
+        $fila = $ejecutar->fetch_array();
         
         if($_SESSION['Producto'] == $fila['Nombre']){
             $j++;

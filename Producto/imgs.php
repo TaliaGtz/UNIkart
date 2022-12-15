@@ -10,15 +10,24 @@
 <?php    
     $idProd = $_SESSION['ID_Producto'];
 
-    $consultaProdMedia  = mysqli_query($conexion,'CALL sp_3Var(8, "'.$idProd.'");');
-    while(mysqli_next_result($conexion)){;}
+    $consultaProdMedia  =  "SELECT P.ID_Producto, M.nombre, M.tipo, M.imagen
+                        FROM productoxmedia P
+                        INNER JOIN media M ON P.ID_media = M.ID_media
+                        WHERE P.ID_Producto = '$idProd'";
+    $ejecutar = $conexion->query($consultaProdMedia);
 
-    while($fila = $consultaProdMedia->fetch_array()):
+    //$consultaProdMedia = mysqli_query($conexion, $consultaProdMedia);
+    //$consultaProdMedia = mysqli_fetch_array($consultaProdMedia);  //Devuelve un array o NULL
+
+    while($fila = $ejecutar->fetch_array()):
         
 ?>
 
     <div class="carousel-item">
         <img src="data:<?php echo $fila['tipo'] ?>;base64,<?php echo base64_encode($fila['imagen']); ?>" class="d-block w-100 productImg">
+        <!--<input type="file" id="userPic" name="archivo"/>
+        <button id="mi-boton" class="change"><i class="fa-solid fa-plus cruz"></i></button>
+        <button type="submit" name="guardar" id="sendImg" class="doneB"><i class="fa-solid fa-circle-check"></i></button>-->
     </div>                  
 
 <?php endwhile; ?> 

@@ -25,15 +25,25 @@ include("../PhpDocs/Fecha.php");
 
     <?php 
         $IDEnt = $_GET['IDEnt'];
-        $consulta  = mysqli_query($conexion,'CALL sp_5Var(2, "'.$IDEnt.'");');
+        $consulta = "SELECT Fecha, CODE, Total, Lugar, Pago, ID_Entrega
+                    FROM entregas 
+                    WHERE ID_Entrega = '$IDEnt'";
+        $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-        while(mysqli_next_result($conexion)){;}
         
-        $consultaCatNeg  = mysqli_query($conexion,'CALL sp_5Var(3, "'.$IDEnt.'");');
-        while(mysqli_next_result($conexion)){;}
+        $consultaCatNeg  =  "SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio, P.Disponibilidad
+                                    FROM entregas E
+                                    INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+                                    INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+                                    WHERE E.ID_Entrega = '$IDEnt'";
 
-        $consultaCatNeg2  = mysqli_query($conexion,'CALL sp_5Var(4, "'.$IDEnt.'");');
-        while(mysqli_next_result($conexion)){;}
+
+        $consultaCatNeg2  =  "SELECT E.ID_Entrega, PK.ID_Producto, P.Nombre, P.Negocio, N.Nombre
+                                    FROM entregas E
+                                    INNER JOIN productoxkart PK ON E.ID_Entrega = PK.Entrega
+                                    INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+                                    INNER JOIN negocios N ON P.Negocio = N.ID_Negocio
+                                    WHERE E.ID_Entrega = '$IDEnt'";
 
     ?>
 
@@ -51,7 +61,9 @@ include("../PhpDocs/Fecha.php");
             <p>Fecha y hora de la venta: <?php echo formatearFechaEntregas($consulta['Fecha']); ?></p>
             <p>Producto(s):</p>
             <?php 
-                while($fila = $consultaCatNeg->fetch_array()): 
+                $ejecutar = $conexion->query($consultaCatNeg);
+        
+                while($fila = $ejecutar->fetch_array()): 
                    ?> °<?php echo $fila['Nombre'];
                    $ID_Producto[] = $fila['ID_Producto'];
                    ?> <label>, disponibilidad: <?php echo $fila['Disponibilidad'];?> | </label><?php
@@ -60,10 +72,12 @@ include("../PhpDocs/Fecha.php");
             <p>Categoría(s):</p>
             <?php 
                 foreach ($ID_Producto as $value) {
-                    $consultaCatProd  = mysqli_query($conexion,'CALL sp_5Var(5, "'.$value.'");');
-                    while(mysqli_next_result($conexion)){;}
-
-                    while($fila5 = $consultaCatProd->fetch_array()):
+                    $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                        FROM productoxcat PC
+                                        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                        WHERE PC.ID_Producto = '$value'";
+                    $ejecutar5 = $conexion->query($consultaCatProd);
+                    while($fila5 = $ejecutar5->fetch_array()):
                         ?><label> °<?php echo $fila5['Categoria'] ?></label><?php 
                     endwhile;
                     ?><label> | </label><?php

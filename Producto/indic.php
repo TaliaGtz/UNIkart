@@ -2,10 +2,16 @@
     $idProd = $_SESSION['ID_Producto'];
     $count = 0;
 
-    $consultaProdMedia  = mysqli_query($conexion,'CALL sp_3Var(8, "'.$idProd.'");');
-    while(mysqli_next_result($conexion)){;}
+    $consultaProdMedia  =  "SELECT P.ID_Producto, M.nombre, M.tipo, M.imagen
+                        FROM productoxmedia P
+                        INNER JOIN media M ON P.ID_media = M.ID_media
+                        WHERE P.ID_Producto = '$idProd'";
+    $ejecutar = $conexion->query($consultaProdMedia);
 
-    while($fila = $consultaProdMedia->fetch_array()):
+    //$consultaProdMedia = mysqli_query($conexion, $consultaProdMedia);
+    //$consultaProdMedia = mysqli_fetch_array($consultaProdMedia);  //Devuelve un array o NULL
+
+    while($fila = $ejecutar->fetch_array()):
         $count++;
 ?>
 

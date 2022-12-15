@@ -46,9 +46,11 @@ include("../PhpDocs/PhpInclude.php");
         if(isset($_GET['IDProd'])) {
             $IDProd = $_GET['IDProd'];
 
-            $consulta  = mysqli_query($conexion,'CALL sp_2Var(4, "'.$IDProd.'");');
+            $consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
+                        FROM productos 
+                        WHERE ID_Producto = '$IDProd'";
+            $consulta = mysqli_query($conexion, $consulta);
             $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-            while(mysqli_next_result($conexion)){;}
             $_SESSION['Prod'] = $consulta['Nombre'];
             $Prod = $_SESSION['Prod'];
             $_SESSION['IDProd'] = $IDProd;
@@ -61,6 +63,14 @@ include("../PhpDocs/PhpInclude.php");
             }else{
                 $IDEnt = $_GET['Ent'];
             }
+            /*$consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
+                        FROM productos 
+                        WHERE ID_Producto = '$IDProd'";
+            $consulta = mysqli_query($conexion, $consulta);
+            $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
+            $_SESSION['Prod'] = $consulta['Nombre'];
+            $Prod = $_SESSION['Prod'];
+            $_SESSION['IDProd'] = $IDProd;*/
         }
     ?>
     <a href="../Pedido/Pedido.php?IDEnt=<?php echo $IDEnt ?>"><i class="fa-solid fa-arrow-left back"></i></a>
@@ -87,12 +97,14 @@ include("../PhpDocs/PhpInclude.php");
         <?php
             if(isset($_GET['IDProd'])) { ?>
                 <form method="POST" action="../Mensajes/mensajes.php?IDProd=<?php echo $IDProd ?>">
+                    <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
                     <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
                     <input type="submit" name="enviar" value="Enviar"></input>
                 </form>
             <?php }
             if(isset($_GET['Rol'])) { ?>
                 <form method="POST" action="../Mensajes/mensajes.php?Rol=<?php echo $Rol ?>&COD=<?php echo $CODE?>&IDEnt=<?php echo $IDEnt ?>">
+                    <!-- <input type="text" name="nombre" placeholder="Ingresa tu nombre.."> -->
                     <textarea name="mensaje" placeholder="Ingresa tu mensaje.."></textarea>
                     <input type="submit" name="enviar" value="Enviar"></input>
                 </form>

@@ -28,9 +28,11 @@ include("../PhpDocs/PhpInclude.php");
 
     <?php 
         $idBtn = $_GET['IDBtn'];
-        $consulta  = mysqli_query($conexion,'CALL sp_4Var(4, "'.$idBtn.'");');
+        $consulta = "SELECT Nombre, Negocio, Valoracion, Precio, PrecioCant, Disponibilidad, Descripcion, Views  
+                    FROM productos 
+                    WHERE ID_Producto = '$idBtn'";
+        $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-        while(mysqli_next_result($conexion)){;}
         $_SESSION['Producto'] = $consulta['Nombre'];
         $_SESSION['ID_Producto'] = $idBtn;
 
@@ -80,9 +82,12 @@ include("../PhpDocs/PhpInclude.php");
 
                     if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
                         mysqli_query($conexion, $query1);
+                        //echo "alert('Tu foto ha sido guardada')";
+                        //header("Location: http://localhost:8080/e-class2/PhpFks/leerImg.php");
                     }else{
                         echo "Error: " . $query . "<br>" . mysqli_error($conexion);
                     }
+                    //header('Location: http://localhost:8080/unikart2/UserPerfil/UserPerfil.php');
                 }
             }
         ?>
@@ -117,9 +122,12 @@ include("../PhpDocs/PhpInclude.php");
                 ?>
                 <p>Categoría/s:</p>
                 <?php 
-                    $consultaCatProd  = mysqli_query($conexion,'CALL sp_4Var(5, "'.$idBtn.'");');
-                    while(mysqli_next_result($conexion)){;}
-                    while($fila = $consultaCatProd->fetch_array()):
+                    $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                        FROM productoxcat PC
+                                        INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                        WHERE PC.ID_Producto = '$idBtn'";
+                    $ejecutar = $conexion->query($consultaCatProd);
+                    while($fila = $ejecutar->fetch_array()):
                         ?><label>°<?php echo $fila['Categoria'] ?></label><?php 
                     endwhile;
                 ?>
@@ -143,9 +151,11 @@ include("../PhpDocs/PhpInclude.php");
                 <?php
                     $User = "$_SESSION[user]";
                     //Queremos el ID del usuario
-                    $consultar  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$User.'");');
+                    $consultar =   "SELECT ID_Registro 
+                                    FROM registro
+                                    WHERE Username = '$User'";
+                    $consultar = mysqli_query($conexion, $consultar);
                     $consultar = mysqli_fetch_array($consultar);  //Devuelve un array o NULL
-                    while(mysqli_next_result($conexion)){;}
                     $User = $consultar['ID_Registro'];
                 ?>
                 <?php
@@ -168,9 +178,7 @@ include("../PhpDocs/PhpInclude.php");
                 <?php
                     include("../PhpDocs/Conexion.php");
                     
-                    $query  = mysqli_query($conexion,'CALL sp_4Var(6, "'.$idBtn.'");');
-                    while(mysqli_next_result($conexion)){;}
-                    
+                    $query = mysqli_query($conexion, "SELECT video_id, video_name, location FROM `video` WHERE ID_Producto = '$idBtn'") or die(mysqli_error());
                     while($fetch = mysqli_fetch_array($query)){
                 ?>
                 <div class="col-md-12">
@@ -196,6 +204,12 @@ include("../PhpDocs/PhpInclude.php");
             <section id="publicacion">
                 <div id="commentBoxP" contenteditable="true" dir="auto" class="commentBoxP" placeholder="Agrega un comentario..."></div>
                 <br>
+                <!--<div class="cat">Categoría: (No editable)
+                    <input type="radio" class="catRB" name="genero" id="IDCat1"/> Categoría 1
+                    <input type="radio" class="catRB" name="genero" id="IDCat2"/> Categoría 2
+                    <input type="radio" class="catRB" name="genero" id="IDCat3"/> Categoría 3
+                </div>
+                <br>-->
                 <div class="valoracion"> 
                     <input type="radio" name="estrellas" id="rate5" value="5">
                     <label for="rate5" class="fas fa-star"></label>

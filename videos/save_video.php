@@ -4,12 +4,13 @@
 	
     $IDBtn = $_SESSION['ID_Producto'];
 	if(ISSET($_POST['save'])){
-
-		$consultaId  = mysqli_query($conexion,'CALL sp_5Var(6, "'.$IDBtn.'");');
-		$consultaId = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
-		while(mysqli_next_result($conexion)){;}
-		$ID_VID = $consultaId['video_id'];
-		$Ruta = $consultaId['location'];
+		$consultaId =   "SELECT ID_Producto, video_id, video_name, location
+									FROM video
+									WHERE ID_Producto='$IDBtn'";
+					$consultaId = mysqli_query($conexion, $consultaId);
+					$consultaId = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
+					$ID_VID = $consultaId['video_id'];
+					$Ruta = $consultaId['location'];
 
 		$file_name = $_FILES['video']['name'];
 		$file_temp = $_FILES['video']['tmp_name'];
@@ -33,8 +34,11 @@
 					if(!$consultaId){   //Si no existe el video
 						mysqli_query($conexion, "INSERT INTO `video` 
 											VALUES('', '$name', '$location', '$IDBtn')") or die(mysqli_error());
+						//echo "<script>alert('Video Uploaded')</script>";
+						//echo "<script>window.location = '../Producto/Producto.php?IDBtn='.$IDBtn.'</script>";
 						$url = "Producto/Producto.php?IDBtn=$IDBtn";
             			include("../PhpDocs/header.php");
+						//header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
 					}else{
 						unlink($Ruta);
 
@@ -43,8 +47,10 @@
 								WHERE ID_Producto='$IDBtn'"; 
 
 						if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
+							//echo "alert('Tu cuenta ha sido creada')";
 							$url = "Producto/Producto.php?IDBtn=$IDBtn";
             				include("../PhpDocs/header.php");
+							//header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
 						}else{
 							echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
 						}
@@ -53,9 +59,13 @@
 				}
 			}else{
 				echo "<script>alert('Wrong video format')</script>";
+				//echo "<script>window.location = '../Producto/Producto.php?IDBtn='.$IDBtn.'</script>";
+                //header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
 			}
 		}else{
 			echo "<script>alert('File too large to upload')</script>";
+			//echo "<script>window.location = '../Producto/Producto.php?IDBtn='.$IDBtn.'</script>";
+            //header("Location: http://localhost:8080/unikart2/Producto/Producto.php?IDBtn=$IDBtn");
 		}
 	}
 ?>

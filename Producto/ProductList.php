@@ -2,11 +2,22 @@
     
     include("../PhpDocs/Conexion.php");
 
+    //Queremos los datos del producto
+    /*$consulta1 =   "SELECT Nombre, Descripcion, Precio, PrecioCant
+                    FROM productos
+                    WHERE ID_Producto='$IDProd'";
+    $consulta1 = mysqli_query($conexion, $consulta1);
+    $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
+    */
     $IDWL = $_SESSION['ID_KartList'];
-    $consultaWLProd  = mysqli_query($conexion,'CALL sp_4Var(1, "'.$IDWL.'");');
-    while(mysqli_next_result($conexion)){;}
+    $consultaWLProd  =  "SELECT K.ID_KartList, PK.ID_Producto, P.Nombre, P.Descripcion, P.Precio, P.PrecioCant
+                        FROM carrito K
+                        INNER JOIN productoxkart PK ON K.ID_KartList = PK.ID_Cart
+                        INNER JOIN productos P ON PK.ID_Producto = P.ID_Producto
+                        WHERE K.ID_KartList = '$IDWL' AND PK.status = '0'";
+    $ejecutar = $conexion->query($consultaWLProd);
     
-    while($fila = $consultaWLProd->fetch_array()):
+    while($fila = $ejecutar->fetch_array()):
         if($fila == null){
             ?> <h1 class="null">Aún no hay elementos en tu carrito</h1> <?php
         } 
@@ -27,10 +38,12 @@
             ?>
             <label>Categoría/s:</label>
             <?php 
-                $consultaCatProd  = mysqli_query($conexion,'CALL sp_4Var(2, "'.$IDPr.'");');
-                while(mysqli_next_result($conexion)){;}
-
-                while($fila2 = $consultaCatProd->fetch_array()):
+                $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                    FROM productoxcat PC
+                                    INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                    WHERE PC.ID_Producto = '$IDPr'";
+                $ejecutar2 = $conexion->query($consultaCatProd);
+                while($fila2 = $ejecutar2->fetch_array()):
                     ?><label> °<?php echo $fila2['Categoria'] ?></label><?php 
                 endwhile;
             ?>
