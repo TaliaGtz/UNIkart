@@ -10,11 +10,6 @@
         //echo $fecha_inicio . " y " . $fecha_final;
         $Fechas = 'CALL sp_ultSelect(2, "", "'.$fecha_inicio.'", "'.$fecha_final.'", "", "", "");';
 
-        /*$Fechas = "SELECT ID_Entrega, Fecha 
-                        FROM entregas
-                        WHERE Fecha BETWEEN '{$fecha_inicio}' AND '{$fecha_final}'
-                        ORDER BY Fecha DESC";*/
-
         $ejecutar = $conexion->query($Fechas);
 
         while($fila = $ejecutar->fetch_array()):

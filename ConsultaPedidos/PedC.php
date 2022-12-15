@@ -55,11 +55,6 @@ include("../PhpDocs/PhpInclude.php");
 
                     $Fechas = 'CALL sp_ultSelect(3, "", "", "", "'.$fecha_inicio.'", "'.$fecha_final.'", "'.$IDUser.'");';
 
-                    /*$Fechas = "SELECT ID_Entrega, Fecha 
-                                    FROM entregas
-                                    WHERE Fecha BETWEEN '$fecha_inicio' AND '$fecha_final' AND ID_User = '$IDUser'
-                                    ORDER BY Fecha DESC";*/
-
                     $ejecutar = $conexion->query($Fechas);
 
                     while($fila = $ejecutar->fetch_array()):
