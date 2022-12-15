@@ -23,11 +23,22 @@
     $consultaId = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
     while(mysqli_next_result($conexion)){;}
 
-    if($IDMedia == 32767){
+    //Evaluamos si el rand ingresado ya existe
+    $consultaRand  = mysqli_query($conexion,'CALL sp_2Var(2, "'.$IDMedia.'");');
+    $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
+    while(mysqli_next_result($conexion)){;}
+
+    if($consultaRand){
         $IDMedia = rand(10000, 65535);
-    }
-    if($ID == 32767){
-        $ID = rand(10000, 65535);
+
+        //Evaluamos si el rand ingresado ya existe
+        $consultaRand  = mysqli_query($conexion,'CALL sp_2Var(2, "'.$IDMedia.'");');
+        $consultaRand = mysqli_fetch_array($consultaRand);  //Devuelve un array o NULL
+        while(mysqli_next_result($conexion)){;}
+
+        while($consultaRand){
+            $IDMedia = rand(10000, 65535);
+        }
     }
 
     if(!$consultaId){   //Si no existe el usuario
@@ -41,11 +52,10 @@
         echo $user. " ";
         echo $passwordHash. " ";
 
-        $sql = 'CALL sp_Registro(1, "'.$IDMedia.'", "fotoPerfil", "'.$fotoPerfil.'", "image/png", "", "", "", "", "", "", "", "");';
-        $sql2 = 'CALL sp_Registro(2, "'.$IDMedia.'", "", "", "", "'.$ID.'", "'.$nombres.'", "'.$apellidos.'", "'.$rol.'", "'.$fechaNac.'", "'.$correo.'", "'.$user.'", "'.$passwordHash.'");';
+        $sql = 'CALL sp_Registro(1, "'.$IDMedia.'", "fotoPerfil", "'.$fotoPerfil.'", "image/png", null, null, null, null, null, null, null, null);';
+        $sql2 = 'CALL sp_Registro(2, "'.$IDMedia.'", null, null, null, "'.$ID.'", "'.$nombres.'", "'.$apellidos.'", "'.$rol.'", "'.$fechaNac.'", "'.$correo.'", "'.$user.'", "'.$passwordHash.'");';
 
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
-            //while(mysqli_next_result($conexion)){;}
             mysqli_query($conexion, $sql2);
 
             $url = "Landing Page/Landing.html";

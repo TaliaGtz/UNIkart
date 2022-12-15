@@ -16,7 +16,7 @@
         $ID_KartList = $consultaWL['ID_KartList'];
     }else{
         $ID_KartList = rand(10000, 65535);
-        $sql1 = 'CALL sp_AddVariables4(1, "'.$user.'", "", "'.$ID_KartList.'", "'.$user.'", "", "", null, null, null, null, null);';
+        $sql1 = 'CALL sp_AddVariables4(1, "'.$user.'", null, "'.$ID_KartList.'", "'.$user.'", null, null, null, null, null, null, null);';
 
         if(mysqli_query($conexion, $sql1)){  //Ejecutamos el query y verificamos si se guardaron los datos
             //header("Location: http://localhost:8080/unikart2/Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd");
