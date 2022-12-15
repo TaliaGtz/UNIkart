@@ -52,8 +52,27 @@
         echo $user. " ";
         echo $passwordHash. " ";
 
-        $sql = 'CALL sp_Registro(1, "'.$IDMedia.'", "fotoPerfil", "'.$fotoPerfil.'", "image/png", null, null, null, null, null, null, null, null);';
-        $sql2 = 'CALL sp_Registro(2, "'.$IDMedia.'", null, null, null, "'.$ID.'", "'.$nombres.'", "'.$apellidos.'", "'.$rol.'", "'.$fechaNac.'", "'.$correo.'", "'.$user.'", "'.$passwordHash.'");';
+        $sql = 'CALL sp_Registro(1, "'.$IDMedia.'", "fotoPerfil", "'.$fotoPerfil.'", "image/png", null, null, null, null, null, null, null, null, null);';
+        $sql2 = 'CALL sp_Registro(2, null, null, null, null, "'.$ID.'", "'.$nombres.'", "'.$apellidos.'", "'.$rol.'", "'.$fechaNac.'", "'.$correo.'", "'.$user.'", "'.$passwordHash.'", "'.$IDMedia.'");';
+        // $sql = "INSERT INTO media 
+        // VALUES(
+        //     '$IDMedia',
+        //     'fotoPerfil',
+        //     '$fotoPerfil',
+        //     'image/png'
+        // );";
+        // $sql2 = "INSERT INTO registro 
+        // VALUES(
+        //     '$ID',
+        //     '$nombres',
+        //     '$apellidos',
+        //     '$rol',
+        //     '$fechaNac', 
+        //     '$correo',
+        //     '$user',
+        //     '$passwordHash',
+        //     '$IDMedia'
+        // );";
 
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             mysqli_query($conexion, $sql2);

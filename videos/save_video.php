@@ -9,6 +9,9 @@
 		$consultaId = mysqli_fetch_array($consultaId);  //Devuelve un array o NULL
 		while(mysqli_next_result($conexion)){;}
 		$ID_VID = $consultaId['video_id'];
+		if($ID_VID == null){
+			$ID_VID = rand(10000, 65535);
+		}
 		$Ruta = $consultaId['location'];
 
 		$file_name = $_FILES['video']['name'];

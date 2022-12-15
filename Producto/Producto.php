@@ -53,7 +53,7 @@ include("../PhpDocs/PhpInclude.php");
         <?php
             include("../PhpDocs/imgCode.php");
 
-            $IDMedia = rand(10000, 65535);
+            //$IDMedia = rand(10000, 65535);
 
             if(isset($_REQUEST['guardar'])){
                 if(isset($_FILES['archivo']['name'])){
@@ -68,15 +68,15 @@ include("../PhpDocs/PhpInclude.php");
                     
                     $query = 'CALL sp_AddVariables5(1, 
                     "'.$IDMedia.'", "'.$now.'", "'.$binImagen.'", "'.$tipoArchivo.'", 
-                    null, null, 
-                    null, null, null, 
-                    null, null, null, null);';
+                    "", "", 
+                    "", "", "", 
+                    "", "", "", "");';
                     
                     $query1 = 'CALL sp_AddVariables5(2, 
-                    null, null, null, null, 
+                    "", "", "", "", 
                     "'.$idBtn.'", "'.$IDMedia.'", 
-                    null, null, null, 
-                    null, null, null, null);';
+                    "", "", "", 
+                    "", "", "", "");';
                     
                     if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
                         mysqli_query($conexion, $query1);

@@ -566,7 +566,8 @@ create procedure sp_Registro
     vfechaNac datetime,
     vcorreo varchar(50),
     vuser varchar(25),
-    vpasswordHash varchar(25)
+    vpasswordHash varchar(25),
+    vIDMedia2 smallint(5)
     
 )
 BEGIN
@@ -592,7 +593,7 @@ BEGIN
             vcorreo,
             vuser,
             vpasswordHash, 
-            vIDMedia
+            vIDMedia2
         );
 
 	end if;
