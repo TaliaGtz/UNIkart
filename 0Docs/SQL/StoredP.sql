@@ -998,3 +998,45 @@ BEGIN
 
 	END =)
 delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_upImgPicVid
+(
+	paccion tinyint,
+
+    vnow varchar(100),
+    vbinImagen mediumblob,
+    vtipoArchivo varchar(50),
+    vID_media smallint(5),
+    vID_VID int(11),
+    vname varchar(100),
+    vlocation varchar(100),
+    vIDBtn smallint(5),
+    vIDBtn2 smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		UPDATE media
+        SET nombre = vnow, 
+            imagen = vbinImagen, 
+            tipo   = vtipoArchivo
+        WHERE ID_media = vID_media;
+
+	end if;
+    if paccion = 2 then
+        UPDATE `video` 
+		SET video_id = vID_VID, 
+        video_name = vname, 
+        location = vlocation, 
+        ID_Producto = vIDBtn 
+		WHERE ID_Producto=vIDBtn2;
+
+    end if;
+
+
+	END =)
+delimiter ;

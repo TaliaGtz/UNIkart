@@ -55,11 +55,13 @@ include("../PhpDocs/PhpInclude.php");
                     $binImagen = fread($imagenSubida, $sizeArchivo);
                     $binImagen = mysqli_escape_string($conexion, $binImagen);
 
-                    $query = "UPDATE media
+                    $query  ='CALL sp_upImgPicVid(1, "'.$now.'", "'.$binImagen.'", "'.$tipoArchivo.'", "'.$ID_media.'", "", "", "", "", "");';
+
+                        /*$query = "UPDATE media
                             SET nombre = '$now', 
                                 imagen = '$binImagen', 
                                 tipo   = '$tipoArchivo'
-                            WHERE ID_media = '$ID_media'";
+                            WHERE ID_media = '$ID_media'";*/
 
                     if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
                     }else{

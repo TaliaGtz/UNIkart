@@ -48,9 +48,11 @@
 					}else{
 						unlink($Ruta);
 
-						$query = "UPDATE `video` 
+						$query  ='CALL sp_upImgPicVid(2, "", "", "", "", "'.$ID_VID.'", "'.$name.'", "'.$location.'", "'.$IDBtn.'", "'.$IDBtn.'");';
+
+						/*$query = "UPDATE `video` 
 								SET video_id = '$ID_VID', video_name = '$name', location = '$location', ID_Producto = '$IDBtn' 
-								WHERE ID_Producto='$IDBtn'"; 
+								WHERE ID_Producto='$IDBtn'"; */
 
 						if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
 							$url = "Producto/Producto.php?IDBtn=$IDBtn";
