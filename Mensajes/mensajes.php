@@ -105,7 +105,8 @@ include("../PhpDocs/PhpInclude.php");
                 $mensaje = base64_encode($mensaje);
                 $IDChat = rand(10000, 65535);
 
-                $consulta = 'CALL sp_AddVariables2(2, null, null, "'.$IDChat.'", "'.$nombre.'", "'.$mensaje.'", null, null);';
+                $consulta = "INSERT INTO chat (IDChat, Usuario, Mensaje) 
+                            VALUES('$IDChat', '$nombre', '$mensaje')";
                 $ejecutar = $conexion->query($consulta);
 
                 if($ejecutar){

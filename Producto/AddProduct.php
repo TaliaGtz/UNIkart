@@ -26,10 +26,25 @@
         $ID_KartList = rand(10000, 65535);
         
         //Guardamos el carrito
-        $sql1 = 'CALL sp_AddVariables4(1, "'.$IDWL.'", null, "'.$ID_KartList.'", "'.$User.'", null, null, null, null, null, null, null);';
+        $sql1 = "INSERT INTO carrito 
+                VALUES(
+                    '$IDWL',
+                    '',
+                    '$ID_KartList',
+                    '$User',
+                    '',
+                    ''
+                )";
 
         //Guardamos el producto
-        $sql4 = 'CALL sp_AddVariables4(2, null, null, null, null, null, null, "'.$ID_KartList.'", "1", "0", "'.$IDProd.'", "'.$Entrega.'");';
+        $sql4 = "INSERT INTO productoxkart 
+                VALUES(
+                    '$ID_KartList',
+                    '1',
+                    '0',
+                    '$IDProd',
+                    '$Entrega'
+                )";
        
        if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
             mysqli_query($conexion, $sql1);
@@ -46,7 +61,14 @@
         $ID_KartList = $consultaWL['ID_KartList'];
 
         //Guardamos el producto
-        $sql4 = 'CALL sp_AddVariables4(2, null, null, null, null, null, null, "'.$ID_KartList.'", "1", "0", "'.$IDProd.'", "'.$Entrega.'");';
+        $sql4 = "INSERT INTO productoxkart 
+                VALUES(
+                    '$ID_KartList',
+                    '1',
+                    '0',
+                    '$IDProd',
+                    '$Entrega'
+                )";
 
         if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
             $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";

@@ -47,11 +47,15 @@ if(!$consultaWL){   //Si no existe el carrito
     $sql = "UPDATE carrito 
             SET CODE = '$CODIGO', Total = '$Total'
             WHERE ID_KartList='$ID_KL'";
-    mysqli_query($conexion, $sql);
 
     $sql2  = mysqli_query($conexion,'CALL sp_3Var(1, "'.$ID_KL.'");');
-    
+    //$sql2 = mysqli_fetch_array($sql2);  //Devuelve un array o NULL
+    //while(mysqli_next_result($conexion)){;}
+
+    //TODO: Probablemente este y el siguiente estén fallando, la entrega no se guarda bien
     $sql3  = mysqli_query($conexion,'CALL sp_3Var(2, "'.$ID_KL.'");');
+    //$sql3 = mysqli_fetch_array($sql3);  //Devuelve un array o NULL
+    //while(mysqli_next_result($conexion)){;}
     
     $sql4 = "UPDATE entregas 
             SET ID_Entrega = '$Entrega', Pago = '$key'
@@ -60,10 +64,10 @@ if(!$consultaWL){   //Si no existe el carrito
     $Entrega = rand(10000, 65535);
     $_SESSION['Entrega'] = $Entrega;
 
-    if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
+    if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
         //mysqli_query($conexion, $sql2);
         //mysqli_query($conexion, $sql3);
-        //mysqli_query($conexion, $sql4);
+        mysqli_query($conexion, $sql4);
     }else{
         echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
     }

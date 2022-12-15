@@ -20,7 +20,12 @@
 
     if(!$consultaCat){   //Si no existe la categoría
         
-        $sql = 'CALL sp_AddVariables(3, null, null, null, null, null, null, "'.$ID.'", "'.$catName.'", "'.$ID_User.'");';
+        $sql = "INSERT INTO categorias 
+        VALUES(
+            '$ID',
+            '$catName',
+            '$ID_User'
+        )";
        
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('La categoría se ha añadido')";

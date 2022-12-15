@@ -31,15 +31,8 @@
 				if(move_uploaded_file($file_temp, $location)){
 
 					if(!$consultaId){   //Si no existe el video
-						$IDVid = rand(10000, 65535);
-
-						$sql = 'CALL sp_AddVariables5(4, 
-						null, null, null, null, 
-						null, null, 
-						null, null, null, 
-						"'.$IDVid.'", "'.$name.'", "'.$location.'", "'.$IDBtn.'");';
-
-						mysqli_query($conexion, $sql) or die(mysqli_error());
+						mysqli_query($conexion, "INSERT INTO `video` 
+											VALUES('', '$name', '$location', '$IDBtn')") or die(mysqli_error());
 						$url = "Producto/Producto.php?IDBtn=$IDBtn";
             			include("../PhpDocs/header.php");
 					}else{

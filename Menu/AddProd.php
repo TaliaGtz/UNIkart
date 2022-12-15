@@ -25,12 +25,29 @@
 
     if(!$consultaProd){   //Si no existe el producto
         
-        $sql = 'CALL sp_AddVariables3(1, "'.$ID.'", "'.$negID.'", "'.$product.'", "'.$rate.'", "'.$precio.'", "'.$precioCant.'", "'.$disp.'", "'.$desc.'", "0", "0", "'.$ID_Com.'", null, null, null, null, null, null, null);';
+        $sql = "INSERT INTO productos 
+        VALUES(
+            '$ID        ',
+            '$negID     ',
+            '$product   ',
+            '$rate      ',
+            '$precio    ',
+            '$precioCant',
+            '$disp      ',
+            '$desc      ',
+            '0          ',
+            '0          ',
+            '$ID_Com    '
+        )";
 
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             
             foreach($_POST['checkbox'] as $seleccion) {
-                $sql1 = 'CALL sp_AddVariables2(3, null, null, null, null, null, "'.$seleccion.'", "'.$ID.'");';
+                $sql1 = "INSERT INTO productoxcat
+                VALUES(
+                    '$seleccion ',
+                    '$ID        '
+                )";
                 mysqli_query($conexion, $sql1);
             }
             echo "alert('El producto se ha añadido')";
@@ -44,10 +61,26 @@
         if($negID == $consultaProd['Negocio']){
             echo "El producto ya existe";
         }else{
-            $sql = 'CALL sp_AddVariables3(1, "'.$ID.'", "'.$negID.'", "'.$product.'", "'.$rate.'", "'.$precio.'", "'.$precioCant.'", "'.$disp.'", "'.$desc.'", "0", "0", "'.$ID_Com.'", null, null, null, null, null, null, null);';
+            $sql = "INSERT INTO productos 
+            VALUES(
+            '$ID        ',
+            '$negID   ',
+            '$product   ',
+            '$rate      ',
+            '$precio    ',
+            '$precioCant',
+            '$disp      ',
+            '$desc      ',
+            '0          ',
+            '$ID_Com    '
+            )";
 
             foreach($_POST['checkbox'] as $seleccion) {
-                $sql1 = 'CALL sp_AddVariables2(3, null, null, null, null, null, "'.$seleccion.'", "'.$ID.'");';
+                $sql1 = "INSERT INTO productoxcat
+                VALUES(
+                    '$seleccion ',
+                    '$ID        '
+                )";
                 mysqli_query($conexion, $sql1);
             }
 

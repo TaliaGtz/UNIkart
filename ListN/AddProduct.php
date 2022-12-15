@@ -12,7 +12,11 @@
     if(!$consultaWL){   //Si no existe el producto en la lista
         
         //Guardamos el producto
-        $sql2 = 'CALL sp_AddVariables2(1, "'.$IDProd.'", "'.$IDWL.'", null, null, null, null, null);';
+        $sql2 = "INSERT INTO productoxwl 
+                VALUES(
+                    '$IDProd',
+                    '$IDWL'
+                )";
        
         if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
             $url = "ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd";
@@ -29,7 +33,11 @@
         
         if($consultaWL['ID_Wishlist'] != $IDWL){
             //Guardamos el producto
-            $sql2 = 'CALL sp_AddVariables2(1, "'.$IDProd.'", "'.$IDWL.'", null, null, null, null, null);';
+            $sql2 = "INSERT INTO productoxwl 
+                    VALUES(
+                        '$IDProd',
+                        '$IDWL'
+                    )";
 
             if(mysqli_query($conexion, $sql2)){  //Ejecutamos el query y verificamos si se guardaron los datos
                 $url = "ListN/ListN.php?IDBtn=$IDWL&IDProd=$IDProd";

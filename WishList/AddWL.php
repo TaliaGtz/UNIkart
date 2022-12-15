@@ -24,7 +24,17 @@
     while(mysqli_next_result($conexion)){;}
 
     if(!$consultaWL){   //Si no existe la lista
-        $sql = 'CALL sp_AddVariables3(2, null, null, null, null, null, null, null, null, null, null, null, "'.$ID.'", "'.$imagen.'", "'.$wlName.'", "'.$Priv.'", "'.$Desc.'", "'.$Prod.'", "'.$ID_User.'");';
+        
+        $sql = "INSERT INTO wishlist 
+        VALUES(
+            '$ID',
+            '$imagen',
+            '$wlName',
+            '$Priv',
+            '$Desc',
+            '$Prod',
+            '$ID_User'
+        )";
        
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             echo "alert('La lista se ha añadido')";
