@@ -908,3 +908,35 @@ BEGIN
 
 	END =)
 delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_upTrato
+(
+	paccion tinyint,
+
+    vtrato smallint(6),
+    vIDProd smallint(5),
+    vtratoLugar varchar(300),
+    vCODE varchar(7)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		UPDATE productos
+        SET PrecioCant = vtrato
+        WHERE ID_Producto = vIDProd;
+
+	end if;
+    if paccion = 2 then
+		UPDATE entregas
+        SET Lugar = vtratoLugar
+        WHERE CODE = vCODE;
+
+	end if;
+
+
+	END =)
+delimiter ;

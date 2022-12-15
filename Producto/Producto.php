@@ -110,7 +110,7 @@ include("../PhpDocs/PhpInclude.php");
                 <p>Valoración: <?php echo $consulta['Valoracion']; ?></p>
                 <?php
                     if($consulta['Precio'] == 0){
-                        ?><p><a id="cotiz" href="../Mensajes/mensajes.php?IDProd=<?php echo $idBtn; ?>">Cotización</a></p><?php
+                        ?><label><a id="cotiz" href="../Mensajes/mensajes.php?IDProd=<?php echo $idBtn; ?>">Cotización </a></label><label> ($<?php echo $consulta['PrecioCant']; ?>)</label><?php
                     }else{
                         ?><p>$<?php echo $consulta['PrecioCant']; ?></p><?php
                     }

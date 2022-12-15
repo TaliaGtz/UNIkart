@@ -7,9 +7,12 @@
         $IDProd = $_SESSION['IDProd'];
 
         echo $trato;    //UPDATE PRECIOCANT IN PRODUCTOS
-        $query = "UPDATE productos
+        $query = 'CALL sp_upTrato(1, "'.$trato.'", "'.$IDProd.'", "", "");';
+
+        /*$query = "UPDATE productos
                 SET PrecioCant = '$trato'
-                WHERE ID_Producto = '$IDProd'";
+                WHERE ID_Producto = '$IDProd'";*/
+
         mysqli_query($conexion, $query);
 
         $url = "Mensajes/mensajes.php?IDProd=$IDProd";
@@ -24,9 +27,12 @@
         $IDEnt = $_GET['IDEnt'];
         $tratoLugar = $_POST["tratoLugar"];
 
-        $query = "UPDATE entregas
+        $query = 'CALL sp_upTrato(2, "", "", "'.$tratoLugar.'", "'.$CODE.'");';
+        
+        /*$query = "UPDATE entregas
                 SET Lugar = '$tratoLugar'
-                WHERE CODE = '$CODE'";
+                WHERE CODE = '$CODE'";*/
+
         mysqli_query($conexion, $query);
 
         $url = "Mensajes/mensajes.php?Rol=$ID&COD=$CODE&IDEnt=$IDEnt";
