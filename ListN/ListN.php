@@ -25,9 +25,11 @@ include("../PhpDocs/PhpInclude.php");
             $IDProd = $_GET['IDProd'];
         }
         
-        $consulta  = mysqli_query($conexion,'CALL sp_1Var(8, "'.$idBtn.'");');
+        $consulta = "SELECT Nombre 
+                    FROM wishlist 
+                    WHERE ID_Wishlist = '$idBtn'";
+        $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-        while(mysqli_next_result($conexion)){;}
         $_SESSION['Lista'] = $consulta['Nombre'];
         $_SESSION['IDLista'] = $idBtn;
     ?>

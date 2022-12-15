@@ -8,9 +8,11 @@
     $user       = "$_SESSION[user]";
     
     //Queremos el ID del usuario
-    $consulta  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$user.'");');
+    $consulta =   "SELECT ID_Registro 
+                    FROM registro
+                    WHERE Username='$user'";
+    $consulta = mysqli_query($conexion, $consulta);
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-    while(mysqli_next_result($conexion)){;}
     $ID_User    = $consulta['ID_Registro'];
 
     //Evaluamos si la categoría ingresada ya existe
@@ -31,6 +33,7 @@
             echo "alert('La categoría se ha añadido')";
             $url = "Home/Home.php";
             include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Home/Home.php");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

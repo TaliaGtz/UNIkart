@@ -17,6 +17,8 @@ class DB{
         $this->charset  = 'utf8mb4';
     }
 
+    //mysql -e "USE todolistdb; select*from todolist" --user=azure --password=6#vWHD_$ --port=49175 --bind-address=52.176.6.0
+
     function connect(){
     
         try{
@@ -36,5 +38,10 @@ class DB{
         }   
     }
 }
+
+
+
+
+
 
 ?>

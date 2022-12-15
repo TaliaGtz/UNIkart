@@ -3,11 +3,23 @@
     include("../PhpDocs/Conexion.php");
     include("../PhpDocs/Fecha.php");
 
-    $consulta  = mysqli_query($conexion,'CALL sp_1Var(3, "");');
-    $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-    while(mysqli_next_result($conexion)){;}
+    /*$userName = $_SESSION['user'];
+    $_SESSION['ProdSel'] = $idBtn;
 
-    while($fila = $consulta->fetch_array()):
+    //Queremos el ID del usuario
+    $consulta1 =   "SELECT ID_Registro 
+                    FROM registro
+                    WHERE Username='$userName'";
+    $consulta1 = mysqli_query($conexion, $consulta1);
+    $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
+    $IDUser    = $consulta1['ID_Registro'];*/
+
+    $consulta = "SELECT ID_Entrega, Fecha  
+                FROM entregas
+                ORDER BY Fecha DESC";
+    $ejecutar = $conexion->query($consulta);
+
+    while($fila = $ejecutar->fetch_array()):
         
 ?>
 

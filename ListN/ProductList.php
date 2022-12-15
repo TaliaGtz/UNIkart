@@ -3,11 +3,21 @@
     include("../PhpDocs/Conexion.php");
 
     //Queremos los datos del producto
+    /*$consulta1 =   "SELECT Nombre, Descripcion, Precio, PrecioCant
+                    FROM productos
+                    WHERE ID_Producto='$IDProd'";
+    $consulta1 = mysqli_query($conexion, $consulta1);
+    $consulta1 = mysqli_fetch_array($consulta1);  //Devuelve un array o NULL
+    */
     $IDWL = $_SESSION['IDLista'];
-    while(mysqli_next_result($conexion)){;}
-    $consultaWLProd  = mysqli_query($conexion,'CALL sp_1Var(9, "'.$IDWL.'");');
+    $consultaWLProd  =  "SELECT W.ID_Wishlist, PW.ID_Producto, P.Nombre, P.Descripcion, P.Precio, P.PrecioCant
+                        FROM wishlist W
+                        INNER JOIN productoxwl PW ON W.ID_Wishlist = PW.ID_Wishlist
+                        INNER JOIN productos P ON PW.ID_Producto = P.ID_Producto
+                        WHERE W.ID_Wishlist = '$IDWL'";
+    $ejecutar = $conexion->query($consultaWLProd);
 
-    while($fila = $consultaWLProd->fetch_array()):
+    while($fila = $ejecutar->fetch_array()):
         if($fila == null){
             ?> <h1 class="null">Aún no hay elementos en tu lista</h1> <?php
         } 
@@ -28,9 +38,12 @@
             ?>
             <label>Categoría/s:</label>
             <?php 
-            while(mysqli_next_result($conexion)){;}
-                $consultaCatProd  = mysqli_query($conexion,'CALL sp_1Var(0, "'.$IDPr.'");');
-                while($fila2 = $consultaCatProd->fetch_array()):
+                $consultaCatProd  =  "SELECT PC.ID_Producto, C.Categoria
+                                    FROM productoxcat PC
+                                    INNER JOIN categorias C ON PC.ID_Categoria = C.ID_Categoria
+                                    WHERE PC.ID_Producto = '$IDPr'";
+                $ejecutar2 = $conexion->query($consultaCatProd);
+                while($fila2 = $ejecutar2->fetch_array()):
                     ?><label> °<?php echo $fila2['Categoria'] ?></label><?php 
                 endwhile;
             ?>

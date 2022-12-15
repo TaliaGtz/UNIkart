@@ -11,9 +11,11 @@
     $IDNeg          = rand(10000, 65535);
 
     //Queremos el ID del usuario
-    $consulta  = mysqli_query($conexion,'CALL sp_1Var(1, "'.$DuenioUser.'");');
+    $consulta =   "SELECT ID_Registro 
+                    FROM registro
+                    WHERE Username = '$DuenioUser'";
+    $consulta = mysqli_query($conexion, $consulta);
     $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
-    while(mysqli_next_result($conexion)){;}
     $DuenioUser = $consulta['ID_Registro'];
 
     //Queremos el ID de la categoría accedida
@@ -68,6 +70,7 @@
             echo "alert('El negocio se ha añadido')";
             $url = "Category/category.php?IDBtn=$IDBtn";
             include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Category/category.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
@@ -82,6 +85,7 @@
             echo "alert('El negocio se ha añadido')";
             $url = "Category/category.php?IDBtn=$IDBtn";
             include("../PhpDocs/header.php");
+            //header("Location: http://localhost:8080/unikart2/Category/category.php?IDBtn=$IDBtn");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
