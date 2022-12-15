@@ -39,10 +39,6 @@ include("../PhpDocs/PhpInclude.php");
 
         $query  ='CALL sp_upProd(1, "'.$Views.'", "'.$idBtn.'");';
 
-        /*$query = "UPDATE productos
-                SET Views = '$Views'
-                WHERE ID_Producto = '$idBtn'";*/
-
         mysqli_query($conexion, $query);
         
     ?>
