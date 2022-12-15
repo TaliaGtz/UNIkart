@@ -57,12 +57,6 @@ include("../PhpDocs/PhpInclude.php");
 
                     $query  ='CALL sp_upImgPicVid(1, "'.$now.'", "'.$binImagen.'", "'.$tipoArchivo.'", "'.$ID_media.'", "", "", "", "", "");';
 
-                        /*$query = "UPDATE media
-                            SET nombre = '$now', 
-                                imagen = '$binImagen', 
-                                tipo   = '$tipoArchivo'
-                            WHERE ID_media = '$ID_media'";*/
-
                     if(mysqli_query($conexion, $query)){  //Ejecutamos el query y verificamos si se guardaron los datos
                     }else{
                         echo "Error: " . $query . "<br>" . mysqli_error($conexion);
