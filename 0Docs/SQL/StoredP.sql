@@ -572,7 +572,7 @@ create procedure sp_Registro
 BEGIN
 
 	if paccion = 1 then
-		INSERT INTO media 
+		INSERT INTO media (ID_media, nombre, imagen, tipo)
         VALUES(
             vIDMedia,
             vfotoPerfilTxt,
@@ -582,7 +582,7 @@ BEGIN
 
 	end if;
     if paccion = 2 then
-		INSERT INTO registro 
+		INSERT INTO registro (ID_Registro, Nombres, Apellidos, Rol, FechaNac, Email, Username, Contrasenia, ID_media)
         VALUES(
             vID,
             vnombres,
@@ -861,6 +861,46 @@ BEGIN
     if paccion = 4 then
         INSERT INTO `video` 
 	    VALUES(vnull, vname, vlocation, vIDBtn2);
+    
+    end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_ultSelect
+(
+	paccion tinyint,
+
+    vget varchar(25),
+    fecha1 timestamp(6),
+    fecha2 timestamp(6),
+    fecha3 timestamp(6),
+    fecha4 timestamp(6),
+    vUser smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		SELECT ID_Registro, Username, Contrasenia, Rol FROM registro WHERE Username = vget;
+
+	end if;
+    if paccion = 2 then
+		SELECT ID_Entrega, Fecha 
+        FROM entregas
+        WHERE Fecha BETWEEN fecha1 AND fecha2
+        ORDER BY Fecha DESC;
+
+	end if;
+    if paccion = 3 then
+        SELECT ID_Entrega, Fecha 
+        FROM entregas
+        WHERE Fecha BETWEEN fecha3 AND fecha4 AND ID_User = vUser;
+        ORDER BY Fecha DESC;
     
     end if;
 

@@ -46,7 +46,7 @@
         $ID_KartList = $consultaWL['ID_KartList'];
 
         //Guardamos el producto
-        $sql4 = 'CALL sp_AddVariables4(2, null, null, null, null, null, null, "'.$ID_KartList.'", "1", "0", "'.$IDProd.'", "'.$Entrega.'");';
+        $sql4 = 'CALL sp_AddVariables4(2, "", "", "", "", "", "", "'.$ID_KartList.'", "1", "0", "'.$IDProd.'", "'.$Entrega.'");';
 
         if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
             $url = "Producto/ListN.php?IDBtn=$ID_KartList&IDProd=$IDProd";
