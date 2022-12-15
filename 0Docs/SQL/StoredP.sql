@@ -974,3 +974,27 @@ BEGIN
 
 	END =)
 delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_upProd
+(
+	paccion tinyint,
+
+    vViews smallint(5),
+    vidBtn smallint(5)
+    
+)
+BEGIN
+
+	if paccion = 1 then
+		UPDATE productos
+        SET Views = vViews
+        WHERE ID_Producto = vidBtn;
+
+	end if;
+
+
+	END =)
+delimiter ;

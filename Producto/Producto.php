@@ -36,9 +36,13 @@ include("../PhpDocs/PhpInclude.php");
 
         $Views = $consulta['Views'];
         $Views = $Views + 1;
-        $query = "UPDATE productos
+
+        $query  ='CALL sp_upProd(1, "'.$Views.'", "'.$idBtn.'");';
+
+        /*$query = "UPDATE productos
                 SET Views = '$Views'
-                WHERE ID_Producto = '$idBtn'";
+                WHERE ID_Producto = '$idBtn'";*/
+
         mysqli_query($conexion, $query);
         
     ?>
@@ -53,8 +57,7 @@ include("../PhpDocs/PhpInclude.php");
         <?php
             include("../PhpDocs/imgCode.php");
 
-            //$IDMedia = rand(10000, 65535);
-
+            
             if(isset($_REQUEST['guardar'])){
                 if(isset($_FILES['archivo']['name'])){
                     $tipoArchivo = $_FILES['archivo']['type'];
