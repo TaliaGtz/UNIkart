@@ -3,7 +3,7 @@
     include("../PhpDocs/PhpInclude.php");
 
     //Se guardan los datos de los nombres de los inputs a la tabla en la base de datos
-    $ID         = rand(10000, 65535);
+    $ID         = "";
     $catName    = $_POST["catName"];
     $user       = "$_SESSION[user]";
     
@@ -19,6 +19,11 @@
     $consultaCat  = mysqli_query($conexion,'CALL sp_cat(5, "'.$catName.'");');
     $consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
     while(mysqli_next_result($conexion)){;}
+    //$consultaCat =   "SELECT Categoria
+    //                FROM categorias
+    //                WHERE Categoria='$catName'";
+    //$consultaCat = mysqli_query($conexion, $consultaCat);
+    //$consultaCat = mysqli_fetch_array($consultaCat);  //Devuelve un array o NULL
 
     if(!$consultaCat){   //Si no existe la categoría
         

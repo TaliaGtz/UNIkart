@@ -31,9 +31,10 @@ include("../PhpDocs/PhpInclude.php");
 
     <?php 
         $idBtn = $_GET['IDBtn'];
-
-        while(mysqli_next_result($conexion)){;}
-        $consulta  = mysqli_query($conexion,'CALL sp_neg(4, "'.$idBtn.'");');
+        $consulta = "SELECT Nombre 
+                    FROM negocios 
+                    WHERE ID_Negocio = '$idBtn'";
+        $consulta = mysqli_query($conexion, $consulta);
         $consulta = mysqli_fetch_array($consulta);  //Devuelve un array o NULL
         $_SESSION['Negocio'] = $consulta['Nombre'];
         $_SESSION['IDNegocio'] = $idBtn;
