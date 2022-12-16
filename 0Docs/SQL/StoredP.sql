@@ -978,6 +978,46 @@ delimiter ;
 #_______________________________________________________________________
 
 delimiter =)
+create procedure sp_upCODE3
+(
+    vID_Entrega smallint(5), 
+    vCODE varchar(7)
+)
+BEGIN
+	UPDATE entregas 
+    SET ID_Entrega = vID_Entrega
+    WHERE CODE=vCODE;
+
+
+	END =)
+delimiter ;
+
+delimiter =)
+create procedure sp_upCODE2
+(
+	paccion tinyint,
+
+    vID_Entrega smallint(5),
+    vPago tinyint(1),
+    vCODE varchar(7)
+    
+)
+BEGIN
+
+    if paccion = 2 then
+		UPDATE entregas 
+        SET ID_Entrega = vID_Entrega, Pago = vPago
+        WHERE CODE=vCODE;
+
+	end if;
+
+
+	END =)
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
 create procedure sp_upProd
 (
 	paccion tinyint,

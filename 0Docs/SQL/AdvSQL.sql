@@ -1,6 +1,7 @@
 #Necesitamos_2_Triggers,_8_views,_2_functions_en_total;
 
 #Views_11;
+
 create view cot_products AS
 select Negocio, Nombre, Precio from productos where Precio = 0;
 
@@ -65,9 +66,20 @@ GROUP BY YEAR(Fecha)
 ORDER BY yTotal DESC
 LIMIT 0, 1;
 
-#Triggers_0;
+#_______________________________________________________________________
+
+#Triggers_2;
+
+CREATE TRIGGER t_Value BEFORE INSERT ON productos
+FOR EACH ROW 
+SET NEW.Valoracion = 3;
 
 
+CREATE TRIGGER t_pendiente BEFORE INSERT ON entregas
+FOR EACH ROW 
+SET NEW.Lugar = 'Pendiente...';
+
+#_______________________________________________________________________
 
 #functions_2
 
@@ -100,7 +112,7 @@ BEGIN
 END %%
 delimiter ;
 
-#_______________________________________________________________________
+#________________
 
 delimiter =)
 create procedure sp_valoracion
@@ -148,7 +160,7 @@ BEGIN
 END %%
 delimiter ;
 
-#_______________________________________________________________________
+#________________
 
 delimiter =)
 create procedure sp_More
