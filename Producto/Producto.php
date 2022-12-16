@@ -106,7 +106,25 @@ include("../PhpDocs/PhpInclude.php");
             </div>
 
             <div class="description">
-                <p>Valoración: <?php echo $consulta['Valoracion']; ?></p>
+                <p>Valoración actual: <?php echo $consulta['Valoracion']; ?></p>
+                <form class="formul" method="POST" action="../Pedido/Valorar.php?IDBtn=<?php echo $idBtn ?>">
+                    <div class="valoracion valProd"> 
+                        <div class="stars">
+                            <button type="submit" name="valoracion">Valorar</button>
+                            <input type="radio" name="estrellas" id="rate5" value="5" <?php if($consulta['Valoracion'] == 5) echo 'checked="checked"'; ?>>
+                            <label for="rate5" class="fas fa-star"></label>
+                            <input type="radio" name="estrellas" id="rate4" value="4" <?php if($consulta['Valoracion'] == 4) echo 'checked="checked"'; ?>>
+                            <label for="rate4" class="fas fa-star"></label>
+                            <input type="radio" name="estrellas" id="rate3" value="3" <?php if($consulta['Valoracion'] == 3) echo 'checked="checked"'; ?>>
+                            <label for="rate3" class="fas fa-star"></label>
+                            <input type="radio" name="estrellas" id="rate2" value="2" <?php if($consulta['Valoracion'] == 2) echo 'checked="checked"'; ?>>
+                            <label for="rate2" class="fas fa-star"></label>
+                            <input type="radio" name="estrellas" id="rate1" value="1" <?php if($consulta['Valoracion'] == 1) echo 'checked="checked"'; ?>>
+                            <label for="rate1" class="fas fa-star"></label>
+                        </div>    
+                        <br>
+                    </div>
+                </form>
                 <?php
                     if($consulta['Precio'] == 0){
                         ?><label><a id="cotiz" href="../Mensajes/mensajes.php?IDProd=<?php echo $idBtn; ?>">Cotización </a></label><label> ($<?php echo $consulta['PrecioCant']; ?>)</label><?php
@@ -131,8 +149,9 @@ include("../PhpDocs/PhpInclude.php");
                         if ($Rol == '2'){
                         ?><br>
                         <form class="formul" method="POST" action="../Producto/Edit.php?IDBtn=<?php echo $idBtn?>&Cant=<?php echo $consulta['Disponibilidad']?>">
-                            <button type="submit" class="menos">-</button>
+                            <button type="submit" name="less" class="menos">-</button>
                             <label><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</label>
+                            <button type="submit" name="more" class="menos">+</button>
                         </form>
                         <?php
                         }
@@ -209,16 +228,19 @@ include("../PhpDocs/PhpInclude.php");
                 <div id="commentBoxP" contenteditable="true" dir="auto" class="commentBoxP" placeholder="Agrega un comentario..."></div>
                 <br>
                 <div class="valoracion"> 
-                    <input type="radio" name="estrellas" id="rate5" value="5">
-                    <label for="rate5" class="fas fa-star"></label>
-                    <input type="radio" name="estrellas" id="rate4" value="4">
-                    <label for="rate4" class="fas fa-star"></label>
-                    <input type="radio" name="estrellas" id="rate3" value="3">
-                    <label for="rate3" class="fas fa-star"></label>
-                    <input type="radio" name="estrellas" id="rate2" value="2">
-                    <label for="rate2" class="fas fa-star"></label>
-                    <input type="radio" name="estrellas" id="rate1" value="1">
-                    <label for="rate1" class="fas fa-star"></label>
+                    <div class="stars">
+                        <input type="radio" name="estrellas" id="rate5" value="5">
+                        <label for="rate5" class="fas fa-star"></label>
+                        <input type="radio" name="estrellas" id="rate4" value="4">
+                        <label for="rate4" class="fas fa-star"></label>
+                        <input type="radio" name="estrellas" id="rate3" value="3">
+                        <label for="rate3" class="fas fa-star"></label>
+                        <input type="radio" name="estrellas" id="rate2" value="2">
+                        <label for="rate2" class="fas fa-star"></label>
+                        <input type="radio" name="estrellas" id="rate1" value="1">
+                        <label for="rate1" class="fas fa-star"></label>
+                    </div>    
+                    <br>
                 </div>
                 <input type="date" id="datepkd" class="datepkd" value="2022-01-01">
                 <button type="button" id="publicar" class="button">Publicar</button>

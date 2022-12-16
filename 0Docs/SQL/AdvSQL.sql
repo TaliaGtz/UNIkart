@@ -69,7 +69,7 @@ LIMIT 0, 1;
 
 
 
-#functions_1
+#functions_2
 
 delimiter =)
 create procedure sp_Less
@@ -93,9 +93,88 @@ delimiter %%
 CREATE FUNCTION f_less
 (
     num int(11)
- )
+)
 RETURNS  int(11)
 BEGIN
     RETURN num - 1;
+END %%
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_valoracion
+(
+	idProd smallint(5),
+    valoracion tinyint(4)
+)
+BEGIN
+
+    SELECT @ID_Producto:= count(*), @Product:= Puntos
+    FROM valoracionprod
+    WHERE ID_Producto = idProd;
+
+    if @ID_Producto = 0 then
+        INSERT INTO valoracionprod
+        VALUES(idProd, 1, valoracion);
+    else
+        UPDATE valoracionprod
+        SET TotalVal = TotalVal + 1, 
+        Puntos = @Product + valoracion
+        WHERE ID_Producto = idProd;
+    end if;
+
+    SELECT @cant:= TotalVal, @points:= Puntos
+    FROM valoracionprod
+    WHERE ID_Producto = idProd;
+
+    UPDATE productos
+    SET Valoracion = f_prom(@cant, @points)
+    WHERE ID_Producto = idProd;
+
+	
+	END =)
+delimiter ;
+
+delimiter %%
+CREATE FUNCTION f_prom
+(
+    cant smallint(5),
+    valoracion tinyint(4)
+)
+RETURNS  tinyint(4)
+BEGIN
+    RETURN valoracion/cant;
+END %%
+delimiter ;
+
+#_______________________________________________________________________
+
+delimiter =)
+create procedure sp_More
+(
+	paccion tinyint,
+	pvalor int(11),
+    pIDProd smallint(5)
+)
+BEGIN
+
+	if paccion = 1 then 
+        UPDATE productos
+        SET Disponibilidad = f_more(pvalor)
+        WHERE ID_Producto = pIDProd;
+    end if;
+	
+	END =)
+delimiter ;
+
+delimiter %%
+CREATE FUNCTION f_more
+(
+    num int(11)
+)
+RETURNS  int(11)
+BEGIN
+    RETURN num + 1;
 END %%
 delimiter ;
