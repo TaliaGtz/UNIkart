@@ -54,19 +54,19 @@ if(!$consultaWL){   //Si no existe el carrito
 
     $sql4 = 'CALL sp_upCODE2(2,"'.$_SESSION['Entrega'].'","'.$key.'","'.$CODIGO.'");';
 
-    $sql9 = 'CALL sp_upCODE3("'.$_SESSION['Entrega'].'","'.$CODIGO.'");';
-    mysqli_query($conexion, $sql9);
+    //$sql9 = 'CALL sp_upCODE3("'.$_SESSION['Entrega'].'","'.$CODIGO.'");';
+    mysqli_query($conexion, $sql4);
 
     echo $_SESSION['Entrega'];
     
-    $Entrega = rand(10000, 65535);
+    $Entrega = mt_rand(10000, 65535);
     $_SESSION['Entrega'] = $Entrega;
-    if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
+    //if(mysqli_query($conexion, $sql4)){  //Ejecutamos el query y verificamos si se guardaron los datos
         
         //mysqli_query($conexion, $sql2);
         //mysqli_query($conexion, $sql3);
         //mysqli_query($conexion, $sql4);
-    }
+    //}
     //else{
         //echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
     //}

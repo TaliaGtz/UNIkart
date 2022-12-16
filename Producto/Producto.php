@@ -63,7 +63,7 @@ include("../PhpDocs/PhpInclude.php");
                     $binImagen = fread($imagenSubida, $sizeArchivo);
                     $binImagen = mysqli_escape_string($conexion, $binImagen);
 
-                    $IDMedia = rand(10000, 65535);
+                    $IDMedia = rand(10000, 32766);
                     
                     $query = 'CALL sp_AddVariables5(1, 
                     "'.$IDMedia.'", "'.$now.'", "'.$binImagen.'", "'.$tipoArchivo.'", 

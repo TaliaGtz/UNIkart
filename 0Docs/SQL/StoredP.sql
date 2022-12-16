@@ -779,7 +779,7 @@ create procedure sp_AddVariables4
     v1 smallint(10),
     v0 tinyint(1),
     vIDProd smallint(5),
-    vEntrega smallint(5)
+    vEntrega int(5)
     
 )
 BEGIN
@@ -980,7 +980,7 @@ delimiter ;
 delimiter =)
 create procedure sp_upCODE3
 (
-    vID_Entrega smallint(5), 
+    vID_Entrega int(5), 
     vCODE varchar(7)
 )
 BEGIN
@@ -997,7 +997,7 @@ create procedure sp_upCODE2
 (
 	paccion tinyint,
 
-    vID_Entrega smallint(5),
+    vID_Entrega int(5),
     vPago tinyint(1),
     vCODE varchar(7)
     

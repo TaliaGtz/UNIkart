@@ -4,7 +4,7 @@
 
     $IDBtn = $_SESSION['IDNegocio'];
     //Se guardan los datos de los nombres de los inputs a la tabla en la base de datos
-    $ID         = rand(10000, 65535);
+    $ID         = rand(10000, 32766);
     $negID    = "$_SESSION[IDNegocio]";
     $product    = $_POST["prodName"];
     $rate       = "0";

@@ -7,7 +7,7 @@
     if(isset($_SESSION['Entrega'])) {
         $Entrega = "$_SESSION[Entrega]";
     }else{
-        $Entrega = rand(10000, 65535);
+        $Entrega = mt_rand(10000, 65535);
         $_SESSION['Entrega'] = $Entrega;
     }
     
