@@ -64,3 +64,38 @@ from entregas
 GROUP BY YEAR(Fecha)
 ORDER BY yTotal DESC
 LIMIT 0, 1;
+
+#Triggers_0;
+
+
+
+#functions_1
+
+delimiter =)
+create procedure sp_Less
+(
+	paccion tinyint,
+	pvalor int(11),
+    pIDProd smallint(5)
+)
+BEGIN
+
+	if paccion = 1 then 
+        UPDATE productos
+        SET Disponibilidad = f_less(pvalor)
+        WHERE ID_Producto = pIDProd;
+    end if;
+	
+	END =)
+delimiter ;
+
+delimiter %%
+CREATE FUNCTION f_less
+(
+    num int(11)
+ )
+RETURNS  int(11)
+BEGIN
+    RETURN num - 1;
+END %%
+delimiter ;

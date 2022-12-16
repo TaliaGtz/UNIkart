@@ -77,7 +77,7 @@
         if(mysqli_query($conexion, $sql)){  //Ejecutamos el query y verificamos si se guardaron los datos
             mysqli_query($conexion, $sql2);
 
-            $url = "Landing Page/Landing.html";
+            $url = "Landing Page/Landing.php";
             include("../PhpDocs/header.php");
         }else{
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);

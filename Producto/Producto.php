@@ -127,7 +127,20 @@ include("../PhpDocs/PhpInclude.php");
                     if($consulta['Disponibilidad'] == 0){
                         ?><p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles, no sabemos cúando volverá a estar a la venta</p><?php
                     }else{
-                        ?><p><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</p><?php
+                        $Rol = $_SESSION['rol'];
+                        if ($Rol == '2'){
+                        ?><br>
+                        <form class="formul" method="POST" action="../Producto/Edit.php?IDBtn=<?php echo $idBtn?>&Cant=<?php echo $consulta['Disponibilidad']?>">
+                            <button type="submit" class="menos">-</button>
+                            <label><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</label>
+                        </form>
+                        <?php
+                        }
+                        if ($Rol != '2'){
+                        ?><br>
+                            <label><?php echo $consulta['Disponibilidad']; ?> artículos disponibles</label>
+                        <?php
+                        }
                     }
                 ?>
                 <p><?php echo $consulta['Descripcion']; ?></p>

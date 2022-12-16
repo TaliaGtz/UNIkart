@@ -38,6 +38,7 @@
         <div class="grid_texts">
             <h2 class="grid_title">UNI kart</h2>
             <h2 class="grid_title grid_title--transform">Llegamos a donde quieras</h2>
+            <!--<h2>50 personas ya decidieron tener una vida más sencilla ¿Y tú?</h2>-->
         </div>
         
         <!--<center>

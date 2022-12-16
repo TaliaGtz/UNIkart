@@ -389,6 +389,19 @@ nav ul li:hover{
     margin-bottom: 0px;
 }
 
+.formul{
+    margin: -4px;
+}
+
+.menos{
+    padding: 0px 10px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 5px;
+    font-weight: bold;
+}
+
 .article{
     padding: 10px 20px 0px 20px;
 }
